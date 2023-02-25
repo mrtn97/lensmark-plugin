@@ -3,7 +3,7 @@
 /**
  * Options Page Content
  */
-function lnsmrk_options_page() {
+function lnsmrk_options_page_html() {
 	// check user capabilities
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
