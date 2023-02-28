@@ -24,7 +24,7 @@
  * @subpackage Lensmark/includes
  * @author     Martin Clément <martin.clement@outlook.com>
  */
-class lensmark_i18n {
+class Lensmark_i18n {
 
 
 	/**

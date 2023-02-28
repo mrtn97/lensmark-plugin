@@ -9,14 +9,8 @@
  */
 
 class Lensmark_Activator {
-
-	/**
-	 * Short Description. (use period)
-	 *
-	 * @since    0.1.0
-	 */
 	public static function activate() {
-		
+
 	}
 
 }

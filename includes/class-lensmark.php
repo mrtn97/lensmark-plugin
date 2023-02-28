@@ -9,7 +9,7 @@
  * @link       http://wbth.m-clement.ch/
  * @since      0.1.0
  * @package    Lensmark
- * @subpackage Lensmarkincludes
+ * @subpackage Lensmark/includes
  */
 
 /**
@@ -122,6 +122,11 @@ class Lensmark {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-public.php';
 
+		/**
+		 * The class responsible for actions regarding the photopost post type
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
+
 		$this->loader = new Lensmark_Loader();
 
 	}
@@ -153,9 +158,11 @@ class Lensmark {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Lensmark_Admin( $this->get_lensmark(), $this->get_version() );
+		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version());
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type');
 
 	}
 
