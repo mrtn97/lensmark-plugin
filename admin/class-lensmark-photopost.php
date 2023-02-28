@@ -99,6 +99,7 @@ class Lensmark_Photopost {
 			'has_archive' => true,
 			'hierarchical' => false,
 			'menu_position' => 20,
+            'menu_icon' => 'dashicons-location',
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
 			'taxonomies' => array( 'category', 'post_tag' ),
 			'show_in_rest' => true
