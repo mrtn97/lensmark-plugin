@@ -67,8 +67,8 @@ class Lensmark {
 	 * @since    0.1.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'LENSMARK_VERSION' ) ) {
+			$this->version = LENSMARK_VERSION;
 		} else {
 			$this->version = '0.1.0';
 		}
