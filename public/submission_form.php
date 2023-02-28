@@ -3,6 +3,7 @@ function lnsmrk_shortcode_submission_form_html() {
 	?>
 	<h2>Submit Photo</h2>
 	<form id="submission_form">
+		<input type="hidden" id="photopostId" name="photopostId" value="">
 		<input type="file" name="picture" accept="image" capture="environment">
 		<label for="first-name">First name:</label>
 		<input type="text" id="first-name" name="first-name" required><br>
