@@ -16,7 +16,8 @@
 	 * @since    0.1.0
 	 */
 	public static function deactivate() {
-
+		// Remove shortcode
+		remove_shortcode('lensmark_submission_form');
 	}
 
 }
