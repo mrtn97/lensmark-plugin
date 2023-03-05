@@ -48,7 +48,7 @@ class Lensmark_Submission_Handler {
 	/**
 	 * Function that will handle photo submissions.
 	 */
-	public function lensmark_submit_entry() {
+	function lensmark_submit_entry() {
 		// Check that the nonce is valid.
 		if (
 			isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] )

@@ -58,12 +58,10 @@ class Lensmark_Submission_Form {
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			ob_start();
-			$photopost_id = isset( $_POST['photopost_id'] ) ? sanitize_text_field( $_POST['photopost_id'] ) : '';
-		?>
+			?>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 				<!--Add Type hidden to hide-->
-				<label for="photopost_id_field">Photopost ID:</label>
-				<input type="text" id="photopost_id" name="photopost_id" value=""><br>
+				<input type="" id="photopost_id" name="photopost_id"><br>
 				<label for="file">Photo:</label>
 				<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false"><br>
 				<label for="first-name">First name:</label>
@@ -79,8 +77,15 @@ class Lensmark_Submission_Form {
 					monitoring project. (Optional)</label><br>
 				<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 				<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
+
+				<script>
+					const urlParams = new URLSearchParams(window.location.search);
+					const photopost_id = urlParams.get('photopost_id');
+					document.querySelector('input[name="photopost_id"]').value = photopost_id;
+				</script>
 			</form>
-		<?php
+
+			<?php
 			return ob_get_clean();
 		}
 	}
