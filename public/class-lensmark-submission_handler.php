@@ -51,7 +51,7 @@ class Lensmark_Submission_Handler {
 	public function lensmark_submit_entry() {
 		// Check that the nonce is valid.
 		if (
-			isset( $_POST['photo_entry_nonce'], $_POST['post_id'] )
+			isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] )
 			&& wp_verify_nonce( $_POST['photo_entry_nonce'], 'photo_entry' )
 		) {
 			// These files need to be included as dependencies when on the front end.
@@ -61,7 +61,7 @@ class Lensmark_Submission_Handler {
 
 			// Let WordPress handle the upload.
 			// Remember, 'photo_entry' is the name of our file input in our form above.
-			$attachment_id = media_handle_upload( 'photo_entry', $_POST['post_id'] );
+			$attachment_id = media_handle_upload( 'photo_entry',  $_POST['photopost_id'] );
 
 			if ( is_wp_error( $attachment_id ) ) {
 				// There was an error uploading the image.

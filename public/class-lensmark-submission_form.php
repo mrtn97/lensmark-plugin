@@ -51,20 +51,21 @@ class Lensmark_Submission_Form {
 	public static function lensmark_add_submission_form_shortcode() {
 		add_shortcode( 'lensmark_submission_form', 'lensmark_shortcode_submission_form_html' );
 		/**
-		 * The photopostId must be specified in the url (also for the QR-Code).
-		 * The photopostId is used to assign the submitted photo to the correct photopost
+		 * The photopost_id must be specified in the url (also for the QR-Code).
+		 * The photopost_id is used to assign the submitted photo to the correct photopost
 		 * 
-		 * https://some.site.com/somePage.html?photopostId=[postId]
+		 * https://some.site.com/somePage.html?photopost_id=[postId]
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			ob_start();
-			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( $_POST['post_id'] ) : '';
+			$photopost_id = isset( $_POST['photopost_id'] ) ? sanitize_text_field( $_POST['photopost_id'] ) : '';
 		?>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 				<!--Add Type hidden to hide-->
-				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post_id; ?>">
+				<label for="photopost_id_field">Photopost ID:</label>
+				<input type="text" id="photopost_id" name="photopost_id" value=""><br>
 				<label for="file">Photo:</label>
-				<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false">
+				<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false"><br>
 				<label for="first-name">First name:</label>
 				<input type="text" id="first-name" name="first-name" required><br>
 				<label for="last-name">Last name:</label>
