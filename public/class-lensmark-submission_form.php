@@ -57,28 +57,33 @@ class Lensmark_Submission_Form {
 		 * https://some.site.com/somePage.html?photopostId=[postId]
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
-			$photopostId = $_GET['photopostId']; 
 			ob_start();
+			if (isset($_POST['post_id'])) {
+				$post_id = sanitize_text_field($_POST['post_id']);
+				// Use $post_id in your code here
+			  }
 			?>
-			<form id="submission_form">
-				<input type="" id="photopostId" name="photopostId" value="<?php echo $photopostId; ?>">
-				<input type="file" name="picture" accept="image" capture="environment">
+			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
+				<!--Add Type hidden to hide-->
+				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post_id; ?>">
+				<label for="file">Photo:</label>
+				<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false">
 				<label for="first-name">First name:</label>
 				<input type="text" id="first-name" name="first-name" required><br>
-				<label for="last-name">First name:</label>
+				<label for="last-name">Last name:</label>
 				<input type="text" id="last-name" name="last-name" required><br>
 				<label for="email">Email:</label>
 				<input type="email" id="email" name="email" required><br>
 				<input type="checkbox" id="terms" name="terms" value="checked" required>
-				<label for="terms"></label>I have read and accept the <a href="" target="_blank">privacy policy</a>.<br>
+				<label for="terms">I have read and accept the <a href="" target="_blank">privacy policy</a>.</label><br>
 				<input type="checkbox" id="newsletter" name="newsletter" value="checked">
-				<label for="newsletter"></label>I would like to receive e-mails about the development and results of the photo
-				monitoring project. (Optional)<br>
-				<input type="submit" value="Submit">
+				<label for="newsletter">I would like to receive e-mails about the development and results of the photo
+					monitoring project. (Optional)</label><br>
+				<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
+				<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
 			</form>
 			<?php return ob_get_clean();
+
 		}
 	}
-
 }
-?>
