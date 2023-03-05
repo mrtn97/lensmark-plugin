@@ -127,6 +127,11 @@ class Lensmark {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
 
+		/**
+		 * The class containt the photo-submission form.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-submission_form.php';
+
 		$this->loader = new Lensmark_Loader();
 
 	}
@@ -176,9 +181,11 @@ class Lensmark {
 	private function define_public_hooks() {
 
 		$plugin_public = new Lensmark_Public( $this->get_lensmark(), $this->get_version() );
+		$submission_form = new Lensmark_Submission_Form( $this->get_lensmark(), $this->get_version());
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $submission_form, 'lensmark_add_submission_form_shortcode');
 
 	}
 
