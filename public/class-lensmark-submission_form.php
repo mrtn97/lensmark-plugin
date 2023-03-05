@@ -58,11 +58,8 @@ class Lensmark_Submission_Form {
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			ob_start();
-			if (isset($_POST['post_id'])) {
-				$post_id = sanitize_text_field($_POST['post_id']);
-				// Use $post_id in your code here
-			  }
-			?>
+			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( $_POST['post_id'] ) : '';
+		?>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 				<!--Add Type hidden to hide-->
 				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post_id; ?>">
@@ -82,8 +79,8 @@ class Lensmark_Submission_Form {
 				<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 				<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
 			</form>
-			<?php return ob_get_clean();
-
+		<?php
+			return ob_get_clean();
 		}
 	}
 }
