@@ -54,7 +54,7 @@ class Lensmark_Submission_Form {
 		 * The photopostId must be specified in the url (also for the QR-Code).
 		 * The photopostId is used to assign the submitted photo to the correct photopost
 		 * 
-		 * https://some.site.com/somePage.html?photopostId=xyz 
+		 * https://some.site.com/somePage.html?photopostId=[postId]
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			$photopostId = $_GET['photopostId']; 
