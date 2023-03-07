@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://wbth.m-clement.ch/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Lensmark
  * @subpackage Lensmark/admin
@@ -25,7 +25,7 @@ class Lensmark_Photopost {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $lensmark    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Lensmark_Photopost {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class Lensmark_Photopost {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @param      string    $lensmark       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -57,7 +57,7 @@ class Lensmark_Photopost {
     /**
 	 * Add the photopost post type including all settings
 	 *
-	 * @since    0.5.0
+	 * @since    1.0.0
 	 */
 	public static function lensmark_photopost_post_type() {
 		$labels = array(
