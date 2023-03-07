@@ -51,17 +51,17 @@ class Lensmark_Submission_Form {
 	public static function lensmark_add_submission_form_shortcode() {
 		add_shortcode( 'lensmark_submission_form', 'lensmark_shortcode_submission_form_html' );
 		/**
-		 * The photopost_id must be specified in the url (also for the QR-Code).
-		 * The photopost_id is used to assign the submitted photo to the correct photopost
+		 * The photopostId must be specified in the url (also for the QR-Code).
+		 * The photopostId is used to assign the submitted photo to the correct photopost
 		 * 
-		 * https://some.site.com/somePage.html?photopost_id=[postId]
+		 * https://some.site.com/somePage.html?photopostId=[postId]
 		 * */
 		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			ob_start();
 			?>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 				<!--Add Type hidden to hide-->
-				<input type="" id="photopost_id" name="photopost_id"><br>
+				<input type="" id="post_id" name="post_id" value=""><br>
 				<label for="file">Photo:</label>
 				<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false"><br>
 				<label for="first-name">First name:</label>
@@ -80,8 +80,8 @@ class Lensmark_Submission_Form {
 
 				<script>
 					const urlParams = new URLSearchParams(window.location.search);
-					const photopost_id = urlParams.get('photopost_id');
-					document.querySelector('input[name="photopost_id"]').value = photopost_id;
+					const photopostId = urlParams.get('photopostId');
+					document.querySelector('input[name="post_id"]').value = photopostId;
 				</script>
 			</form>
 
