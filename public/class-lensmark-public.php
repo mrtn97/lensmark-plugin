@@ -100,13 +100,55 @@ class Lensmark_Public {
 
 	}
 
+	public function lensmark_add_submission_form_page() {
+		/**
+		 * Add a photo submission page if it not already exists.
+		 */
+		$post_slug = 'photo_submit';
+		$page_exists = get_page_by_path( $post_slug );
+		if ( $page_exists ) {
+			// Page already exists, don't do anything
+		} else {
+			// Page does not exist
+			$args = array(
+				'post_name' => 'photo_submit',
+				'post_type' => 'page',
+				'post_title' => 'Photo submission',
+				'post_status' => 'publish',
+				'post_content' => '[lensmark_submission_form]',
+			);
+			$post_id = wp_insert_post( $args );
+			if ( ! is_wp_error( $post_id ) ) {
+				//the post is valid
+			} else {
+				//there was an error in the post insertion, 
+				echo $post_id->get_error_message();
+			}
+		}
+	}
+
+
+	public function lensmark_trash_submission_form_page() {
+		/**
+		 * Remove photo submission page if it already exists.
+		 */
+		$post_slug = 'photo_submit';
+		$page_exists = get_page_by_path( $post_slug );
+		if ( $page_exists ) {
+			$post_id = $page_exists->ID;
+			wp_trash_post( $post_id );
+		} else {
+			// Page does not exist, don't do anything
+		}
+	}	
+
 
 	/**
 	 * Add new shortcode that will display the submission form
 	 */
 	public static function lensmark_add_submission_form_shortcode() {
 		add_shortcode( 'lensmark_submission_form', 'lensmark_shortcode_submission_form_html' );
-		function lensmark_shortcode_submission_form_html($atts, $content = null) {
+		function lensmark_shortcode_submission_form_html( $atts, $content = null ) {
 			/**
 			 * The photopostId must be specified in the url (also for the QR-Code).
 			 * The photopostId is used to assign the submitted photo to the correct photopost
@@ -135,7 +177,8 @@ class Lensmark_Public {
 						monitoring project. (Optional)</label><br>
 					<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 					<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
-				</form> <?php
+				</form>
+				<?php
 				return ob_get_clean();
 			} else {
 				ob_start();

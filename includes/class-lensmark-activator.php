@@ -28,7 +28,7 @@ class Lensmark_Activator {
 	 *
 	 * @since    0.1.0
 	 */	public static function activate() {
-
+		
 	}
 
 }
