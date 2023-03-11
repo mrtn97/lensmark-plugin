@@ -29,7 +29,7 @@
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-		// Remove shortcode
+		unregister_post_type('photopost');
 		remove_shortcode('lensmark_submission_form');
 	}
 

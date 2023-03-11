@@ -140,7 +140,8 @@ class Lensmark_Public {
 			} else {
 				ob_start();
 				?>
-				<h2>Photopost ID does not exist</h2>
+				<h2><span class="dashicons dashicons-warning"></span>Photopost ID does not exist</h2>
+				<p>Please scan the QR-Code again or retype the exact URL of the photopost.</p>
 				<?php
 				return ob_get_clean();
 			}
