@@ -140,7 +140,7 @@ class Lensmark_Public {
 		} else {
 			// Page does not exist, don't do anything
 		}
-	}	
+	}
 
 
 	/**
@@ -159,22 +159,40 @@ class Lensmark_Public {
 				$photopost_id = $_GET['photopost_id'];
 				ob_start();
 				?>
+				<h2>Procedure</h2>
+				<ol>
+					<li>Give this website access to your camera app.</li>
+					<li>Place smartphone on bracket.</li>
+					<li>Take photo.</li>
+					<li>Fill out and submit form for approval.</li>
+					<li>Once the photo is approved by the website manager, you will receive a confirmation email.</li>
+				</ol>
+				<h2>Notice</h2>
+				<ul>
+					<li>Take photo with default settings.</li>
+					<li>No flash</li>
+					<li>No wide angle or zoom</li>
+					<li>No filters</li>
+					<li>Do not photograph people</li>
+				</ul>
 				<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
-					<!--Add Type hidden to hide-->
-					<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost_id; ?>"><br>
+					<h2>Submit your photo</h2>
+					<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost_id; ?>">
 					<label for="file">Photo:</label>
-					<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false"><br>
+					<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false">
 					<label for="first-name">First name:</label>
-					<input type="text" id="first-name" name="first-name" required><br>
+					<input type="text" id="first-name" name="first-name" required>
 					<label for="last-name">Last name:</label>
-					<input type="text" id="last-name" name="last-name" required><br>
+					<input type="text" id="last-name" name="last-name" required>
 					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required><br>
-					<input type="checkbox" id="terms" name="terms" value="checked" required>
-					<label for="terms">I have read and accept the <a href="" target="_blank">privacy policy</a>.</label><br>
-					<input type="checkbox" id="newsletter" name="newsletter" value="checked">
-					<label for="newsletter">I would like to receive e-mails about the development and results of the photo
-						monitoring project. (Optional)</label><br>
+					<input type="email" id="email" name="email" required>
+					<span><input type="checkbox" id="terms" name="terms" value="checked" required>
+						<label for="terms">I have read and accept the <a href="" target="_blank">privacy policy</a>.</label>
+					</span>
+					<span><input type="checkbox" id="newsletter" name="newsletter" value="checked">
+						<label for="newsletter">I would like to receive e-mails about the development and results of the photo
+							monitoring project. (Optional)</label>
+					</span>
 					<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 					<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
 				</form>
