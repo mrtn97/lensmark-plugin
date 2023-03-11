@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              http://wbth.m-clement.ch/
- * @since             0.1.0
+ * @since             1.0.0
  * @package           Lensmark
  *
  * @wordpress-plugin
  * Plugin Name:       Lensmark
  * Plugin URI:        http://wbth.m-clement.ch/
  * Description:       Photomonitoring Plugin for WordPress
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            Martin Clément <martin.clement@outlook.com> Berner Fachhochschule
  * Author URI:        http://m-clement.ch/
  * License:           GPL-2.0+
@@ -33,9 +33,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
-define( 'LENSMARK_VERSION', '0.1.0' );
+define( 'LENSMARK_VERSION', '1.0.0' );
 
 /**
  * Plugin Activation
@@ -70,7 +69,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-lensmark.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    0.1.0
+ * @since    1.0.0
  */
 function run_lensmark() {
 

@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       http://wbth.m-clement.ch/
- * @since      0.1.0
+ * @since      1.0.0
  * @package    Lensmark
  * @subpackage Lensmark/includes
  */
@@ -21,7 +21,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      0.1.0
+ * @since      1.0.0
  * @package    Lensmark
  * @subpackage Lensmark/includes
  * @author     Martin Clément <martin.clement@outlook.com>
@@ -33,7 +33,7 @@ class Lensmark {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      Lensmark_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -42,7 +42,7 @@ class Lensmark {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $lensmark    The string used to uniquely identify this plugin.
 	 */
@@ -51,7 +51,7 @@ class Lensmark {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -64,13 +64,13 @@ class Lensmark {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function __construct() {
 		if ( defined( 'LENSMARK_VERSION' ) ) {
 			$this->version = LENSMARK_VERSION;
 		} else {
-			$this->version = '0.1.0';
+			$this->version = '1.0.0';
 		}
 		$this->lensmark = 'lensmark';
 
@@ -94,7 +94,7 @@ class Lensmark {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -127,11 +127,6 @@ class Lensmark {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
 
-		/**
-		 * The class containt the photo-submission form.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-submission_form.php';
-
 		$this->loader = new Lensmark_Loader();
 
 	}
@@ -142,7 +137,7 @@ class Lensmark {
 	 * Uses the Lensmark_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -157,7 +152,7 @@ class Lensmark {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -175,24 +170,25 @@ class Lensmark {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
 
 		$plugin_public = new Lensmark_Public( $this->get_lensmark(), $this->get_version() );
-		$submission_form = new Lensmark_Submission_Form( $this->get_lensmark(), $this->get_version());
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $submission_form, 'lensmark_add_submission_form_shortcode');
-
+		$this->loader->add_action( 'init', $plugin_public, 'lensmark_add_submission_form_shortcode');
+		$this->loader->add_action( 'init', $plugin_public, 'lensmark_submit_entry');
+		$this->loader->add_action( 'activated_plugin', $plugin_public, 'lensmark_add_submission_form_page');
+		$this->loader->add_action( 'deactivated_plugin', $plugin_public, 'lensmark_trash_submission_form_page');
 	}
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -202,7 +198,7 @@ class Lensmark {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_lensmark() {
@@ -212,7 +208,7 @@ class Lensmark {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    Lensmark_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -222,7 +218,7 @@ class Lensmark {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

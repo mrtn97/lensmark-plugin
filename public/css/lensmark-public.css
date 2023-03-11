@@ -2,3 +2,36 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+/*Photo submission style*/
+ #photo_entry_submission {
+    display: flex;
+    flex-direction: column;
+ }
+
+ #photo_entry_submission > label:not(:first-child), span {
+    margin-top: 1.5rem;
+ }
+
+ #photo_entry_submission > input {
+    padding: 0.5rem 1rem;
+ }
+
+ #photo_entry_submission input[type="file"] {
+    padding: 0;
+ }
+
+ #photo_entry_submission > span {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+ }
+
+ #photo_entry_submission input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-top: 0.75rem;
+ }
+ 
+ #photo_entry_submission > input:last-child {
+    margin-top: 1.5rem;
+ }
