@@ -114,12 +114,12 @@ class Lensmark_Public {
 			 * https://some.site.com/somePage.html?photopostId=[postId]
 			 * */
 			if ( isset( $_GET['photopost_id'] ) ) {
-				$photopost = $_GET['photopost_id'];
+				$photopost_id = $_GET['photopost_id'];
 				ob_start();
 				?>
 				<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 					<!--Add Type hidden to hide-->
-					<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost; ?>" disabled><br>
+					<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost_id; ?>"><br>
 					<label for="file">Photo:</label>
 					<input type="file" id="photo_entry" name="photo_entry" accept="image" capture="environment" multiple="false"><br>
 					<label for="first-name">First name:</label>
@@ -135,12 +135,12 @@ class Lensmark_Public {
 						monitoring project. (Optional)</label><br>
 					<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 					<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
-				</form> <?
+				</form> <?php
 				return ob_get_clean();
 			} else {
 				ob_start();
 				?>
-				<h2>Error</h2>
+				<h2>Photopost ID does not exist</h2>
 				<?php
 				return ob_get_clean();
 			}
@@ -153,7 +153,7 @@ class Lensmark_Public {
 	function lensmark_submit_entry() {
 		// Check that the nonce is valid.
 		if (
-			isset( $_POST['photo_entry_nonce'], $_POST['photopost'] )
+			isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] )
 			&& wp_verify_nonce( $_POST['photo_entry_nonce'], 'photo_entry' )
 		) {
 			// These files need to be included as dependencies when on the front end.
@@ -163,7 +163,7 @@ class Lensmark_Public {
 
 			// Let WordPress handle the upload.
 			// Remember, 'photo_entry' is the name of our file input in our form above.
-			$attachment_id = media_handle_upload( 'photo_entry', $_POST['photopost'] );
+			$attachment_id = media_handle_upload( 'photo_entry', $_POST['photopost_id'] );
 
 			if ( is_wp_error( $attachment_id ) ) {
 				// There was an error uploading the image.
