@@ -54,7 +54,7 @@ class Lensmark_Photopost {
 
 	}
 
-    /**
+	/**
 	 * Add the photopost post type including all settings
 	 *
 	 * @since    1.0.0
@@ -99,15 +99,97 @@ class Lensmark_Photopost {
 			'has_archive' => true,
 			'hierarchical' => false,
 			'menu_position' => 20,
-            'menu_icon' => 'dashicons-location',
+			'menu_icon' => 'dashicons-location',
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
 			'taxonomies' => array( 'category', 'post_tag' ),
 			'show_in_rest' => true
 		);
-
 		register_post_type( 'Photopost', $args );
 		// Clear the permalinks after the post type has been registered.
 		flush_rewrite_rules();
+	}
+
+	/**
+	 * Add meta box for photoposts
+	 */
+	public function lensmark_photopost_meta_box() {
+		add_meta_box( 'lensmark_photopost_coordinates', 'Photopost coordinates', [ $this, 'lensmark_photopost_coordinates_html' ], 'photopost' );
+	}
+
+	/**
+	 * Render Meta Box content.
+	 *
+	 * @param WP_Post $post The post object.
+	 */
+	public function lensmark_photopost_coordinates_html($post) {
+		// Add an nonce field so we can check for it later.
+		wp_nonce_field( 'lensmark_photopost_coordinates', 'lensmark_photopost_coordinates_nonce' );
+
+		// Use get_post_meta to retrieve an existing value from the database.
+		$latitude = get_post_meta( $post->ID, 'latitude', true );
+		$longitude = get_post_meta( $post->ID, 'longitude', true );
+
+		// Display the form, using the current value.
+		?>
+		<label for="latitude">Latitude:</label>
+		<input type="number" id="latitude" name="latitude" min="-90" max="90" value="<?php echo esc_attr( $latitude ); ?>" />
+		<label for="longitude">Longitude:</label>
+		<input type="number" id="longitude" name="longitude" min="-180" max="180" value="<?php echo esc_attr( $longitude ); ?>" />
+		<?php
+	}
+
+	/**
+	 * Save the meta when the post is saved.
+	 *
+	 * @param int $post_id The ID of the post being saved.
+	 */
+	public function lensmark_photopost_save_meta_box_data( $post_id ) {
+
+		/*
+		 * We need to verify this came from the our screen and with proper authorization,
+		 * because save_post can be triggered at other times.
+		 */
+
+		// Check if our nonce is set.
+		if ( ! isset( $_POST['lensmark_photopost_coordinates_nonce'] ) ) {
+			return $post_id;
+		}
+
+		$nonce = $_POST['lensmark_photopost_coordinates_nonce'];
+
+		// Verify that the nonce is valid.
+		if ( ! wp_verify_nonce( $nonce, 'lensmark_photopost_coordinates' ) ) {
+			return $post_id;
+		}
+
+		/*
+		 * If this is an autosave, our form has not been submitted,
+		 * so we don't want to do anything.
+		 */
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return $post_id;
+		}
+
+		// Check the user's permissions.
+		if ( 'page' == $_POST['photopost'] ) {
+			if ( ! current_user_can( 'edit_page', $post_id ) ) {
+				return $post_id;
+			}
+		} else {
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return $post_id;
+			}
+		}
+
+		/* OK, it's safe for us to save the data now. */
+
+		// Sanitize the user input.
+		$latitude_data = sanitize_text_field( $_POST['latitude'] );
+		$longitude_data = sanitize_text_field( $_POST['longitude'] );
+
+		// Update the meta field.
+		update_post_meta( $post_id, 'latitude', $latitude_data );
+		update_post_meta( $post_id, 'longitude', $longitude_data );
 	}
 
 }

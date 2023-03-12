@@ -35,3 +35,10 @@
  #photo_entry_submission > input:last-child {
     margin-top: 1.5rem;
  }
+
+ /*Photoposts Map*/
+ #map {
+    min-height: 400px;
+    height: 100%;
+    width: 100%;
+}
