@@ -72,9 +72,12 @@ class Lensmark_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
 		wp_enqueue_style( $this->lensmark, plugin_dir_url( __FILE__ ) . 'css/lensmark-public.css', array(), $this->version, 'all' );
-
+		// enqueue dependencies when the shortcode is on the current page
+		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
+			wp_enqueue_style( 'leaflet-css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', array(), '1.9.3', 'all', array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ));
+		}	
+		
 	}
 
 	/**
@@ -83,27 +86,21 @@ class Lensmark_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Lensmark_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Lensmark_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->lensmark, plugin_dir_url( __FILE__ ) . 'js/lensmark-public.js', array( 'jquery' ), $this->version, false );
-
+		// enqueue dependencies when the shortcode is on the current page
+		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
+			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
+			wp_enqueue_script( 'lensmark-public', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js' ), $this->version, false );
+			wp_enqueue_script( 'lensmark-ajax', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery' ), $this->version, false );
+			wp_localize_script( 'lensmark-ajax', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
+		}
 	}
 
+	/**
+	 * Add a photo submission page if it not already exists.
+	 * 
+	 * @since    1.0.0
+	 */
 	public function lensmark_add_submission_form_page() {
-		/**
-		 * Add a photo submission page if it not already exists.
-		 */
 		$post_slug = 'photo_submit';
 		$page_exists = get_page_by_path( $post_slug );
 		if ( $page_exists ) {
@@ -115,7 +112,7 @@ class Lensmark_Public {
 				'post_type' => 'page',
 				'post_title' => 'Photo submission',
 				'post_status' => 'publish',
-				'post_content' => '[lensmark_submission_form]',
+				'post_content' => '[lensmark_submission_form]', // Call shortcode rendering the photo submission form
 			);
 			$post_id = wp_insert_post( $args );
 			if ( ! is_wp_error( $post_id ) ) {
@@ -127,11 +124,12 @@ class Lensmark_Public {
 		}
 	}
 
-
+	/**
+	 * Remove photo submission page if it already exists.
+	 * 
+	 * @since    1.0.0
+	 */
 	public function lensmark_trash_submission_form_page() {
-		/**
-		 * Remove photo submission page if it already exists.
-		 */
 		$post_slug = 'photo_submit';
 		$page_exists = get_page_by_path( $post_slug );
 		if ( $page_exists ) {
@@ -144,7 +142,9 @@ class Lensmark_Public {
 
 
 	/**
-	 * Add new shortcode that will display the submission form
+	 * Add new shortcode that displays the submission form.
+	 * 
+	 * @since    1.0.0
 	 */
 	public static function lensmark_add_submission_form_shortcode() {
 		add_shortcode( 'lensmark_submission_form', 'lensmark_shortcode_submission_form_html' );
@@ -210,7 +210,9 @@ class Lensmark_Public {
 	}
 
 	/**
-	 * Function that will handle photo submissions.
+	 * Handle photo submission upload and attaching it to the photopost.
+	 * 
+	 * @since    1.0.0
 	 */
 	function lensmark_submit_entry() {
 		// Check that the nonce is valid.
@@ -236,6 +238,60 @@ class Lensmark_Public {
 		} else {
 			// The security check failed, maybe show the user an error.
 		}
+	}
+
+	/**
+	 * Add new shortcode that displays the overview map displaying all photoposts.
+	 * 
+	 * @since    1.0.0
+	 */
+	public static function lensmark_add_overview_map_shortcode() {
+		add_shortcode( 'lensmark-map-overview', 'lensmark_map_overview_html' );
+		function lensmark_map_overview_html( $atts, $content = null ) {
+			ob_start();
+			?>
+			<div id="map"></div>
+			<?php
+			return ob_get_clean();
+		}
+	}
+
+	/**
+	 * Send photopost including meta-data for javascript usage.
+	 * 
+	 * @since    1.0.0
+	 */
+	public function lensmark_get_photoposts() {
+		$args = array(
+			'post_type' => 'photopost',
+			'posts_per_page' => -1,
+		);
+		$posts = get_posts( $args );
+		$result = array();
+		foreach ( $posts as $post ) {
+			$id = $post->ID;
+			$title = $post->post_title;
+			$excerpt = $post->post_excerpt;
+			$latitude = get_post_meta( $id, 'latitude', true );
+			$longitude = get_post_meta( $id, 'longitude', true );
+			$link = get_permalink( $id );
+			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+			$thumbnail_url = $thumbnail ? $thumbnail[0] : '';
+
+			if ( $latitude && $longitude ) {
+				$result[] = array(
+					'id' => $id,
+					'title' => $title,
+					'excerpt' => $excerpt,
+					'latitude' => $latitude,
+					'longitude' => $longitude,
+					'link' => $link,
+					'thumbnail_url' => $thumbnail_url,
+				);
+			}
+		}
+		wp_send_json( $result );
+		wp_die();
 	}
 
 }

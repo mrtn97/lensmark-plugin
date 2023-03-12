@@ -163,7 +163,8 @@ class Lensmark {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type');
-
+		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_meta_box');
+		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
 	}
 
 	/**
@@ -183,6 +184,9 @@ class Lensmark {
 		$this->loader->add_action( 'init', $plugin_public, 'lensmark_submit_entry');
 		$this->loader->add_action( 'activated_plugin', $plugin_public, 'lensmark_add_submission_form_page');
 		$this->loader->add_action( 'deactivated_plugin', $plugin_public, 'lensmark_trash_submission_form_page');
+		$this->loader->add_action( 'init', $plugin_public, 'lensmark_add_overview_map_shortcode');
+		$this->loader->add_action( 'wp_ajax_lensmark_get_photoposts', $plugin_public, 'lensmark_get_photoposts' );
+		$this->loader->add_action( 'wp_ajax_nopriv_lensmark_get_photoposts', $plugin_public, 'lensmark_get_photoposts' );
 	}
 
 	/**
