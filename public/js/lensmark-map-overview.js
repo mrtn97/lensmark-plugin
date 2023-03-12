@@ -34,7 +34,7 @@
 					if (lat && lng) {
 						var marker = L.marker([lat, lng]);
 						marker.addTo(map);
-						marker.bindPopup('<img src="' + post.thumbnail + '" alt="" width="100%" height="100"><br>' + '</b><br>'  + '<h3>' + post.title + '</h3>' + 'Photopost: ID:' + post.id + '</b><br>' + 'Position:' + post.latitude + ' | ' + post.latitude + '</b><br>' + post.excerpt + '</b><br>' + '<a href="' + post.permalink + '">Open</a>');
+						marker.bindPopup('<img src="' + post.thumbnail + '" alt="" width="100%" height="100"><br>' + '</b><br>'  + '<h3>' + post.title + '</h3>' + 'Photopost: ID:' + post.id + '</b><br>' + 'Position:' + post.latitude + ' | ' + post.latitude + '</b><br>' + post.excerpt + '</b><br>' + '<a href="' + post.link + '">Open</a>');
 					}
 				});
 			}
