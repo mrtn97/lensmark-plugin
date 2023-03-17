@@ -9,7 +9,7 @@
     flex-direction: column;
  }
 
- #photo_entry_submission > label:not(:first-child), span {
+ #photo_entry_submission > label:not(:first-child), #photo_entry_submission > span {
     margin-top: 1.5rem;
  }
 
@@ -42,3 +42,37 @@
     height: 100%;
     width: 100%;
 }
+
+/*Photo timelapse styles*/
+.timelapse-container {
+   position: relative;
+   width: 100%;
+   aspect-ratio: 16 / 9;
+ }
+ 
+ .timelapse-image {
+   display: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
+ .timelapse-image.active {
+   display: block;
+ }
+ 
+ .timelapse-controls {
+   display: flex;
+   gap: 1rem;
+ }
+ 
+ .timelapse-controls button {
+   cursor: pointer;
+ }
+
+ .timelapse-controls .dashicons {
+   font-size: 24px;
+ }
