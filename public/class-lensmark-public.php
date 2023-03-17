@@ -93,6 +93,9 @@ class Lensmark_Public {
 			wp_enqueue_script( 'lensmark-ajax', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery' ), $this->version, false );
 			wp_localize_script( 'lensmark-ajax', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
 		}
+		if ( has_shortcode( get_post()->post_content, 'lensmark-timelapse' ) ) {
+			wp_enqueue_script( 'lensmark-public', plugin_dir_url( __FILE__ ) . 'js/lensmark-timelapse.js', array(), $this->version, false );
+		}
 	}
 
 	/**
@@ -292,6 +295,54 @@ class Lensmark_Public {
 		}
 		wp_send_json( $result );
 		wp_die();
+	}
+
+	/**
+	 * Add new shortcode that displays the timelapse
+	 * 
+	 * @since    1.0.0
+	 */
+	public static function lensmark_add_timelapse_shortcode() {
+		add_shortcode( 'lensmark-timelapse', 'lensmark_timelapse_html' );
+		function lensmark_timelapse_html( $atts ) {
+			 // Get post ID
+			 global $post;
+			 $post_id = $post->ID;
+		 
+			 // Get attachments for the post
+			 $attachments = get_posts( array(
+				 'post_type'      => 'attachment',
+				 'posts_per_page' => -1,
+				 'post_parent'    => $post_id,
+				 'exclude'        => get_post_thumbnail_id(), //optional
+				 'post_mime_type' => 'image',
+				 'orderby'        => 'date',
+				 'order'          => 'ASC'
+			 ) );
+		 
+			 // Create the HTML for the time-lapse video module
+			 $html = '<div class="timelapse-container">';
+			 foreach ( $attachments as $attachment ) {
+				 $image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
+				 $date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
+				 $html .= '<div class="timelapse-image-container">';
+				 $html .= '<img class="timelapse-image" data-date="' . $date . '" src="' . $image . '" />';
+				 $html .= '</div>';
+			 }
+			 $html .= '</div>';
+		 
+			 // Add play/pause buttons
+			 $html .= '<div class="timelapse-controls">';
+			 $html .= '<button id="play-btn"><span class="dashicons dashicons-controls-play"</span></button>';
+			 $html .= '<button id="pause-btn"><span class="dashicons dashicons-controls-pause"</span></button>';
+			 $html .= '<button id="prev-btn"><span class="dashicons dashicons-controls-back"></span></button>';
+			 $html .= '<button id="next-btn"><span class="dashicons dashicons-controls-forward"></span></button>';
+			 $html .= '<div id="date-text"></div>';
+			 $html .= '</div>';
+		 
+			 // Return the HTML
+			 return $html;
+		}
 	}
 
 }
