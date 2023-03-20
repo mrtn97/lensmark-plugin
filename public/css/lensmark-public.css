@@ -1,0 +1,78 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+/*Photo submission style*/
+ #photo_entry_submission {
+    display: flex;
+    flex-direction: column;
+ }
+
+ #photo_entry_submission > label:not(:first-child), #photo_entry_submission > span {
+    margin-top: 1.5rem;
+ }
+
+ #photo_entry_submission > input {
+    padding: 0.5rem 1rem;
+ }
+
+ #photo_entry_submission input[type="file"] {
+    padding: 0;
+ }
+
+ #photo_entry_submission > span {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+ }
+
+ #photo_entry_submission input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-top: 0.75rem;
+ }
+ 
+ #photo_entry_submission > input:last-child {
+    margin-top: 1.5rem;
+ }
+
+ /*Photoposts Map*/
+ #map {
+    min-height: 400px;
+    height: 100%;
+    width: 100%;
+}
+
+/*Photo timelapse styles*/
+.timelapse-container {
+   position: relative;
+   width: 100%;
+   aspect-ratio: 16 / 9;
+ }
+ 
+ .timelapse-image {
+   display: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
+ .timelapse-image.active {
+   display: block;
+ }
+ 
+ .timelapse-controls {
+   display: flex;
+   gap: 1rem;
+ }
+ 
+ .timelapse-controls button {
+   cursor: pointer;
+ }
+
+ .timelapse-controls .dashicons {
+   font-size: 24px;
+ }
