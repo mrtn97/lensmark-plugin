@@ -41,6 +41,7 @@
   });
 
 	jQuery(document).ready(function($) {
+		// Allow zoom in/out when user clicked on the map element.
 		map.scrollWheelZoom.disable();
 		map.on('focus', function() { map.scrollWheelZoom.enable(); });
 		map.on('blur', function() { map.scrollWheelZoom.disable(); });
