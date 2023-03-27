@@ -41,7 +41,9 @@
   });
 
 	jQuery(document).ready(function($) {
-    
+		map.scrollWheelZoom.disable();
+		map.on('focus', function() { map.scrollWheelZoom.enable(); });
+		map.on('blur', function() { map.scrollWheelZoom.disable(); });
 		});
 	});
 })(jQuery);
