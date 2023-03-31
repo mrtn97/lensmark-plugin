@@ -93,7 +93,7 @@ class Lensmark_Public {
 			wp_enqueue_script( 'lensmark-ajax', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery' ), $this->version, false );
 			wp_localize_script( 'lensmark-ajax', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
 		}
-		if ( has_shortcode( get_post()->post_content, 'lensmark-timelapse' ) ) {
+		if ( get_post_type( get_the_ID() ) == 'photopost' ) {
 			wp_enqueue_script( 'lensmark-public', plugin_dir_url( __FILE__ ) . 'js/lensmark-timelapse.js', array(), $this->version, false );
 		}
 	}
