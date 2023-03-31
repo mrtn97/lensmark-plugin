@@ -338,10 +338,12 @@ class Lensmark_Public {
 		 
 			 // Add play/pause buttons
 			 $html .= '<div class="timelapse-controls">';
-			 $html .= '<button id="play-btn"><span class="dashicons dashicons-controls-play"</span></button>';
-			 $html .= '<button id="pause-btn"><span class="dashicons dashicons-controls-pause"</span></button>';
-			 $html .= '<button id="prev-btn"><span class="dashicons dashicons-controls-back"></span></button>';
-			 $html .= '<button id="next-btn"><span class="dashicons dashicons-controls-forward"></span></button>';
+			 $html .= '<div>';
+			 $html .= '<button id="play-btn"><span class="dashicons dashicons-controls-play"></span></button>';
+			 $html .= '<button id="pause-btn"><span class="dashicons dashicons-controls-pause"></span></button>';
+			 $html .= '<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>';
+			 $html .= '<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>';
+			 $html .= '</div>';
 			 $html .= '<div id="date-text"></div>';
 			 $html .= '</div>';
 		 
