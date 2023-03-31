@@ -252,9 +252,13 @@ class Lensmark_Public {
 	public static function lensmark_add_overview_map_shortcode() {
 		add_shortcode( 'lensmark-map-overview', 'lensmark_map_overview_html' );
 		function lensmark_map_overview_html( $atts, $content = null ) {
+			extract( shortcode_atts( array(
+				'width' => '100%', // default width
+				'height' => '800px', // default height
+			), $atts ) );
 			ob_start();
 			?>
-			<div id="map"></div>
+			<div id="map" style="width: <?php echo $width ?>; height: <?php echo $height?>"></div>
 			<?php
 			return ob_get_clean();
 		}
@@ -326,7 +330,7 @@ class Lensmark_Public {
 			 foreach ( $attachments as $attachment ) {
 				 $image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
 				 $date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
-				 $html .= '<div class="timelapse-image-container">';
+				 $html .= '<div class="timelapse-image-container" >';
 				 $html .= '<img class="timelapse-image" data-date="' . $date . '" src="' . $image . '" />';
 				 $html .= '</div>';
 			 }

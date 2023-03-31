@@ -36,13 +36,6 @@
     margin-top: 1.5rem;
  }
 
- /*Photoposts Map*/
- #map {
-    min-height: 400px;
-    height: 100%;
-    width: 100%;
-}
-
 /*Photo timelapse styles*/
 .timelapse-container {
    position: relative;
