@@ -169,12 +169,13 @@ class Lensmark_Admin {
 	 * @since	1.0.0
 	 */
 	function lensmark_map_latitude_field() {
-		// Get the saved value, or use a default value of 0
-		$latitude = get_option('lensmark_map_latitude', '0');
+		// Get the saved value, or use a default value of 46.70476
+		$latitude = get_option('lensmark_map_latitude', '46.70476');
   
 		// Output the field
 		?>
     		<input type="text" name="lensmark_map_latitude" value="<?php echo esc_attr($latitude); ?>" />
+			<p>Value Between: -90 and 90</p>
     	<?php
 	}
 
@@ -184,12 +185,13 @@ class Lensmark_Admin {
 	 * @since	1.0.0
 	 */
 	function lensmark_map_longitude_field() {
-		// Get the saved value, or use a default value of 0
-		$longitude = get_option('lensmark_map_longitude', '0');
+		// Get the saved value, or use a default value of 7.4506
+		$longitude = get_option('lensmark_map_longitude', '7.4506');
   
 		// Output the field
 		?>
    		<input type="text" name="lensmark_map_longitude" value="<?php echo esc_attr($longitude); ?>" />
+		<p>Value Between: -180 and 180</p>
     	<?php
 	}
 
@@ -199,12 +201,13 @@ class Lensmark_Admin {
 	 * @since	1.0.0
 	 */
 	function lensmark_map_zoom_field() {
-		// Get the saved value, or use a default value of 0
+		// Get the saved value, or use a default value of 12
 		$zoom = get_option('lensmark_map_zoom', '12');
   
 		// Output the field
 		?>
    		<input type="text" name="lensmark_map_zoom" value="<?php echo esc_attr($zoom); ?>" />
+		<p>Default: 12</p>
     	<?php
 	}
 
