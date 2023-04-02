@@ -74,4 +74,139 @@ class Lensmark_Admin {
 
 	}
 
+	/**
+	 * Include partials ressources
+	 * 
+	 * @since	1.0.0
+	 */
+	public function lensmark_include_admin_display() {
+		include_once 'partials/lensmark-admin-display.php';
+	}
+
+	/**
+	 * Add admin menu
+	 *
+	 * @since    1.0.0
+	 */
+
+	public static function lensmark_add_menu_page() {
+		add_submenu_page(
+			'edit.php?post_type=photopost',
+			'Settings',
+			'Settings',
+			'manage_options',
+			plugin_dir_path( __FILE__ ) . 'admin/partials/lensmark-admin-display.php',
+			array( 'Lensmark_Admin_Display', 'lensmark_settings_page_html' )
+		);
+	}
+
+	/**
+	 * Setup lensmark plugin settings page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function lensmark_settings_init() {
+		// Register a new setting for "wporg" page.
+		register_setting( 'lensmark_settings', 'lensmark_map_latitude' );
+    	register_setting( 'lensmark_settings', 'lensmark_map_longitude' );
+		register_setting( 'lensmark_settings', 'lensmark_map_zoom' );
+
+		// Add map settings section
+		add_settings_section(
+			'lensmark_map_section', // Section ID
+			'Map overview position', // Section title
+			array( $this, 'lensmark_map_section_content' ), // Callback function to display the section description
+			'lensmark_settings' // page settings
+		);
+
+		// Add map overview position LATITUDE
+		add_settings_field(
+			'lensmark_map_latitude', // Field ID
+			'Latitude', // Field label
+			array( $this,'lensmark_map_latitude_field'), // Callback function to display the field
+			'lensmark_settings', // Page slug
+			'lensmark_map_section', // Section ID
+			array( 'label_for' => 'lensmark_map_latitude' ) // Additional field attributes
+		);
+
+		// Add map overview position LONGITUDE
+		add_settings_field(
+			'lensmark_map_longitude', // Field ID
+			'Longitude', // Field label
+			array( $this,'lensmark_map_longitude_field'), // Callback function to display the field
+			'lensmark_settings', // Page slug
+			'lensmark_map_section', // Section ID
+			array( 'label_for' => 'lensmark_map_longitude' ) // Additional field attributes
+		);
+
+		// Add map overview ZOOM LEVEL
+		add_settings_field(
+			'lensmark_map_zoom', // Field ID
+			'Zoom Level', // Field label
+			array( $this,'lensmark_map_zoom_field'), // Callback function to display the field
+			'lensmark_settings', // Page slug
+			'lensmark_map_section', // Section ID
+			array( 'label_for' => 'lensmark_map_zoom' ) // Additional field attributes
+		);
+	}
+
+
+	/**
+	 * Map section callback function.
+	 *
+	 * @param 	array $args  The settings array, defining title, id, callback.
+	 * @since	1.0.0
+	 */
+	function lensmark_map_section_content( $args ) {
+		?>
+		<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Enter the desired position of the map overview element displaying all photoposts', 'lensmark' ); ?></p>
+		<?php
+	}
+
+		/**
+	 * Latitude field callback function
+	 *
+	 * @since	1.0.0
+	 */
+	function lensmark_map_latitude_field() {
+		// Get the saved value, or use a default value of 0
+		$latitude = get_option('lensmark_map_latitude', '0');
+  
+		// Output the field
+		?>
+    		<input type="text" name="lensmark_map_latitude" value="<?php echo esc_attr($latitude); ?>" />
+    	<?php
+	}
+
+	/**
+	 * Longitude field callback function
+	 *
+	 * @since	1.0.0
+	 */
+	function lensmark_map_longitude_field() {
+		// Get the saved value, or use a default value of 0
+		$longitude = get_option('lensmark_map_longitude', '0');
+  
+		// Output the field
+		?>
+   		<input type="text" name="lensmark_map_longitude" value="<?php echo esc_attr($longitude); ?>" />
+    	<?php
+	}
+
+	/**
+	 * Zoom field callback function
+	 *
+	 * @since	1.0.0
+	 */
+	function lensmark_map_zoom_field() {
+		// Get the saved value, or use a default value of 0
+		$zoom = get_option('lensmark_map_zoom', '12');
+  
+		// Output the field
+		?>
+   		<input type="text" name="lensmark_map_zoom" value="<?php echo esc_attr($zoom); ?>" />
+    	<?php
+	}
+
+
 }
