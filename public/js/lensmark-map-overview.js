@@ -23,8 +23,6 @@
 				var map_pos_latitude = response[0].map_pos_latitude;
 				var map_pos_longitude = response[0].map_pos_longitude;
 				var map_zoom = response[0].map_zoom;
-				console.log('map_pos_latitude:', map_pos_latitude);
-				console.log('map_pos_longitude:', map_pos_longitude);
 				map = L.map("map").setView([map_pos_latitude, map_pos_longitude], map_zoom);
 
 				L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
