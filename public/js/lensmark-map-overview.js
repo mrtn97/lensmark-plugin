@@ -6,19 +6,11 @@
  */
 
 (function ($) {
-  "use strict";
+	"use strict";
 
-  $(window).load(function () {
-// Search for DIV element with id=map, set view coordinates and zoom-level
-    var map = L.map("map").setView([46.725, 7.4528], 12);
+	var map;
 
-	  // Render map layer
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
-		// Send AJAX request to retrieve photoposts sent from class-lensmark-public.php:lensmark_get_photoposts()
+	$(window).load(function () {
 		jQuery.ajax({
 			url: lensmark_ajax.ajaxurl,
 			type: 'POST',
@@ -27,6 +19,17 @@
 				action: 'lensmark_get_photoposts'
 			},
 			success: function(response) {
+				// Set map view coordinates
+				var map_pos_latitude = response[0].map_pos_latitude;
+				var map_pos_longitude = response[0].map_pos_longitude;
+				var map_zoom = response[0].map_zoom;
+				map = L.map("map").setView([map_pos_latitude, map_pos_longitude], map_zoom);
+
+				L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	  			}).addTo(map);
+		
 				// Loop through the response and add markers to the map
 				jQuery.each(response, function(index, post) {
 					var lat = post.latitude;
@@ -34,17 +37,20 @@
 					if (lat && lng) {
 						var marker = L.marker([lat, lng]);
 						marker.addTo(map);
-						marker.bindPopup('<img src="' + post.thumbnail + '" alt="" width="100%" height="100"><br>' + '</b><br>'  + '<h3>' + post.title + '</h3>' + 'Photopost: ID:' + post.id + '</b><br>' + 'Position:' + post.latitude + ' | ' + post.latitude + '</b><br>' + post.excerpt + '</b><br>' + '<a href="' + post.link + '">Open</a>');
+						marker.bindPopup('<img src="' + post.thumbnail_url + '" alt="" width="100%" height="100"><br>' + '</b><br>'  + '<h3>' + post.title + '</h3>' + 'Photopost: ID:' + post.id + '</b><br>' + 'Position:' + post.latitude + ' | ' + post.latitude + '</b><br>' + post.excerpt + '</b><br>' + '<a href="' + post.link + '">Open</a>');
 					}
 				});
 			}
-  });
-
-	jQuery(document).ready(function($) {
-		// Allow zoom in/out when user clicked on the map element.
-		map.scrollWheelZoom.disable();
-		map.on('focus', function() { map.scrollWheelZoom.enable(); });
-		map.on('blur', function() { map.scrollWheelZoom.disable(); });
 		});
 	});
+
+	$(document).ready(function($) {
+		if (map) {
+		  map.scrollWheelZoom.disable();
+		  map.on('click', function() { 
+			map.scrollWheelZoom.enable(); 
+			map.off('click'); // remove the click event listener to prevent multiple zooming
+		  });
+		}
+	  });
 })(jQuery);

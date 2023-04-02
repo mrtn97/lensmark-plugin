@@ -75,9 +75,9 @@ class Lensmark_Public {
 		wp_enqueue_style( $this->lensmark, plugin_dir_url( __FILE__ ) . 'css/lensmark-public.css', array(), $this->version, 'all' );
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
-			wp_enqueue_style( 'leaflet-css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', array(), '1.9.3', 'all', array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ));
-		}	
-		
+			wp_enqueue_style( 'leaflet-css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', array(), '1.9.3', 'all', array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
+		}
+
 	}
 
 	/**
@@ -245,11 +245,11 @@ class Lensmark_Public {
 	}
 
 	/**
-	 * Add new shortcode that displays the overview map displaying all photoposts.
+	 * Add new shortcode that displays the map overview displaying all photoposts.
 	 * 
 	 * @since    1.0.0
 	 */
-	public static function lensmark_add_overview_map_shortcode() {
+	public static function lensmark_add_map_overview_shortcode() {
 		add_shortcode( 'lensmark-map-overview', 'lensmark_map_overview_html' );
 		function lensmark_map_overview_html( $atts, $content = null ) {
 			extract( shortcode_atts( array(
@@ -258,7 +258,7 @@ class Lensmark_Public {
 			), $atts ) );
 			ob_start();
 			?>
-			<div id="map" style="width: <?php echo $width ?>; height: <?php echo $height?>"></div>
+			<div id="map" style="width: <?php echo $width ?>; height: <?php echo $height ?>"></div>
 			<?php
 			return ob_get_clean();
 		}
@@ -270,6 +270,12 @@ class Lensmark_Public {
 	 * @since    1.0.0
 	 */
 	public function lensmark_get_photoposts() {
+		// get plugin settings
+		$map_pos_latitude = get_option( 'lensmark_map_latitude',  );
+		$map_pos_longitude = get_option( 'lensmark_map_longitude', );
+		$map_zoom = get_option( 'lensmark_map_zoom');
+	
+		// get photopost specific data
 		$args = array(
 			'post_type' => 'photopost',
 			'posts_per_page' => -1,
@@ -277,6 +283,7 @@ class Lensmark_Public {
 		$posts = get_posts( $args );
 		$result = array();
 		foreach ( $posts as $post ) {
+			// post specific data
 			$id = $post->ID;
 			$title = $post->post_title;
 			$excerpt = $post->post_excerpt;
@@ -285,9 +292,10 @@ class Lensmark_Public {
 			$link = get_permalink( $id );
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 			$thumbnail_url = $thumbnail ? $thumbnail[0] : '';
-
+	
 			if ( $latitude && $longitude ) {
 				$result[] = array(
+					// post specific data
 					'id' => $id,
 					'title' => $title,
 					'excerpt' => $excerpt,
@@ -295,6 +303,10 @@ class Lensmark_Public {
 					'longitude' => $longitude,
 					'link' => $link,
 					'thumbnail_url' => $thumbnail_url,
+					// plugin settings
+					'map_pos_latitude' => $map_pos_latitude,
+					'map_pos_longitude' => $map_pos_longitude,
+					'map_zoom' => $map_zoom,
 				);
 			}
 		}
@@ -310,43 +322,45 @@ class Lensmark_Public {
 	public static function lensmark_add_timelapse_shortcode() {
 		add_shortcode( 'lensmark-timelapse', 'lensmark_timelapse_html' );
 		function lensmark_timelapse_html( $atts ) {
-			 // Get post ID
-			 global $post;
-			 $post_id = $post->ID;
-		 
-			 // Get attachments for the post
-			 $attachments = get_posts( array(
-				 'post_type'      => 'attachment',
-				 'posts_per_page' => -1,
-				 'post_parent'    => $post_id,
-				 'exclude'        => get_post_thumbnail_id(), //optional
-				 'post_mime_type' => 'image',
-				 'orderby'        => 'date',
-				 'order'          => 'ASC'
-			 ) );
-		 
-			 // Create the HTML for the time-lapse video module
-			 $html = '<div class="timelapse-container">';
-			 foreach ( $attachments as $attachment ) {
-				 $image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
-				 $date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
-				 $html .= '<div class="timelapse-image-container" >';
-				 $html .= '<img class="timelapse-image" data-date="' . $date . '" src="' . $image . '" />';
-				 $html .= '</div>';
-			 }
-			 $html .= '</div>';
-		 
-			 // Add play/pause buttons
-			 $html .= '<div class="timelapse-controls">';
-			 $html .= '<button id="play-btn"><span class="dashicons dashicons-controls-play"</span></button>';
-			 $html .= '<button id="pause-btn"><span class="dashicons dashicons-controls-pause"</span></button>';
-			 $html .= '<button id="prev-btn"><span class="dashicons dashicons-controls-back"></span></button>';
-			 $html .= '<button id="next-btn"><span class="dashicons dashicons-controls-forward"></span></button>';
-			 $html .= '<div id="date-text"></div>';
-			 $html .= '</div>';
-		 
-			 // Return the HTML
-			 return $html;
+			// Get post ID
+			global $post;
+			$post_id = $post->ID;
+
+			// Get attachments for the post
+			$attachments = get_posts( array(
+				'post_type' => 'attachment',
+				'posts_per_page' => -1,
+				'post_parent' => $post_id,
+				'exclude' => get_post_thumbnail_id(), //optional
+				'post_mime_type' => 'image',
+				'orderby' => 'date',
+				'order' => 'ASC'
+			) );
+
+			// Create the HTML for the time-lapse video module
+			$html = '<div class="timelapse-container">';
+			foreach ( $attachments as $attachment ) {
+				$image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
+				$date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
+				$html .= '<div class="timelapse-image-container" >';
+				$html .= '<img class="timelapse-image" data-date="' . $date . '" src="' . $image . '" />';
+				$html .= '</div>';
+			}
+			$html .= '</div>';
+
+			// Add play/pause buttons
+			$html .= '<div class="timelapse-controls">';
+			$html .= '<div>';
+			$html .= '<button id="play-btn"><span class="dashicons dashicons-controls-play"></span></button>';
+			$html .= '<button id="pause-btn"><span class="dashicons dashicons-controls-pause"></span></button>';
+			$html .= '<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>';
+			$html .= '<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>';
+			$html .= '</div>';
+			$html .= '<div id="date-text"></div>';
+			$html .= '</div>';
+
+			// Return the HTML
+			return $html;
 		}
 	}
 
