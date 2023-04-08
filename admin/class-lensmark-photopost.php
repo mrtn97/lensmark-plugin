@@ -111,6 +111,8 @@ class Lensmark_Photopost {
 
 	/**
 	 * Add meta box for photoposts
+	 * 
+	 * @since	1.0.0
 	 */
 	public function lensmark_photopost_meta_box() {
 		add_meta_box( 'lensmark_photopost_coordinates', 'Photopost coordinates', [ $this, 'lensmark_photopost_coordinates_html' ], 'photopost' );
@@ -119,9 +121,10 @@ class Lensmark_Photopost {
 	/**
 	 * Render Meta Box content.
 	 *
-	 * @param WP_Post $post The post object.
+	 * @since 	1.0.0
+	 * @param 	WP_Post $post The post object.
 	 */
-	public function lensmark_photopost_coordinates_html($post) {
+	public function lensmark_photopost_coordinates_html( $post ) {
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'lensmark_photopost_coordinates', 'lensmark_photopost_coordinates_nonce' );
 
@@ -134,14 +137,16 @@ class Lensmark_Photopost {
 		<label for="latitude">Latitude:</label>
 		<input type="number" id="latitude" name="latitude" min="-90" max="90" value="<?php echo esc_attr( $latitude ); ?>" />
 		<label for="longitude">Longitude:</label>
-		<input type="number" id="longitude" name="longitude" min="-180" max="180" value="<?php echo esc_attr( $longitude ); ?>" />
+		<input type="number" id="longitude" name="longitude" min="-180" max="180"
+			value="<?php echo esc_attr( $longitude ); ?>" />
 		<?php
 	}
 
 	/**
 	 * Save the meta when the post is saved.
 	 *
-	 * @param int $post_id The ID of the post being saved.
+	 * @since	1.0.0
+	 * @param 	int $post_id The ID of the post being saved.
 	 */
 	public function lensmark_photopost_save_meta_box_data( $post_id ) {
 

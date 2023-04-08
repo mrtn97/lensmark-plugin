@@ -43,20 +43,20 @@ class Lensmark_Timelapse {
 		$this->version = $version;
 	}
 
-    /**
+	/**
 	 * Register styles for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
 
-    public function enqueue_styles() {
-        // enqueue dependencies when the shortcode is on the current page
-        if ( get_post_type( get_the_ID() ) == 'photopost' ) {
-		    wp_enqueue_style( 'lensmark-timelapse', plugin_dir_url( __FILE__ ) . 'css/lensmark-timelapse.css', array(), $this->version, 'all' );
-        }
+	public function enqueue_styles() {
+		// enqueue dependencies when the shortcode is on the current page
+		if ( get_post_type( get_the_ID() ) == 'photopost' ) {
+			wp_enqueue_style( 'lensmark-timelapse', plugin_dir_url( __FILE__ ) . 'css/lensmark-timelapse.css', array(), $this->version, 'all' );
+		}
 	}
 
-    /**
+	/**
 	 * Register the JavaScripts
 	 *
 	 * @since    1.0.0
@@ -69,7 +69,7 @@ class Lensmark_Timelapse {
 		}
 	}
 
-    /**
+	/**
 	 * Add new shortcode that displays the timelapse
 	 * 
 	 * @since    1.0.0
@@ -92,31 +92,31 @@ class Lensmark_Timelapse {
 				'order' => 'ASC'
 			) );
 			ob_start();
-            ?>
+			?>
 			<div class="timelapse-container">
-            <?php
-			foreach ( $attachments as $attachment ) {
-				$image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
-				$date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
-                ?>
-				<div class="timelapse-image-container" >
-				<img class="timelapse-image" data-date="<?php echo $date ?>" src="<?php echo $image ?>" />
-				</div>
-                <?php
-			}
-            ?>
+				<?php
+				foreach ( $attachments as $attachment ) {
+					$image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
+					$date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
+					?>
+					<div class="timelapse-image-container">
+						<img class="timelapse-image" data-date="<?php echo $date ?>" src="<?php echo $image ?>" />
+					</div>
+					<?php
+				}
+				?>
 			</div>
 			<div class="timelapse-controls">
-			<div>
-			<button id="play-btn"><span class="dashicons dashicons-controls-play"></span></button>
-			<button id="pause-btn"><span class="dashicons dashicons-controls-pause"></span></button>
-			<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>
-			<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>
+				<div>
+					<button id="play-btn"><span class="dashicons dashicons-controls-play"></span></button>
+					<button id="pause-btn"><span class="dashicons dashicons-controls-pause"></span></button>
+					<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>
+					<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>
+				</div>
+				<div id="date-text"></div>
 			</div>
-			<div id="date-text"></div>
-			</div>
-            <?php
-            return ob_get_clean();
+			<?php
+			return ob_get_clean();
 		}
 	}
 }

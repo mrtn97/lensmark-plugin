@@ -50,10 +50,10 @@ class Lensmark_Map {
 	 * 
 	 * @since	1.0.0
 	 */
-    public function enqueue_styles() {
+	public function enqueue_styles() {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
-		wp_enqueue_style( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'css/lensmark-map.css', array(), $this->version, 'all' );
+			wp_enqueue_style( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'css/lensmark-map.css', array(), $this->version, 'all' );
 		}
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_style( 'leaflet-css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', array(), '1.9.3', 'all', array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
@@ -66,7 +66,7 @@ class Lensmark_Map {
 	 * 
 	 * @since	1.0.0
 	 */
-    public function enqueue_scripts() {
+	public function enqueue_scripts() {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
@@ -81,28 +81,28 @@ class Lensmark_Map {
 	 * 
 	 * @since	1.0.0
 	 */
-    public function lensmark_add_map_overview_shortcode() {
-        add_shortcode( 'lensmark-map-overview', array($this, 'lensmark_map_overview_callback') );
-    }
+	public function lensmark_add_map_overview_shortcode() {
+		add_shortcode( 'lensmark-map-overview', array( $this, 'lensmark_map_overview_callback' ) );
+	}
 
 	/**
 	 * Callback function of the shortcode [lensmark-map-overview]
 	 * 
 	 * @since	1.0.0
 	 */
-    public function lensmark_map_overview_callback ( $atts, $content = null ) {
-        extract( shortcode_atts( array(
-            'width' => '100%', // default width
-            'height' => '800px', // default height
-        ), $atts ) );
-        ob_start();
-        ?>
-        <div id="map" style="width: <?php echo $width ?>; height: <?php echo $height ?>"></div>
-        <?php
-        return ob_get_clean();
-    }
+	public function lensmark_map_overview_callback( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+			'width' => '100%', // default width
+			'height' => '800px', // default height
+		), $atts ) );
+		ob_start();
+		?>
+		<div id="map" style="width: <?php echo $width ?>; height: <?php echo $height ?>"></div>
+		<?php
+		return ob_get_clean();
+	}
 
-    /**
+	/**
 	 * Get photopost including meta-data for javascript usage. Is used to add a pin on the [lensmark-map-overview] map
 	 * for each photopost.
 	 * 
@@ -110,10 +110,10 @@ class Lensmark_Map {
 	 */
 	public function lensmark_get_photoposts() {
 		// get plugin settings
-		$map_pos_latitude = get_option( 'lensmark_map_latitude',  );
+		$map_pos_latitude = get_option( 'lensmark_map_latitude', );
 		$map_pos_longitude = get_option( 'lensmark_map_longitude', );
-		$map_zoom = get_option( 'lensmark_map_zoom');
-	
+		$map_zoom = get_option( 'lensmark_map_zoom' );
+
 		// get photopost specific data
 		$args = array(
 			'post_type' => 'photopost',
@@ -131,7 +131,7 @@ class Lensmark_Map {
 			$link = get_permalink( $id );
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 			$thumbnail_url = $thumbnail ? $thumbnail[0] : '';
-	
+
 			if ( $latitude && $longitude ) {
 				$result[] = array(
 					// post specific data

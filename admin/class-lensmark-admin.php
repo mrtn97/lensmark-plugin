@@ -132,7 +132,7 @@ class Lensmark_Admin {
 		add_settings_field(
 			'lensmark_map_latitude', // Field ID
 			'Latitude', // Field label
-			array( $this,'lensmark_map_latitude_setting_callback'), // Callback function to display the field
+			array( $this, 'lensmark_map_latitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
 		);
@@ -141,7 +141,7 @@ class Lensmark_Admin {
 		add_settings_field(
 			'lensmark_map_longitude', // Field ID
 			'Longitude', // Field label
-			array( $this,'lensmark_map_longitude_setting_callback'), // Callback function to display the field
+			array( $this, 'lensmark_map_longitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
 		);
@@ -150,7 +150,7 @@ class Lensmark_Admin {
 		add_settings_field(
 			'lensmark_map_zoom', // Field ID
 			'Zoom Level', // Field label
-			array( $this,'lensmark_map_zoom_setting_callback'), // Callback function to display the field
+			array( $this, 'lensmark_map_zoom_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
 		);
@@ -190,7 +190,7 @@ class Lensmark_Admin {
 	 * @since	1.0.0
 	 */
 	function lensmark_map_longitude_setting_callback() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-longitude-setting-display.php'; 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-longitude-setting-display.php';
 	}
 
 	/**

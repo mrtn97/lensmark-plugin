@@ -53,7 +53,7 @@ class Lensmark_Submission_Form {
 		// enqueue dependencies when the shortcode is on the current page
 	}
 
-    /**
+	/**
 	 * Add a photo submission page if it not already exists.
 	 * 
 	 * @since    1.0.0
