@@ -163,7 +163,6 @@ class Lensmark {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		// Load settings content
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_include_admin_display');
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_add_menu_page');
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_settings_init');
 		// Load post-type content
