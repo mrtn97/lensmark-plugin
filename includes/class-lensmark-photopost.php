@@ -1,24 +1,15 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * Contains the photopost functionalities.
+ * 
+ * Contains admin and public facing functionalities --> includes
  *
  * @link       http://wbth.m-clement.ch/
  * @since      1.0.0
  *
  * @package    Lensmark
- * @subpackage Lensmark/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Lensmark
- * @subpackage Lensmark/admin
- * @author     Martin Clément <martin.clement@outlook.com>
+ * @subpackage Lensmark/includes
  */
 class Lensmark_Photopost {
 
@@ -100,7 +91,7 @@ class Lensmark_Photopost {
 			'hierarchical' => false,
 			'menu_position' => 20,
 			'menu_icon' => 'dashicons-location',
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
 			'taxonomies' => array( 'category', 'post_tag' ),
 			'show_in_rest' => true
 		);
@@ -115,7 +106,7 @@ class Lensmark_Photopost {
 	 * @since	1.0.0
 	 */
 	public function lensmark_photopost_meta_box() {
-		add_meta_box( 'lensmark_photopost_coordinates', 'Photopost coordinates', [ $this, 'lensmark_photopost_coordinates_html' ], 'photopost' );
+		add_meta_box( 'lensmark_photopost_details', 'Photopost details', [ $this, 'lensmark_photopost_details_html' ], 'photopost', 'side', 'low' );
 	}
 
 	/**
@@ -124,21 +115,36 @@ class Lensmark_Photopost {
 	 * @since 	1.0.0
 	 * @param 	WP_Post $post The post object.
 	 */
-	public function lensmark_photopost_coordinates_html( $post ) {
+	public function lensmark_photopost_details_html( $post ) {
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'lensmark_photopost_coordinates', 'lensmark_photopost_coordinates_nonce' );
+		wp_nonce_field( 'lensmark_photopost_details', 'lensmark_photopost_details_nonce' );
 
 		// Use get_post_meta to retrieve an existing value from the database.
 		$latitude = get_post_meta( $post->ID, 'latitude', true );
 		$longitude = get_post_meta( $post->ID, 'longitude', true );
+		$location = get_post_meta( $post->ID, 'location', true );
+		$activation_date = get_post_meta( $post->ID, 'activation_date', true );
 
 		// Display the form, using the current value.
 		?>
-		<label for="latitude">Latitude:</label>
-		<input type="number" id="latitude" name="latitude" min="-90" max="90" value="<?php echo esc_attr( $latitude ); ?>" />
-		<label for="longitude">Longitude:</label>
-		<input type="number" id="longitude" name="longitude" min="-180" max="180"
-			value="<?php echo esc_attr( $longitude ); ?>" />
+		<div class="block-editor-block-inspector components-base-control">
+			<label for="latitude">Latitude:</label>
+			<input type="number" id="latitude" name="latitude" min="-90" max="90"
+				value="<?php echo esc_attr( $latitude ); ?>" />
+			<label for="longitude">Longitude:</label>
+			<input type="number" id="longitude" name="longitude" min="-180" max="180"
+				value="<?php echo esc_attr( $longitude ); ?>" />
+		</div>
+		<div class="block-editor-block-inspector components-base-control">
+			<label for="location">Location:</label>
+			<input type="text" id="location" name="location"
+				value="<?php echo esc_attr( $location ); ?>" />
+		</div>
+		<div class="block-editor-block-inspector components-base-control">
+			<label for="activation-date">Active since:</label>
+			<input type="date" id="activation-date" name="activation_date"
+				value="<?php echo esc_attr( $activation_date ); ?>" />
+		</div>
 		<?php
 	}
 
@@ -149,21 +155,15 @@ class Lensmark_Photopost {
 	 * @param 	int $post_id The ID of the post being saved.
 	 */
 	public function lensmark_photopost_save_meta_box_data( $post_id ) {
-
-		/*
-		 * We need to verify this came from the our screen and with proper authorization,
-		 * because save_post can be triggered at other times.
-		 */
-
-		// Check if our nonce is set.
-		if ( ! isset( $_POST['lensmark_photopost_coordinates_nonce'] ) ) {
+		// Check if our nonce is set (-> security measure).
+		if ( ! isset( $_POST['lensmark_photopost_details_nonce'] ) ) {
 			return $post_id;
 		}
 
-		$nonce = $_POST['lensmark_photopost_coordinates_nonce'];
+		$nonce = $_POST['lensmark_photopost_details_nonce'];
 
 		// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $nonce, 'lensmark_photopost_coordinates' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'lensmark_photopost_details' ) ) {
 			return $post_id;
 		}
 
@@ -191,10 +191,55 @@ class Lensmark_Photopost {
 		// Sanitize the user input.
 		$latitude_data = sanitize_text_field( $_POST['latitude'] );
 		$longitude_data = sanitize_text_field( $_POST['longitude'] );
+		$location_data = sanitize_text_field( $_POST['location'] );
+		$activation_date_data = sanitize_text_field( $_POST['activation_date'] );
 
 		// Update the meta field.
 		update_post_meta( $post_id, 'latitude', $latitude_data );
 		update_post_meta( $post_id, 'longitude', $longitude_data );
+		update_post_meta( $post_id, 'location', $location_data );
+		update_post_meta( $post_id, 'activation_date', $activation_date_data );
+	}
+
+	/**
+	 * Public facing functionalities
+	 * 
+	 * @since	1.0.0
+	 */
+
+	/**
+	 * Add the shortcode: [lensmark-photopost-details] which displays details from the photopost
+	 * 
+	 * @since	1.0.0
+	 */
+	public function lensmark_add_photopost_details_shortcode() {
+		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
+	}
+
+	function lensmark_photopost_details_callback($atts, $content = null) {
+		extract( shortcode_atts( array(
+			'coordinates' => 'hidden', // show coordinates
+			'location' => 'hidden', // show location
+			'active_since' => 'hidden', // show active since
+		), $atts ) );
+		global $post;
+		// Get post meta data
+   		$latitude = get_post_meta($post->ID, 'latitude', true);
+		$longitude = get_post_meta($post->ID, 'longitude', true);
+		$location = get_post_meta($post->ID, 'location', true);
+		$date_format = get_option('date_format');
+		// Format date to use the WordPress general settings
+   		$activation_date_data = get_post_meta($post->ID, 'activation_date', true);
+   		$activation_date = date($date_format, strtotime($activation_date_data));
+		ob_start();
+		?>
+		<div>
+			<p class="has-small-font-size"><strong>Location: </strong>Düdingen<?php echo $location ?></p>			
+			<p class="has-small-font-size"><strong>Position: </strong><?php echo $latitude ?>, <?php echo $longitude ?></p>
+			<p class="has-small-font-size"><strong>Active since: </strong><?php echo $activation_date ?></p>
+		</div>
+		<?php
+		return ob_get_clean();
 	}
 
 }

@@ -119,7 +119,7 @@ class Lensmark {
 		/**
 		 * The class containing photopost post-type functionalities
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lensmark-photopost.php';
 
 		/**
 		 * The class containing map functionalities
@@ -170,7 +170,6 @@ class Lensmark {
 		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version());
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		// Load settings content
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_add_menu_page');
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_settings_init');
@@ -191,6 +190,7 @@ class Lensmark {
 		$map = new Lensmark_Map ( $this->get_lensmark(), $this->get_version());
 		$submission_form = new Lensmark_Submission_Form ( $this->get_lensmark(), $this->get_version());
 		$timelapse = new Lensmark_Timelapse ( $this->get_lensmark(), $this->get_version());
+		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version());
 
 		// Load submission form content
 		$this->loader->add_action( 'wp_enqueue_scripts', $submission_form, 'enqueue_styles' );
@@ -202,6 +202,8 @@ class Lensmark {
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $timelapse, 'lensmark_add_timelapse_shortcode');
+		// Load photopost-details
+		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode');
 		// Load map content
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_scripts' );

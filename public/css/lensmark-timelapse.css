@@ -62,5 +62,4 @@
  
   .timelapse-controls #date-text {
     color: var(--wp--preset--color--contrast);
-    font-size: var(--wp--preset--font-size--medium) !important;
   }
