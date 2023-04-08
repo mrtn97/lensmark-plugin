@@ -114,7 +114,7 @@ class Lensmark_Timelapse {
 					<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>
 					<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>
 				</div>
-				<div id="date-text"></div>
+				<p id="date-text" class="has-small-font-size"></p>
 			</div>
 			<?php
 			return ob_get_clean();

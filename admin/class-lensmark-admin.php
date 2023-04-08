@@ -65,15 +65,6 @@ class Lensmark_Admin {
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-		wp_enqueue_script( $this->lensmark, plugin_dir_url( __FILE__ ) . 'js/lensmark-admin.js', array( 'jquery' ), $this->version, false );
-	}
-
-	/**
 	 * Add admin menu
 	 *
 	 * @since    1.0.0
