@@ -53,6 +53,7 @@ class Lensmark_Timelapse {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( get_post_type( get_the_ID() ) == 'photopost' ) {
 			wp_enqueue_style( 'lensmark-timelapse', plugin_dir_url( __FILE__ ) . 'css/lensmark-timelapse.css', array(), $this->version, 'all' );
+			wp_enqueue_style ('dashicons');
 		}
 	}
 
