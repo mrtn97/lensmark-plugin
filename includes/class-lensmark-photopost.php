@@ -234,7 +234,7 @@ class Lensmark_Photopost {
 		ob_start();
 		?>
 		<div>
-			<p class="has-small-font-size"><strong>Location: </strong>Düdingen<?php echo $location ?></p>			
+			<p class="has-small-font-size"><strong>Location: </strong><?php echo $location ?></p>			
 			<p class="has-small-font-size"><strong>Position: </strong><?php echo $latitude ?>, <?php echo $longitude ?></p>
 			<p class="has-small-font-size"><strong>Active since: </strong><?php echo $activation_date ?></p>
 		</div>
