@@ -117,15 +117,24 @@ class Lensmark {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-admin.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-public.php';
-
-		/**
-		 * The class responsible for actions regarding the photopost post type
+		 * The class containing photopost post-type functionalities
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
+
+		/**
+		 * The class containing map functionalities
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-map.php';
+
+		/**
+		 * The class containing submission-form functionalities
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-submission_form.php';
+
+		/**
+		 * The class containing timelapse functionalities
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-timelapse.php';
 
 		$this->loader = new Lensmark_Loader();
 
@@ -179,22 +188,26 @@ class Lensmark {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
+		$map = new Lensmark_Map ( $this->get_lensmark(), $this->get_version());
+		$submission_form = new Lensmark_Submission_Form ( $this->get_lensmark(), $this->get_version());
+		$timelapse = new Lensmark_Timelapse ( $this->get_lensmark(), $this->get_version());
 
-		$plugin_public = new Lensmark_Public( $this->get_lensmark(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		// Load submission form content
-		$this->loader->add_action( 'init', $plugin_public, 'lensmark_add_submission_form_shortcode');
-		$this->loader->add_action( 'init', $plugin_public, 'lensmark_submit_entry');
-		$this->loader->add_action( 'activated_plugin', $plugin_public, 'lensmark_add_submission_form_page');
-		$this->loader->add_action( 'deactivated_plugin', $plugin_public, 'lensmark_trash_submission_form_page');
-		// Load map content
-		$this->loader->add_action( 'init', $plugin_public, 'lensmark_add_map_overview_shortcode');
-		$this->loader->add_action( 'wp_ajax_lensmark_get_photoposts', $plugin_public, 'lensmark_get_photoposts' );
-		$this->loader->add_action( 'wp_ajax_nopriv_lensmark_get_photoposts', $plugin_public, 'lensmark_get_photoposts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $submission_form, 'enqueue_styles' );
+		$this->loader->add_action( 'init', $submission_form, 'lensmark_add_submission_form_shortcode');
+		$this->loader->add_action( 'init', $submission_form, 'lensmark_submit_entry');
+		$this->loader->add_action( 'activated_plugin', $submission_form, 'lensmark_add_submission_form_page');
+		$this->loader->add_action( 'deactivated_plugin', $submission_form, 'lensmark_trash_submission_form_page');
 		// Load timelapse content
-		$this->loader->add_action( 'init', $plugin_public, 'lensmark_add_timelapse_shortcode');
+		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $timelapse, 'lensmark_add_timelapse_shortcode');
+		// Load map content
+		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $map, 'lensmark_add_map_overview_shortcode');
+		$this->loader->add_action( 'wp_ajax_lensmark_get_photoposts', $map, 'lensmark_get_photoposts' );
+		$this->loader->add_action( 'wp_ajax_nopriv_lensmark_get_photoposts', $map, 'lensmark_get_photoposts' );
 	}
 
 	/**
