@@ -147,12 +147,8 @@ class Lensmark_Submission_Form {
 					<span><input type="checkbox" id="terms" name="terms" value="checked" required>
 						<label for="terms">I have read and accept the <a href="" target="_blank">privacy policy</a>.</label>
 					</span>
-					<span><input type="checkbox" id="newsletter" name="newsletter" value="checked">
-						<label for="newsletter">I would like to receive e-mails about the development and results of the photo
-							monitoring project. (Optional)</label>
-					</span>
 					<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
-					<input type="submit" id="submit_photo_entry" name="submit_photo_entry" value="Submit">
+					<input type="submit" id="submit_photo_entry" class="wp-block-button" name="submit_photo_entry" value="Submit">
 				</form>
 				<?php
 				return ob_get_clean();
