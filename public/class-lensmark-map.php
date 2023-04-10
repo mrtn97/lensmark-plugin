@@ -129,6 +129,11 @@ class Lensmark_Map {
 			$excerpt = $post->post_excerpt;
 			$latitude = get_post_meta( $id, 'latitude', true );
 			$longitude = get_post_meta( $id, 'longitude', true );
+			$location = get_post_meta( $id, 'location', true);
+			$date_format = get_option('date_format');
+			// Format date to use the WordPress general settings
+   			$activation_date_data = get_post_meta($post->ID, 'activation_date', true);
+   			$activation_date = date($date_format, strtotime($activation_date_data));
 			$link = get_permalink( $id );
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 			$thumbnail_url = $thumbnail ? $thumbnail[0] : '';
@@ -141,6 +146,8 @@ class Lensmark_Map {
 					'excerpt' => $excerpt,
 					'latitude' => $latitude,
 					'longitude' => $longitude,
+					'location' => $location,
+					'activation_date' => $activation_date,
 					'link' => $link,
 					'thumbnail_url' => $thumbnail_url,
 					// plugin settings
