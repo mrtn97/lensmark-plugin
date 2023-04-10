@@ -185,7 +185,11 @@ class Lensmark_Submission_Form {
 			if ( is_wp_error( $attachment_id ) ) {
 				$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Something went wrong, please try again.</p></div>';
 			} else {
-				$message = '<div class="alert success"><h4><span class="dashicons dashicons-yes"></span>Thank you!</h4><p>The image was uploaded successfully and will be reviewed by the organization.</p></div>';
+				$message = '<div class="alert success">
+				<h4><span class="dashicons dashicons-yes"></span>Thank you!</h4>
+				<p>The image was uploaded successfully and will be reviewed by the organization.</p>
+				<p>You may close this tab now.</p>
+				</div>';
 			}
 		} else {
 			// If the nonce is not valid
