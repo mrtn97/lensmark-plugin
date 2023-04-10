@@ -73,6 +73,7 @@ class Lensmark_Map {
 			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js' ), $this->version, false );
 			wp_enqueue_script( 'lensmark-ajax', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery' ), $this->version, false );
 			wp_localize_script( 'lensmark-ajax', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
+			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'jquery', 'leaflet-js' ), $this->version, false );
 		}
 	}
 
