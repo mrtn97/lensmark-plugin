@@ -60,7 +60,7 @@
 						'<p><strong>Location: </strong>' + post.location + '</p>' +
 						'<p><strong>Position: </strong>' + post.latitude + ' | ' + post.latitude +  '</p>' +
 						'<p>' + post.excerpt + '</p>' +
-						'<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link wp-element-button" "href="' + post.link + '">Open</a></div>' +
+						'<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" ><a href="' + post.link + '" class="wp-block-button__link wp-element-button">Open</a></div>' +
 						'</div>'
 						);
 					}
