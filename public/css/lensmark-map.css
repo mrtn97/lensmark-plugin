@@ -1,0 +1,27 @@
+.leaflet-popup-content-wrapper {
+    min-width: 320px;
+}
+
+.leaflet-popup-content {
+    padding: 1rem 0.75rem;
+}
+
+.leaflet-popup-content .thumbnail{
+    width: 100%;
+    aspect-ratio: 3 / 2;
+}
+
+.leaflet-popup-content p {
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.leaflet-popup-content > div > * {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.leaflet-popup-content a.wp-block-button__link.wp-element-button {
+    margin-top: 1rem;
+    width: 100%;
+}
