@@ -113,6 +113,7 @@ class Lensmark_Submission_Form {
 			 * 
 			 * https://some.site.com/somePage.html?photopostId=[postId]
 			 * */
+			echo '<div id="message"></div>';
 			if ( isset( $_GET['photopost_id'] ) ) {
 				$photopost_id = $_GET['photopost_id'];
 				ob_start();
@@ -153,12 +154,10 @@ class Lensmark_Submission_Form {
 				<?php
 				return ob_get_clean();
 			} else {
-				ob_start();
-				?>
-				<h2>Error: Photopost ID does not exist</h2>
-				<p>Please scan the QR-Code again or retype the exact URL of the photopost.</p>
-				<?php
-				return ob_get_clean();
+				$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Photopost ID does not exist. Please scan the QR code again or type in the url manually.</p></div>';
+				// Set the message in the placeholder element if it exists
+				$message_element = '<div id="message">' . $message . '</div>';
+				echo sprintf( $message_element );
 			}
 		}
 	}
@@ -174,24 +173,29 @@ class Lensmark_Submission_Form {
 			isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] )
 			&& wp_verify_nonce( $_POST['photo_entry_nonce'], 'photo_entry' )
 		) {
-			// These files need to be included as dependencies when on the front end.
+			// Dependencies to handle the image upload on the frontend
 			require_once( ABSPATH . 'wp-admin/includes/image.php' );
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 			require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
-			// Let WordPress handle the upload.
-			// Remember, 'photo_entry' is the name of our file input in our form above.
+			// Attach image to photopost with id given in the url as a parameter
 			$attachment_id = media_handle_upload( 'photo_entry', $_POST['photopost_id'] );
 
+			// If the upload fails:
 			if ( is_wp_error( $attachment_id ) ) {
-				// There was an error uploading the image.
+				$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Something went wrong, please try again.</p></div>';
 			} else {
-				// The image was uploaded successfully!
+				$message = '<div class="alert success"><h4><span class="dashicons dashicons-yes"></span>Thank you!</h4><p>The image was uploaded successfully and will be reviewed by the organization.</p></div>';
 			}
-
 		} else {
-			// The security check failed, maybe show the user an error.
+			// If the nonce is not valid
+			$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Security check has failed, please try again.</p></div>';
 		}
-	}
+		// Set the message in the placeholder element if it exists
+		if ( isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] ) ) {
+			$message_element = '<div id="message">' . $message . '</div>';
+			echo sprintf( $message_element );
+		}
 
+	}
 }
