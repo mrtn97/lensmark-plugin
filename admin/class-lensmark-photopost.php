@@ -137,8 +137,7 @@ class Lensmark_Photopost {
 		</div>
 		<div class="block-editor-block-inspector components-base-control">
 			<label for="location">Location:</label>
-			<input type="text" id="location" name="location"
-				value="<?php echo esc_attr( $location ); ?>" />
+			<input type="text" id="location" name="location" value="<?php echo esc_attr( $location ); ?>" />
 		</div>
 		<div class="block-editor-block-inspector components-base-control">
 			<label for="activation-date">Active since:</label>
@@ -216,7 +215,7 @@ class Lensmark_Photopost {
 		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
 	}
 
-	function lensmark_photopost_details_callback($atts, $content = null) {
+	function lensmark_photopost_details_callback( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 			'coordinates' => 'hidden', // show coordinates
 			'location' => 'hidden', // show location
@@ -224,22 +223,31 @@ class Lensmark_Photopost {
 		), $atts ) );
 		global $post;
 		// Get post meta data
-   		$latitude = get_post_meta($post->ID, 'latitude', true);
-		$longitude = get_post_meta($post->ID, 'longitude', true);
-		$location = get_post_meta($post->ID, 'location', true);
-		$date_format = get_option('date_format');
+		$latitude = get_post_meta( $post->ID, 'latitude', true );
+		$longitude = get_post_meta( $post->ID, 'longitude', true );
+		$location = get_post_meta( $post->ID, 'location', true );
+		$date_format = get_option( 'date_format' );
 		// Format date to use the WordPress general settings
-   		$activation_date_data = get_post_meta($post->ID, 'activation_date', true);
-   		$activation_date = date($date_format, strtotime($activation_date_data));
+		$activation_date_data = get_post_meta( $post->ID, 'activation_date', true );
+		$activation_date = date( $date_format, strtotime( $activation_date_data ) );
 		ob_start();
 		?>
 		<div>
-			<p class="has-small-font-size"><strong>Location: </strong><?php echo $location ?></p>			
-			<p class="has-small-font-size"><strong>Position: </strong><?php echo $latitude ?>, <?php echo $longitude ?></p>
-			<p class="has-small-font-size"><strong>Active since: </strong><?php echo $activation_date ?></p>
+			<p class="has-small-font-size"><strong>Location: </strong>
+				<?php echo $location ?>
+			</p>
+			<p class="has-small-font-size"><strong>Position: </strong>
+				<?php echo $latitude ?>,
+				<?php echo $longitude ?>
+			</p>
+			<p class="has-small-font-size"><strong>Active since: </strong>
+				<?php echo $activation_date ?>
+			</p>
 		</div>
 		<?php
 		return ob_get_clean();
 	}
+
+	
 
 }
