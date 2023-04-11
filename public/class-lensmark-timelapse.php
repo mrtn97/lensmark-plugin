@@ -84,13 +84,20 @@ class Lensmark_Timelapse {
 
 			// Get attachments for the post
 			$attachments = get_posts( array(
-				'post_type' => 'attachment',
+				'post_type'      => 'attachment',
 				'posts_per_page' => -1,
-				'post_parent' => $post_id,
-				'exclude' => get_post_thumbnail_id(), //optional
+				'post_parent'    => $post_id,
 				'post_mime_type' => 'image',
-				'orderby' => 'date',
-				'order' => 'ASC'
+				'orderby'        => 'date',
+				'order'          => 'ASC',
+				// only retreive attachement if approval_field is checked
+				'meta_query'     => array(
+					array(
+						'key'     => 'approval_field',
+						'value'   => '1',
+						'compare' => '=',
+					),
+				),
 			) );
 			ob_start();
 			?>
