@@ -185,7 +185,7 @@ class Lensmark {
 		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
 		// Load photodata content
 		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_approval_field', 0, 2);
-		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
+		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
 	}
 
 	/**
