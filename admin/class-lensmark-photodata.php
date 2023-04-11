@@ -113,9 +113,8 @@ class Lensmark_Photodata {
 				echo '<div class="attachment-info">';
 				echo '<h4>' . $attachment->post_title . '</h4>';
 				$approval_field = get_post_meta( $attachment->ID, 'approval_field', true );
-				echo '<label><input type="checkbox" name="attachment_approval[' . $attachment->ID . ']" value="1" ' . checked( $approval_field, true, false ) . ' disabled> Approved</label>';
-				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Media', 'textdomain' ) . '</a>';
-
+				echo '<label><input type="checkbox" name="attachment_approval[' . $attachment->ID . ']" value="1" ' . checked( $approval_field, true, false ) . ' disabled>Approved? Edit entry to approve/delete this photo</label>';
+				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Entry', 'textdomain' ) . '</a>';
 				echo '</div>';
 				echo '</div>';
 			}
