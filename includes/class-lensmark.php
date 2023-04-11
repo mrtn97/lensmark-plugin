@@ -119,12 +119,12 @@ class Lensmark {
 		/**
 		 * The class containing photopost post-type functionalities
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lensmark-photopost.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photopost.php';
 
 		/**
 		 * The class containing photodata functionalities
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lensmark-photodata.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lensmark-photodata.php';
 
 		/**
 		 * The class containing map functionalities
@@ -183,9 +183,15 @@ class Lensmark {
 		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type');
 		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_meta_box');
 		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
+		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode');
 		// Load photodata content
 		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_approval_field', 0, 2);
 		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
+		$this->loader->add_action( 'add_meta_boxes', $photodata, 'lensmark_photodata_meta_box');
+		$this->loader->add_action( 'save_post', $photodata, 'lensmark_photopost_save_photodata_data');
+		
+		
+
 	}
 
 	/**
@@ -199,7 +205,6 @@ class Lensmark {
 		$map = new Lensmark_Map ( $this->get_lensmark(), $this->get_version());
 		$submission_form = new Lensmark_Submission_Form ( $this->get_lensmark(), $this->get_version());
 		$timelapse = new Lensmark_Timelapse ( $this->get_lensmark(), $this->get_version());
-		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version());
 
 		// Load submission form content
 		$this->loader->add_action( 'wp_enqueue_scripts', $submission_form, 'enqueue_styles' );
@@ -211,8 +216,6 @@ class Lensmark {
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $timelapse, 'lensmark_add_timelapse_shortcode');
-		// Load photopost-details
-		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode');
 		// Load map content
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_scripts' );

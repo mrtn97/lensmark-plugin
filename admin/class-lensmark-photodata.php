@@ -52,7 +52,7 @@ class Lensmark_Photodata {
 	 */
 	public function lensmark_add_photodata_approval_field( $form_fields, $post ) {
 		$parent_post_id = get_post_field( 'post_parent', $post->ID );
-		if ($parent_post_id) {
+		if ( $parent_post_id ) {
 			$parent_post = get_post( $post->post_parent );
 			if ( $parent_post && 'photopost' == $parent_post->post_type ) {
 				$approval_field = (bool) get_post_meta( $post->ID, 'approval_field', true );
@@ -82,4 +82,47 @@ class Lensmark_Photodata {
 		}
 		return $post;
 	}
+
+	/**
+	 * Add meta box for photoposts post-type
+	 * 
+	 * @since	1.0.0
+	 */
+	public function lensmark_photodata_meta_box() {
+		add_meta_box( 'lensmark_photodata_list', 'Photopost details', [ $this, 'lensmark_photodata_list_html' ], 'photopost', 'advanced', 'low' );
+	}
+
+	public function lensmark_photodata_list_html( $post ) {
+		$attachments = get_posts( array(
+			'post_type' => 'attachment',
+			'posts_per_page' => -1,
+			'post_status' => null,
+			'post_parent' => $post->ID,
+		) );
+
+		if ( $attachments ) {
+			echo '<div class="attachment-list">';
+			foreach ( $attachments as $attachment ) {
+				$edit_link = get_edit_post_link( $attachment->ID );
+				echo '<div class="attachment-item">';
+				echo '<div class="attachment-thumbnail">';
+				echo '<a href="' . $edit_link . '" target="_blank">';
+				echo wp_get_attachment_image( $attachment->ID, 'thumbnail' );
+				echo '</a>';
+				echo '</div>';
+				echo '<div class="attachment-info">';
+				echo '<h4>' . $attachment->post_title . '</h4>';
+				$approval_field = get_post_meta( $attachment->ID, 'approval_field', true );
+				echo '<label><input type="checkbox" name="attachment_approval[' . $attachment->ID . ']" value="1" ' . checked( $approval_field, true, false ) . ' disabled> Approved</label>';
+				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Media', 'textdomain' ) . '</a>';
+
+				echo '</div>';
+				echo '</div>';
+			}
+			echo '</div>';
+		} else {
+			echo '<p>' . __( 'No attachments found.', 'textdomain' ) . '</p>';
+		}
+	}
+
 }
