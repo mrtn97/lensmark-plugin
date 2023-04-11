@@ -122,6 +122,11 @@ class Lensmark {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lensmark-photopost.php';
 
 		/**
+		 * The class containing photodata functionalities
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lensmark-photodata.php';
+
+		/**
 		 * The class containing map functionalities
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lensmark-map.php';
@@ -168,6 +173,7 @@ class Lensmark {
 
 		$plugin_admin = new Lensmark_Admin( $this->get_lensmark(), $this->get_version() );
 		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version());
+		$photodata = new Lensmark_Photodata( $this->get_lensmark(), $this->get_version());
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// Load settings content
@@ -177,6 +183,9 @@ class Lensmark {
 		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type');
 		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_meta_box');
 		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
+		// Load photodata content
+		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_approval_field', 0, 2);
+		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
 	}
 
 	/**
