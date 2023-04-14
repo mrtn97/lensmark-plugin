@@ -3,7 +3,6 @@
 /**
  * Contains the photopost functionalities.
  * 
- * Contains admin and public facing functionalities --> includes
  *
  * @link       http://wbth.m-clement.ch/
  * @since      1.0.0
@@ -50,7 +49,7 @@ class Lensmark_Photopost {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function lensmark_photopost_post_type() {
+	public function lensmark_photopost_post_type() {
 		$labels = array(
 			'name' => _x( 'Photoposts', 'Post type general name', 'photopost' ),
 			'singular_name' => _x( 'Photopost', 'Post type singular name', 'photopost' ),
@@ -105,8 +104,8 @@ class Lensmark_Photopost {
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_photopost_meta_box() {
-		add_meta_box( 'lensmark_photopost_details', 'Photopost details', [ $this, 'lensmark_photopost_details_html' ], 'photopost', 'side', 'low' );
+	public function lensmark_photopost_add_details_meta_box() {
+		add_meta_box( 'lensmark_photopost_details', 'Photopost details', [ $this, 'lensmark_photopost_details_meta_box_callback' ], 'photopost', 'side', 'low' );
 	}
 
 	/**
@@ -115,7 +114,7 @@ class Lensmark_Photopost {
 	 * @since 	1.0.0
 	 * @param 	WP_Post $post The post object.
 	 */
-	public function lensmark_photopost_details_html( $post ) {
+	public function lensmark_photopost_details_meta_box_callback( $post ) {
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'lensmark_photopost_details', 'lensmark_photopost_details_nonce' );
 
@@ -151,7 +150,7 @@ class Lensmark_Photopost {
 	 * Save the meta when the post is saved.
 	 *
 	 * @since	1.0.0
-	 * @param 	int $post_id The ID of the post being saved.
+	 * @param 	int	$post_id	The ID of the post being saved.
 	 */
 	public function lensmark_photopost_save_meta_box_data( $post_id ) {
 		// Check if our nonce is set (-> security measure).
@@ -201,12 +200,6 @@ class Lensmark_Photopost {
 	}
 
 	/**
-	 * Public facing functionalities
-	 * 
-	 * @since	1.0.0
-	 */
-
-	/**
 	 * Add the shortcode: [lensmark-photopost-details] which displays details from the photopost
 	 * 
 	 * @since	1.0.0
@@ -215,7 +208,7 @@ class Lensmark_Photopost {
 		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
 	}
 
-	function lensmark_photopost_details_callback( $atts, $content = null ) {
+	public function lensmark_photopost_details_callback( $atts ) {
 		extract( shortcode_atts( array(
 			'coordinates' => 'hidden', // show coordinates
 			'location' => 'hidden', // show location

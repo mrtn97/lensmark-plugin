@@ -87,11 +87,12 @@ class Lensmark_Map {
 	}
 
 	/**
-	 * Callback function of the shortcode [lensmark-map-overview]
+	 * Map overview shortcode content
 	 * 
 	 * @since	1.0.0
+	 * @param 	array 		$atts 		User defined attributes	
 	 */
-	public function lensmark_map_overview_callback( $atts, $content = null ) {
+	public function lensmark_map_overview_callback( $atts ) {
 		extract( shortcode_atts( array(
 			'width' => '100%', // default width
 			'height' => '800px', // default height

@@ -177,17 +177,16 @@ class Lensmark {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// Load settings content
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_add_menu_page');
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_settings_init');
 		// Load post-type content
 		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type');
-		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_meta_box');
+		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_add_details_meta_box');
 		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
 		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode');
 		// Load photodata content
 		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_approval_field', 0, 2);
 		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
-		$this->loader->add_action( 'add_meta_boxes', $photodata, 'lensmark_photodata_meta_box');
+		$this->loader->add_action( 'add_meta_boxes', $photodata, 'lensmark_photodata_add_meta_box');
 	}
 
 	/**

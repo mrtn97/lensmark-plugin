@@ -75,9 +75,17 @@ class Lensmark_Timelapse {
 	 * 
 	 * @since    1.0.0
 	 */
-	public static function lensmark_add_timelapse_shortcode() {
-		add_shortcode( 'lensmark-timelapse', 'lensmark_timelapse_html' );
-		function lensmark_timelapse_html( $atts ) {
+	public function lensmark_add_timelapse_shortcode() {
+		add_shortcode( 'lensmark-timelapse', array($this, 'lensmark_timelapse_callback' ) );
+	}
+
+	/**
+	 * timelapse shortcode content
+	 * 
+	 * @since    1.0.0
+	 * @param 	array 		$atts 		User defined attributes	
+	 */
+	public function lensmark_timelapse_callback( $atts ) {
 			// Get post ID
 			global $post;
 			$post_id = $post->ID;
@@ -126,5 +134,4 @@ class Lensmark_Timelapse {
 			<?php
 			return ob_get_clean();
 		}
-	}
 }

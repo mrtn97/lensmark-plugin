@@ -65,37 +65,23 @@ class Lensmark_Admin {
 	}
 
 	/**
-	 * Add admin menu
+	 * Setup lensmark plugin settings page.
 	 *
 	 * @since    1.0.0
 	 */
-
-	public function lensmark_add_menu_page() {
+	public function lensmark_settings_init() {
+		/**
+		 * Add 'Settings' submenu page
+		 */
 		add_submenu_page(
 			'edit.php?post_type=photopost',
 			'Settings',
 			'Settings',
 			'edit_posts',
 			'lensmark-settings',
-			array( $this, 'lensmark_create_admin_interface' )
+			array( $this, 'lensmark_admin_interface_callback' )
 		);
-	}
 
-	/**
-	 * Include partials ressources
-	 * 
-	 * @since	1.0.0
-	 */
-	function lensmark_create_admin_interface() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/lensmark-admin-display.php';
-	}
-
-	/**
-	 * Setup lensmark plugin settings page.
-	 *
-	 * @since    1.0.0
-	 */
-	public function lensmark_settings_init() {
 		/**
 		 * Add plugin settings sections
 		 */
@@ -147,13 +133,22 @@ class Lensmark_Admin {
 		);
 	}
 
+	/**
+	 * Plugin Settings interface callback
+	 * 
+	 * @since	1.0.0
+	 */
+	public function lensmark_admin_interface_callback() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/lensmark-admin-display.php';
+	}
+
 
 	/**
 	 * Map section callback function.
 	 *
 	 * @since	1.0.0
 	 */
-	function lensmark_map_section_callback() {
+	public function lensmark_map_section_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-section-display.php';
 	}
 
@@ -162,7 +157,7 @@ class Lensmark_Admin {
 	 *
 	 * @since	1.0.0
 	 */
-	function lensmark_help_section_callback() {
+	public function lensmark_help_section_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/help/lensmark-help-section-display.php';
 	}
 
@@ -171,7 +166,7 @@ class Lensmark_Admin {
 	 *
 	 * @since	1.0.0
 	 */
-	function lensmark_map_latitude_setting_callback() {
+	public function lensmark_map_latitude_setting_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-latitude-setting-display.php';
 	}
 
@@ -180,7 +175,7 @@ class Lensmark_Admin {
 	 *
 	 * @since	1.0.0
 	 */
-	function lensmark_map_longitude_setting_callback() {
+	public function lensmark_map_longitude_setting_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-longitude-setting-display.php';
 	}
 
@@ -189,7 +184,7 @@ class Lensmark_Admin {
 	 *
 	 * @since	1.0.0
 	 */
-	function lensmark_map_zoom_setting_callback() {
+	public function lensmark_map_zoom_setting_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-zoom-setting-display.php';
 	}
 

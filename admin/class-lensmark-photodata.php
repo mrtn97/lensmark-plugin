@@ -88,17 +88,25 @@ class Lensmark_Photodata {
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_photodata_meta_box() {
-		add_meta_box( 'lensmark_photodata_list', 'Photopost details', [ $this, 'lensmark_photodata_list_html' ], 'photopost', 'advanced', 'low' );
+	public function lensmark_photodata_add_meta_box() {
+		add_meta_box( 'lensmark_photodata_list', 'Photopost details', [ $this, 'lensmark_photodata_list_callback' ], 'photopost', 'advanced', 'low' );
 	}
 
-	public function lensmark_photodata_list_html( $post ) {
-		$attachments = get_posts( array(
-			'post_type' => 'attachment',
-			'posts_per_page' => -1,
-			'post_status' => null,
-			'post_parent' => $post->ID,
-		) );
+	/**
+	 * Photodata list meta box content
+	 * 
+	 * @since 	1.0.0
+	 * @param	array	$post			Attachement parent ID
+	 */
+	public function lensmark_photodata_list_callback( $post ) {
+		if ( is_object( $post ) ) {
+			$attachments = get_posts( array(
+				'post_type'      => 'attachment',
+				'posts_per_page' => -1,
+				'post_status'    => null,
+				'post_parent'    => $post->ID,
+			) );
+		}
 
 		if ( $attachments ) {
 			echo '<div class="attachment-list">';
