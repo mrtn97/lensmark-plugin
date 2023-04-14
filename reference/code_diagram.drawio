@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="J4oK2oXv3Nl3N_b7KUy6" name="System Context Diagram (C1)">
-        <mxGraphModel dx="793" dy="691" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1354" dy="691" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -445,13 +445,13 @@
         </mxGraphModel>
     </diagram>
     <diagram id="w6f0iaIV27rwYkJ8PySh" name="Code Diagram (C4)">
-        <mxGraphModel dx="2947" dy="429" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1354" dy="-136" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <UserObject label="Lensmark" id="rgZ6G4C1cj6MaTm0FDTJ-1">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                        <mxGeometry x="40" y="880" width="160" height="228" as="geometry">
+                        <mxGeometry x="80" y="1080" width="160" height="228" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
@@ -467,7 +467,7 @@
                 </mxCell>
                 <UserObject label="Lensmark_Loader" id="rgZ6G4C1cj6MaTm0FDTJ-5">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                        <mxGeometry x="280" y="880" width="440" height="228" as="geometry">
+                        <mxGeometry x="280" y="1080" width="440" height="230" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
@@ -479,11 +479,11 @@
                     <mxGeometry y="80" width="440" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-8" value="+ __construct()&lt;br&gt;- add_action($hook, $component, $callback, $priority = 10, $accepted_args)&lt;br&gt;- add_filter($hook, $component, $callback, $priority = 10, $accepted_args)&lt;br&gt;- add($hooks, $hook, $component, $callback, $priority, $accepted_args)&lt;br&gt;+ run()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-5" vertex="1">
-                    <mxGeometry y="88" width="440" height="140" as="geometry"/>
+                    <mxGeometry y="88" width="440" height="142" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Activator" id="rgZ6G4C1cj6MaTm0FDTJ-9">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                        <mxGeometry x="760" y="880" width="200" height="80" as="geometry">
+                        <mxGeometry x="760" y="1080" width="200" height="70" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
@@ -492,11 +492,11 @@
                     <mxGeometry y="26" width="200" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-12" value="+ activate()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-9" vertex="1">
-                    <mxGeometry y="34" width="200" height="46" as="geometry"/>
+                    <mxGeometry y="34" width="200" height="36" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Deactivator" id="rgZ6G4C1cj6MaTm0FDTJ-13">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                        <mxGeometry x="760" y="1000" width="200" height="80" as="geometry">
+                        <mxGeometry x="760" y="1161" width="200" height="70" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
@@ -505,11 +505,11 @@
                     <mxGeometry y="26" width="200" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-15" value="+ deactivate()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-13" vertex="1">
-                    <mxGeometry y="34" width="200" height="46" as="geometry"/>
+                    <mxGeometry y="34" width="200" height="36" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_i18n" id="rgZ6G4C1cj6MaTm0FDTJ-18">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                        <mxGeometry x="760" y="1120" width="200" height="80" as="geometry">
+                        <mxGeometry x="760" y="1241" width="200" height="70" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
@@ -518,120 +518,120 @@
                     <mxGeometry y="26" width="200" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-20" value="+ load_plugin_textdomain()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-18" vertex="1">
-                    <mxGeometry y="34" width="200" height="46" as="geometry"/>
+                    <mxGeometry y="34" width="200" height="36" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Photodata" id="rgZ6G4C1cj6MaTm0FDTJ-25">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-                        <mxGeometry x="440" y="1480" width="400" height="230" as="geometry">
+                        <mxGeometry x="400" y="1600" width="360" height="230" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-26" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-25" vertex="1">
-                    <mxGeometry y="26" width="400" height="44" as="geometry"/>
+                    <mxGeometry y="26" width="360" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-27" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="rgZ6G4C1cj6MaTm0FDTJ-25" vertex="1">
-                    <mxGeometry y="70" width="400" height="8" as="geometry"/>
+                    <mxGeometry y="70" width="360" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="rgZ6G4C1cj6MaTm0FDTJ-28" value="+ __construct()&lt;br&gt;+ lensmark_add_photodata_approval_field($form_fields, $post)&lt;br&gt;+ lensmark_save_photodata_approval_field($post, $attachement)&lt;br&gt;+ lensmark_photodata_list_add_metabox()&lt;br&gt;+ lensmark_photodata_list_callback($post)&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="rgZ6G4C1cj6MaTm0FDTJ-25" vertex="1">
-                    <mxGeometry y="78" width="400" height="152" as="geometry"/>
+                    <mxGeometry y="78" width="360" height="152" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Map" id="U1Az0S0Dw8Oknp-nSMR3-1">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-                        <mxGeometry x="40" y="1241" width="360" height="180" as="geometry">
+                        <mxGeometry x="80" y="1360" width="280" height="180" as="geometry">
                             <mxRectangle x="40" y="1360" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-2" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="U1Az0S0Dw8Oknp-nSMR3-1" vertex="1">
-                    <mxGeometry y="26" width="360" height="44" as="geometry"/>
+                    <mxGeometry y="26" width="280" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="U1Az0S0Dw8Oknp-nSMR3-1" vertex="1">
-                    <mxGeometry y="70" width="360" height="8" as="geometry"/>
+                    <mxGeometry y="70" width="280" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-4" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ enqueue_scripts()&lt;br&gt;+ lensmark_add_map_overview_shortcode()&lt;br&gt;+ lensmark_map_overview_callback($atts)&lt;br&gt;+ lensmark_get_photoposts()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="U1Az0S0Dw8Oknp-nSMR3-1" vertex="1">
-                    <mxGeometry y="78" width="360" height="102" as="geometry"/>
+                    <mxGeometry y="78" width="280" height="102" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Submission_Form" id="U1Az0S0Dw8Oknp-nSMR3-5">
                     <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-                        <mxGeometry x="440" y="1241" width="360" height="180" as="geometry">
+                        <mxGeometry x="400" y="1360" width="280" height="180" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-6" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="U1Az0S0Dw8Oknp-nSMR3-5" vertex="1">
-                    <mxGeometry y="26" width="360" height="44" as="geometry"/>
+                    <mxGeometry y="26" width="280" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="U1Az0S0Dw8Oknp-nSMR3-5" vertex="1">
-                    <mxGeometry y="70" width="360" height="8" as="geometry"/>
+                    <mxGeometry y="70" width="280" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="U1Az0S0Dw8Oknp-nSMR3-8" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ lensmark_add_submission_form_page()&lt;br&gt;+ lensmark_trash_submission_form_page()&lt;br&gt;+ lensmark_add_submission_form_shortcode()&lt;br&gt;+ lensmark_submission_form_callback($atts)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="U1Az0S0Dw8Oknp-nSMR3-5" vertex="1">
-                    <mxGeometry y="78" width="360" height="102" as="geometry"/>
+                    <mxGeometry y="78" width="280" height="102" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Timelapse" id="_pR-tVPNZf6rtWdYtmce-1">
-                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-                        <mxGeometry x="840" y="1241" width="360" height="180" as="geometry">
+                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                        <mxGeometry x="720" y="1360" width="240" height="180" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-2" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-1">
-                    <mxGeometry y="26" width="360" height="44" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-2" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-1" vertex="1">
+                    <mxGeometry y="26" width="240" height="44" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-1">
-                    <mxGeometry y="70" width="360" height="8" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="_pR-tVPNZf6rtWdYtmce-1" vertex="1">
+                    <mxGeometry y="70" width="240" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-4" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ enqueue_scripts()&lt;br&gt;+ lensmark_add_timelapse_shortcode()&lt;br&gt;+ lensmark_timelapse_callback($atts)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-1">
-                    <mxGeometry y="78" width="360" height="102" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-4" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ enqueue_scripts()&lt;br&gt;+ lensmark_add_timelapse_shortcode()&lt;br&gt;+ lensmark_timelapse_callback($atts)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-1" vertex="1">
+                    <mxGeometry y="78" width="240" height="102" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-13" value="" style="group" vertex="1" connectable="0" parent="1">
-                    <mxGeometry x="1360" y="880" width="180" height="120" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-13" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="1000" y="1080" width="180" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-5" value="Legend" style="align=left;fontSize=16;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#4D4D4D;spacingTop=-8;resizable=0;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-13">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-5" value="Legend" style="align=left;fontSize=16;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#4D4D4D;spacingTop=-8;resizable=0;" parent="_pR-tVPNZf6rtWdYtmce-13" vertex="1">
                     <mxGeometry width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-6" value="" style="shape=table;html=1;whiteSpace=wrap;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fillColor=none;align=left;spacingLeft=10;strokeColor=none;rounded=1;arcSize=11;fontColor=#FFFFFF;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-13">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-6" value="" style="shape=table;html=1;whiteSpace=wrap;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fillColor=none;align=left;spacingLeft=10;strokeColor=none;rounded=1;arcSize=11;fontColor=#FFFFFF;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" parent="_pR-tVPNZf6rtWdYtmce-13" vertex="1">
                     <mxGeometry y="30" width="180" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-7" value="Includes" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#dae8fc;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#6c8ebf;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-6">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-7" value="Includes" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#dae8fc;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#6c8ebf;" parent="_pR-tVPNZf6rtWdYtmce-6" vertex="1">
                     <mxGeometry width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-8" value="Admin" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#f8cecc;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#b85450;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-6">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-8" value="Admin" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#f8cecc;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#b85450;" parent="_pR-tVPNZf6rtWdYtmce-6" vertex="1">
                     <mxGeometry y="30" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-9" value="Public" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#d5e8d4;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#82b366;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-6">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-9" value="Public" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=#d5e8d4;top=0;left=0;bottom=0;right=0;overflow=hidden;pointerEvents=1;align=left;spacingLeft=10;strokeColor=#82b366;" parent="_pR-tVPNZf6rtWdYtmce-6" vertex="1">
                     <mxGeometry y="60" width="180" height="30" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Admin" id="_pR-tVPNZf6rtWdYtmce-15">
-                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-                        <mxGeometry x="40" y="1480" width="360" height="230" as="geometry">
+                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                        <mxGeometry x="80" y="1600" width="280" height="230" as="geometry">
                             <mxRectangle x="40" y="1360" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-16" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-15">
-                    <mxGeometry y="26" width="360" height="44" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-16" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-15" vertex="1">
+                    <mxGeometry y="26" width="280" height="44" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-15">
-                    <mxGeometry y="70" width="360" height="8" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="_pR-tVPNZf6rtWdYtmce-15" vertex="1">
+                    <mxGeometry y="70" width="280" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-18" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ lensmark_settings_init()&lt;br&gt;+ lensmark_admin_interface_callback()&lt;br&gt;+ lensmark_map_section_callback()&lt;br&gt;+ lensmark_help_section_callback()&lt;br&gt;+ lensmark_map_latitude_setting_callback()&lt;br&gt;+ lensmark_map_longitude_setting_callback()&lt;br&gt;+ lensmark_map_zoom_setting_callback()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-15">
-                    <mxGeometry y="78" width="360" height="152" as="geometry"/>
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-18" value="+ __construct()&lt;br&gt;+ enqueue_styles()&lt;br&gt;+ lensmark_settings_init()&lt;br&gt;+ lensmark_admin_interface_callback()&lt;br&gt;+ lensmark_map_section_callback()&lt;br&gt;+ lensmark_help_section_callback()&lt;br&gt;+ lensmark_map_latitude_setting_callback()&lt;br&gt;+ lensmark_map_longitude_setting_callback()&lt;br&gt;+ lensmark_map_zoom_setting_callback()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-15" vertex="1">
+                    <mxGeometry y="78" width="280" height="152" as="geometry"/>
                 </mxCell>
                 <UserObject label="Lensmark_Photopost" id="_pR-tVPNZf6rtWdYtmce-19">
-                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-                        <mxGeometry x="880" y="1480" width="400" height="190" as="geometry">
+                    <mxCell style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;swimlaneLine=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                        <mxGeometry x="800" y="1600" width="400" height="190" as="geometry">
                             <mxRectangle x="40" y="880" width="100" height="30" as="alternateBounds"/>
                         </mxGeometry>
                     </mxCell>
                 </UserObject>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-20" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-19">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-20" value="- lensmark: string&lt;br&gt;- version: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-19" vertex="1">
                     <mxGeometry y="26" width="400" height="44" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-19">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="_pR-tVPNZf6rtWdYtmce-19" vertex="1">
                     <mxGeometry y="70" width="400" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="_pR-tVPNZf6rtWdYtmce-22" value="+ __construct()&lt;br&gt;+ lensmark_photopost_post_type()&lt;br&gt;+ lensmark_photopost_add_details_meta_box()&lt;br&gt;+ lensmark_photopost_details_meta_box_callback()&lt;br&gt;+ lensmark_photopost_save_meta_box_data($post_id)&lt;br&gt;+ lensmark_add_photopost_details_shortcode()&lt;br&gt;+ lensmark_photopost_details_callback()&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="_pR-tVPNZf6rtWdYtmce-19">
+                <mxCell id="_pR-tVPNZf6rtWdYtmce-22" value="+ __construct()&lt;br&gt;+ lensmark_photopost_post_type()&lt;br&gt;+ lensmark_photopost_add_details_meta_box()&lt;br&gt;+ lensmark_photopost_details_meta_box_callback()&lt;br&gt;+ lensmark_photopost_save_meta_box_data($post_id)&lt;br&gt;+ lensmark_add_photopost_details_shortcode()&lt;br&gt;+ lensmark_photopost_details_callback($atts)&lt;br&gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="_pR-tVPNZf6rtWdYtmce-19" vertex="1">
                     <mxGeometry y="78" width="400" height="112" as="geometry"/>
                 </mxCell>
             </root>
