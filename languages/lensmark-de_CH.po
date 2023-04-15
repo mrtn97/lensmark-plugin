@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Lensmark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lensmark\n"
 "POT-Creation-Date: 2023-04-15T14:10:25+00:00\n"
-"PO-Revision-Date: 2023-04-15 16:13+0200\n"
+"PO-Revision-Date: 2023-04-15 16:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -79,29 +79,21 @@ msgid "No attachments found."
 msgstr "Keine Datenerhebungen gefunden."
 
 #: admin/class-lensmark-photopost.php:54
-#, fuzzy
-#| msgid "Photopost"
 msgctxt "Post type general name"
 msgid "Photoposts"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:55
-#, fuzzy
-#| msgid "Photopost"
 msgctxt "Post type singular name"
 msgid "Photopost"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:56
-#, fuzzy
-#| msgid "Photopost"
 msgctxt "Admin Menu text"
 msgid "Photoposts"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:57
-#, fuzzy
-#| msgid "Photopost"
 msgctxt "Add New on Toolbar"
 msgid "Photopost"
 msgstr "Fotoposten"
@@ -111,38 +103,26 @@ msgid "Add New"
 msgstr ""
 
 #: admin/class-lensmark-photopost.php:59
-#, fuzzy
-#| msgid "Photopost"
 msgid "Add New photopost"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:60
-#, fuzzy
-#| msgid "Photopost"
 msgid "New photopost"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:61
-#, fuzzy
-#| msgid "Photopost"
 msgid "Edit photopost"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:62
-#, fuzzy
-#| msgid "Photopost"
 msgid "View photopost"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:63
-#, fuzzy
-#| msgid "Photopost"
 msgid "All photoposts"
 msgstr "Fotoposten"
 
 #: admin/class-lensmark-photopost.php:64
-#, fuzzy
-#| msgid "Photopost"
 msgid "Search photoposts"
 msgstr "Fotoposten"
 
@@ -151,8 +131,6 @@ msgid "Parent photoposts:"
 msgstr "Fotoposten:"
 
 #: admin/class-lensmark-photopost.php:66
-#, fuzzy
-#| msgid "No attachments found."
 msgid "No photoposts found."
 msgstr "Keine Datenerhebungen gefunden."
 
@@ -161,8 +139,6 @@ msgid "No photoposts found in Trash."
 msgstr ""
 
 #: admin/class-lensmark-photopost.php:68
-#, fuzzy
-#| msgid "Photopost details"
 msgctxt ""
 "Overrides the “Featured Image” phrase for this post type. Added in 4.3"
 msgid "Photopost Cover Image"
@@ -187,8 +163,6 @@ msgid "Use as cover image"
 msgstr ""
 
 #: admin/class-lensmark-photopost.php:72
-#, fuzzy
-#| msgid "Photopost details"
 msgctxt ""
 "The post type archive label used in nav menus. Default “Post Archives”. "
 "Added in 4.4"
@@ -217,8 +191,6 @@ msgid "Filter photoposts list"
 msgstr ""
 
 #: admin/class-lensmark-photopost.php:76
-#, fuzzy
-#| msgid "Photopost details"
 msgctxt ""
 "Screen reader text for the pagination heading on the post type listing "
 "screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
@@ -226,8 +198,6 @@ msgid "Photoposts list navigation"
 msgstr "Fotoposten Angaben"
 
 #: admin/class-lensmark-photopost.php:77
-#, fuzzy
-#| msgid "Photopost details"
 msgctxt ""
 "Screen reader text for the items list heading on the post type listing "
 "screen. Default “Posts list”/”Pages list”. Added in 4.4"
