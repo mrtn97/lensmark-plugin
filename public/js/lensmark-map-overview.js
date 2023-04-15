@@ -46,6 +46,7 @@
 		
 				// Loop through the response and add markers to the map
 				jQuery.each(response, function(index, post) {
+					const { __, _x, _n, sprintf } = wp.i18n;
 					var lat = post.latitude;
 					var lng = post.longitude;
 					if (lat && lng) {
@@ -55,10 +56,10 @@
 						'<div class="has-small-font-size">' +
 						'<img class="thumbnail" src="' + post.thumbnail_url + '" alt="">'+ 
 						'<h3 class="has-large-font-size">' + post.title + '</h3>' +
-						'<p><strong>Active since: </strong>' + post.activation_date + '</p>' + 
-						'<p><strong>Photopost ID: </strong>' + post.id + '</p>' +
-						'<p><strong>Location: </strong>' + post.location + '</p>' +
-						'<p><strong>Position: </strong>' + post.latitude + ' | ' + post.latitude +  '</p>' +
+						'<p><strong>' + __('Active since', 'lensmark') + ': </strong>' + post.activation_date + '</p>' + 
+						'<p><strong>' + __('Photopost', 'lensmark') + ': </strong>' + post.id + '</p>' +
+						'<p><strong>' + __('Location', 'lensmark') + ': </strong>' + post.location + '</p>' +
+						'<p><strong>' + __('Position', 'lensmark') + ': </strong>' + post.latitude + ' | ' + post.latitude +  '</p>' +
 						'<p>' + post.excerpt + '</p>' +
 						'<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" ><a href="' + post.link + '" class="wp-block-button__link wp-element-button">Open</a></div>' +
 						'</div>'
@@ -68,14 +69,4 @@
 			}
 		});
 	});
-
-	$(document).ready(function($) {
-		if (map) {
-		  map.scrollWheelZoom.disable();
-		  map.on('click', function() { 
-			map.scrollWheelZoom.enable(); 
-			map.off('click'); // remove the click event listener to prevent multiple zooming
-		  });
-		}
-	  });
 })(jQuery);
