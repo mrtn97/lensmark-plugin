@@ -70,10 +70,9 @@ class Lensmark_Map {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
-			wp_register_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
+			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
 			wp_localize_script( 'lensmark-map', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
-			wp_set_script_translations( 'lensmark-map', 'lensmark');
-			wp_enqueue_script( 'lensmark-map' );
+			wp_set_script_translations( 'lensmark-map', 'lensmark', plugin_dir_path( __FILE__ ) . '../languages' );
 			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'leaflet-js' ), $this->version, false );
 		}
 	}
@@ -131,11 +130,11 @@ class Lensmark_Map {
 			$excerpt = $post->post_excerpt;
 			$latitude = get_post_meta( $id, 'latitude', true );
 			$longitude = get_post_meta( $id, 'longitude', true );
-			$location = get_post_meta( $id, 'location', true);
-			$date_format = get_option('date_format');
+			$location = get_post_meta( $id, 'location', true );
+			$date_format = get_option( 'date_format' );
 			// Format date to use the WordPress general settings
-   			$activation_date_data = get_post_meta($post->ID, 'activation_date', true);
-   			$activation_date = date($date_format, strtotime($activation_date_data));
+			$activation_date_data = get_post_meta( $post->ID, 'activation_date', true );
+			$activation_date = date( $date_format, strtotime( $activation_date_data ) );
 			$link = get_permalink( $id );
 			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 			$thumbnail_url = $thumbnail ? $thumbnail[0] : '';

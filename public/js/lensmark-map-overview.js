@@ -81,7 +81,7 @@
                 ": </strong>" +
                 post.latitude +
                 " | " +
-                post.latitude +
+                post.longitude+
                 "</p>" +
                 "<p>" +
                 post.excerpt +
