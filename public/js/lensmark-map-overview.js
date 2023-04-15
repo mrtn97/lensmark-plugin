@@ -62,22 +62,22 @@
                 post.title +
                 "</h3>" +
                 "<p><strong>" +
-                __("Active since", "lensmark") +
+                __('Active since', 'lensmark') +
                 ": </strong>" +
                 post.activation_date +
                 "</p>" +
                 "<p><strong>" +
-                __("Photopost", "lensmark") +
+                __('Photopost', 'lensmark') +
                 ": </strong>" +
                 post.id +
                 "</p>" +
                 "<p><strong>" +
-                __("Location", "lensmark") +
+                __('Location', 'lensmark') +
                 ": </strong>" +
                 post.location +
                 "</p>" +
                 "<p><strong>" +
-                __("Position", "lensmark") +
+                __('Position', 'lensmark') +
                 ": </strong>" +
                 post.latitude +
                 " | " +
@@ -88,7 +88,7 @@
                 "</p>" +
                 '<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" ><a href="' +
                 post.link +
-                '" class="wp-block-button__link wp-element-button">Open</a></div>' +
+                '" class="wp-block-button__link wp-element-button">' + __('Open', 'lensmark') + '</a></div>' +
                 "</div>"
             );
           }
