@@ -16,4 +16,4 @@
 $zoom = get_option('lensmark_map_zoom', '12');
 ?>
 <input type="text" name="lensmark_map_zoom" value="<?php echo esc_attr($zoom); ?>" />
-<p>Default: 12</p>
+<p><?php esc_html_e( 'Default: 12', 'lensmark' );?></p>

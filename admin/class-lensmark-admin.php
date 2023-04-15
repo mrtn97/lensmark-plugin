@@ -76,7 +76,7 @@ class Lensmark_Admin {
 		add_submenu_page(
 			'edit.php?post_type=photopost',
 			'Settings',
-			'Settings',
+			__('Settings', 'lensmark'),
 			'edit_posts',
 			'lensmark-settings',
 			array( $this, 'lensmark_admin_interface_callback' )
@@ -89,7 +89,7 @@ class Lensmark_Admin {
 		// Add map settings section
 		add_settings_section(
 			'lensmark_map_section', // Section ID
-			'Map Overview', // Section title
+			__('Map Overview', 'lensmark'), // Section 
 			array( $this, 'lensmark_map_section_callback' ), // Callback function to display the section description
 			'lensmark-map-settings' // page settings
 		);
@@ -108,7 +108,7 @@ class Lensmark_Admin {
 		// Add map overview position LATITUDE
 		add_settings_field(
 			'lensmark_map_latitude', // Field ID
-			'Latitude', // Field label
+			__('Latitude', 'lensmark'), // Field label
 			array( $this, 'lensmark_map_latitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
@@ -117,7 +117,7 @@ class Lensmark_Admin {
 		// Add map overview position LONGITUDE
 		add_settings_field(
 			'lensmark_map_longitude', // Field ID
-			'Longitude', // Field label
+			__('Longitude', 'lensmark'), // Field label
 			array( $this, 'lensmark_map_longitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
@@ -126,7 +126,7 @@ class Lensmark_Admin {
 		// Add map overview ZOOM LEVEL
 		add_settings_field(
 			'lensmark_map_zoom', // Field ID
-			'Zoom Level', // Field label
+			__('Zoom Level', 'lensmark'), // Field label
 			array( $this, 'lensmark_map_zoom_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID

@@ -46,22 +46,22 @@ class Lensmark_Photodata {
 	}
 
 	/**
-	 * Add approval checkbox to photopost attachments.
+	 * Add verification checkbox to photopost attachments.
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_add_photodata_approval_field( $form_fields, $post ) {
+	public function lensmark_add_photodata_verification_field( $form_fields, $post ) {
 		$parent_post_id = get_post_field( 'post_parent', $post->ID );
 		if ( $parent_post_id ) {
 			$parent_post = get_post( $post->post_parent );
 			if ( $parent_post && 'photopost' == $parent_post->post_type ) {
-				$approval_field = (bool) get_post_meta( $post->ID, 'approval_field', true );
-				$form_fields['approval_field'] = array(
-					'label' => 'Approved',
+				$verification_field = (bool) get_post_meta( $post->ID, 'verification_field', true );
+				$form_fields['verification_field'] = array(
+					'label' => __('Verify', 'lensmark'),
 					'input' => 'html',
-					'html' => '<input type="checkbox" id="attachments-' . $post->ID . '-approval_field" name="attachments[' . $post->ID . '][approval_field]" value="1"' . ( $approval_field ? ' checked="checked"' : '' ) . ' /> ',
-					'value' => $approval_field,
-					'helps' => ''
+					'html' => '<input type="checkbox" id="attachments-' . $post->ID . '-verification_field" name="attachments[' . $post->ID . '][verification_field]" value="1"' . ( $verification_field ? ' checked="checked"' : '' ) . ' /> ',
+					'value' => $verification_field,
+					'helps' => _e('Only verified photos are displayed in time lapse.','lensmark')
 				);
 			}
 		}
@@ -70,26 +70,26 @@ class Lensmark_Photodata {
 
 
 	/**
-	 * Save approval checkbox of photopost attachments.
+	 * Save verification checkbox of photopost attachments.
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_save_photodata_approval_field( $post, $attachment ) {
-		if ( isset( $attachment['approval_field'] ) ) {
-			update_post_meta( $post['ID'], 'approval_field', sanitize_text_field( $attachment['approval_field'] ) );
+	public function lensmark_save_photodata_verification_field( $post, $attachment ) {
+		if ( isset( $attachment['verification_field'] ) ) {
+			update_post_meta( $post['ID'], 'verification_field', sanitize_text_field( $attachment['verification_field'] ) );
 		} else {
-			delete_post_meta( $post['ID'], 'approval_field' );
+			delete_post_meta( $post['ID'], 'verification_field' );
 		}
 		return $post;
 	}
 
 	/**
-	 * Add meta box for photoposts post-type
+	 * Add meta box listing all submitted photos.
 	 * 
 	 * @since	1.0.0
 	 */
 	public function lensmark_photodata_add_meta_box() {
-		add_meta_box( 'lensmark_photodata_list', 'Photopost details', [ $this, 'lensmark_photodata_list_callback' ], 'photopost', 'advanced', 'low' );
+		add_meta_box( 'lensmark_photodata_list', __('Photopost details', 'lensmark'), [ $this, 'lensmark_photodata_list_callback' ], 'photopost', 'advanced', 'low' );
 	}
 
 	/**
@@ -120,15 +120,15 @@ class Lensmark_Photodata {
 				echo '</div>';
 				echo '<div class="attachment-info">';
 				echo '<h4>' . $attachment->post_title . '</h4>';
-				$approval_field = get_post_meta( $attachment->ID, 'approval_field', true );
-				echo '<label><input type="checkbox" name="attachment_approval[' . $attachment->ID . ']" value="1" ' . checked( $approval_field, true, false ) . ' disabled>Approved? Edit entry to approve/delete this photo</label>';
-				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Entry', 'textdomain' ) . '</a>';
+				$verification_field = get_post_meta( $attachment->ID, 'verification_field', true );
+				echo '<label><input type="checkbox" name="attachment_verification[' . $attachment->ID . ']" value="1" ' . checked( $verification_field, true, false ) . ' disabled>' . __('Verified', 'lensmark') . '</label>';
+				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Entry', 'lensmark' ) . '</a>';
 				echo '</div>';
 				echo '</div>';
 			}
 			echo '</div>';
 		} else {
-			echo '<p>' . __( 'No attachments found.', 'textdomain' ) . '</p>';
+			echo '<p>' . _e( 'No attachments found.', 'lensmark' ) . '</p>';
 		}
 	}
 

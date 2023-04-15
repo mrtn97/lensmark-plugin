@@ -190,17 +190,30 @@ class Lensmark_Submission_Form {
 
 			// If the upload fails:
 			if ( is_wp_error( $attachment_id ) ) {
-				$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Something went wrong, please try again.</p></div>';
+				$message = sprintf(
+					'<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>%s</h4><p>%s</p></div>',
+					__( 'Error', 'lensmark' ),
+					__( 'Something went wrong, please try again.', 'lensmark' )
+				);
 			} else {
-				$message = '<div class="alert success">
-				<h4><span class="dashicons dashicons-yes"></span>Thank you!</h4>
-				<p>The image was uploaded successfully and will be reviewed by the organization.</p>
-				<p>You may close this tab now.</p>
-				</div>';
+				$message = sprintf(
+					'<div class="alert success">
+						<h4><span class="dashicons dashicons-yes"></span>%s</h4>
+						<p>%s</p>
+						<p>%s</p>
+					</div>',
+					__( 'Thank you!', 'lensmark' ),
+					__( 'The image was uploaded successfully and will be reviewed by the organization.', 'lensmark' ),
+					__( 'You may close this tab now.', 'lensmark' )
+				);
 			}
 		} else {
 			// If the nonce is not valid
-			$message = '<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>Error</h4><p>Security check has failed, please try again.</p></div>';
+			$message = sprintf(
+				'<div class="alert error"><h4><span class="dashicons dashicons-warning"></span>%s</h4><p>%s</p></div>',
+				__( 'Error', 'lensmark' ),
+				__( 'Security check has failed, please try again.', 'lensmark' )
+			);
 		}
 		// Set the message in the placeholder element if it exists
 		if ( isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] ) ) {
