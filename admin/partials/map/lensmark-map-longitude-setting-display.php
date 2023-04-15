@@ -16,4 +16,4 @@
 $longitude = get_option('lensmark_map_longitude', '7.4506');
 ?>
 <input type="text" name="lensmark_map_longitude" value="<?php echo esc_attr($longitude); ?>" />
-<p>Value Between: -180 and 180</p>
+<p><?php _e( 'min. -180, max. 180', 'lensmark' );?></p>

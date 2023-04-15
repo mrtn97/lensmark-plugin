@@ -78,7 +78,6 @@ class Lensmark_Photopost {
 		);
 		$args = array(
 			'labels' => $labels,
-			'description' => 'Photopost post type that contains all submitted images per photopost.',
 			'public' => true,
 			'publicly_queryable' => true,
 			'show_ui' => true,
@@ -105,7 +104,7 @@ class Lensmark_Photopost {
 	 * @since	1.0.0
 	 */
 	public function lensmark_photopost_add_details_meta_box() {
-		add_meta_box( 'lensmark_photopost_details', 'Photopost details', [ $this, 'lensmark_photopost_details_meta_box_callback' ], 'photopost', 'side', 'low' );
+		add_meta_box( 'lensmark_photopost_details', __('Photopost details', 'lensmark'), [ $this, 'lensmark_photopost_details_meta_box_callback' ], 'photopost', 'side', 'low' );
 	}
 
 	/**
@@ -226,14 +225,14 @@ class Lensmark_Photopost {
 		ob_start();
 		?>
 		<div>
-			<p class="has-small-font-size"><strong>Location: </strong>
+			<p class="has-small-font-size"><strong><?php _e('Location', 'lensmark');?>: </strong>
 				<?php echo $location ?>
 			</p>
-			<p class="has-small-font-size"><strong>Position: </strong>
+			<p class="has-small-font-size"><strong><?php _e('Position', 'lensmark');?>: </strong>
 				<?php echo $latitude ?>,
 				<?php echo $longitude ?>
 			</p>
-			<p class="has-small-font-size"><strong>Active since: </strong>
+			<p class="has-small-font-size"><strong><?php _e('Active since', 'lensmark');?>: </strong>
 				<?php echo $activation_date ?>
 			</p>
 		</div>

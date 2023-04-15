@@ -45,7 +45,7 @@ $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
 			<form method="post" action="options.php">
 				<?php settings_fields('lensmark-map-settings'); ?>
 				<?php do_settings_sections('lensmark-map-settings'); ?>
-				<?php submit_button('Save'); ?>
+				<?php submit_button(__('Save', 'lensmark')); ?>
 			</form>
 
 		<?php elseif( $tab == 'help' ): ?>
@@ -55,4 +55,4 @@ $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
 		<?php endif; ?>
 	</div>
 </div>
-<p>Lensmark is a project between Bern University of Applied Sciences & Förderverein Region Gantrisch</p>
+<p><?php esc_html_e( 'Lensmark is a project between Bern University of Applied Sciences & Förderverein Region Gantrisch', 'lensmark' ); ?></p>

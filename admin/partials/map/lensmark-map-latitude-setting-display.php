@@ -16,4 +16,4 @@
 $latitude = get_option('lensmark_map_latitude', '46.70476');
 ?>
 <input type="text" name="lensmark_map_latitude" value="<?php echo esc_attr($latitude); ?>" />
-<p>Value Between: -90 and 90</p>
+<p><?php _e( 'min. -90, max. 90', 'lensmark' );?></p>

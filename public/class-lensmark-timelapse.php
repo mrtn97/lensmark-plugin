@@ -98,10 +98,10 @@ class Lensmark_Timelapse {
 				'post_mime_type' => 'image',
 				'orderby'        => 'date',
 				'order'          => 'ASC',
-				// only retreive attachement if approval_field is checked
+				// only retreive attachement if verification_field is checked
 				'meta_query'     => array(
 					array(
-						'key'     => 'approval_field',
+						'key'     => 'verification_field',
 						'value'   => '1',
 						'compare' => '=',
 					),
@@ -113,10 +113,13 @@ class Lensmark_Timelapse {
 				<?php
 				foreach ( $attachments as $attachment ) {
 					$image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
-					$date = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
+					$date_format = get_option('date_format');
+					// Format date to use the WordPress general settings
+   					$date_data = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
+   					$submission_date = date( $date_format . ' H:i:s', strtotime( $date_data ) );
 					?>
 					<div class="timelapse-image-container">
-						<img class="timelapse-image" data-date="<?php echo $date ?>" src="<?php echo $image ?>" />
+						<img class="timelapse-image" data-date="<?php echo $submission_date ?>" src="<?php echo $image ?>" />
 					</div>
 					<?php
 				}

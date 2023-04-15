@@ -184,8 +184,8 @@ class Lensmark {
 		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data');
 		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode');
 		// Load photodata content
-		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_approval_field', 0, 2);
-		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_approval_field', 0, 2);
+		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_verification_field', 0, 2);
+		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_verification_field', 0, 2);
 		$this->loader->add_action( 'add_meta_boxes', $photodata, 'lensmark_photodata_add_meta_box');
 	}
 
