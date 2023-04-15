@@ -128,7 +128,7 @@ class Lensmark_Photodata {
 			}
 			echo '</div>';
 		} else {
-			echo '<p>' . __( 'No attachments found.', 'lensmark' ) . '</p>';
+			echo '<p>' . _e( 'No attachments found.', 'lensmark' ) . '</p>';
 		}
 	}
 
