@@ -70,10 +70,11 @@ class Lensmark_Map {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
-			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
-			wp_set_script_translations('lensmark-map', 'lensmark');
+			wp_register_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
 			wp_localize_script( 'lensmark-map', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
-			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'jquery', 'leaflet-js' ), $this->version, false );
+			wp_set_script_translations( 'lensmark-map', 'lensmark');
+			wp_enqueue_script( 'lensmark-map' );
+			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'leaflet-js' ), $this->version, false );
 		}
 	}
 
