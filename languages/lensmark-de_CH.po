@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lensmark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lensmark\n"
+"POT-Creation-Date: 2023-04-15T14:10:25+00:00\n"
+"PO-Revision-Date: 2023-04-15 16:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: de_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-15T12:41:37+00:00\n"
-"PO-Revision-Date: 2023-04-15 14:56+0200\n"
-"Language: de_CH\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Domain: lensmark\n"
@@ -62,8 +62,7 @@ msgstr "Validieren"
 msgid "Only verified photos are displayed in time lapse."
 msgstr "Nur verifizierte Fotos werden im Zeitraffer angezeigt."
 
-#: admin/class-lensmark-photodata.php:92
-#: admin/class-lensmark-photopost.php:107
+#: admin/class-lensmark-photodata.php:92 admin/class-lensmark-photopost.php:107
 msgid "Photopost details"
 msgstr "Fotoposten Angaben"
 
@@ -79,24 +78,181 @@ msgstr "Fotoerhebung bearbeiten"
 msgid "No attachments found."
 msgstr "Keine Datenerhebungen gefunden."
 
-#: admin/class-lensmark-photopost.php:228
-#: public/js/lensmark-map-overview.js:61
+#: admin/class-lensmark-photopost.php:54
+#, fuzzy
+#| msgid "Photopost"
+msgctxt "Post type general name"
+msgid "Photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:55
+#, fuzzy
+#| msgid "Photopost"
+msgctxt "Post type singular name"
+msgid "Photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:56
+#, fuzzy
+#| msgid "Photopost"
+msgctxt "Admin Menu text"
+msgid "Photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:57
+#, fuzzy
+#| msgid "Photopost"
+msgctxt "Add New on Toolbar"
+msgid "Photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:58
+msgid "Add New"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:59
+#, fuzzy
+#| msgid "Photopost"
+msgid "Add New photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:60
+#, fuzzy
+#| msgid "Photopost"
+msgid "New photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:61
+#, fuzzy
+#| msgid "Photopost"
+msgid "Edit photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:62
+#, fuzzy
+#| msgid "Photopost"
+msgid "View photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:63
+#, fuzzy
+#| msgid "Photopost"
+msgid "All photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:64
+#, fuzzy
+#| msgid "Photopost"
+msgid "Search photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:65
+msgid "Parent photoposts:"
+msgstr "Fotoposten:"
+
+#: admin/class-lensmark-photopost.php:66
+#, fuzzy
+#| msgid "No attachments found."
+msgid "No photoposts found."
+msgstr "Keine Datenerhebungen gefunden."
+
+#: admin/class-lensmark-photopost.php:67
+msgid "No photoposts found in Trash."
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:68
+#, fuzzy
+#| msgid "Photopost details"
+msgctxt ""
+"Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Photopost Cover Image"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:69
+msgctxt ""
+"Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Set cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:70
+msgctxt ""
+"Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
+msgid "Remove cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:71
+msgctxt ""
+"Overrides the “Use as featured image” phrase for this post type. Added in 4.3"
+msgid "Use as cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:72
+#, fuzzy
+#| msgid "Photopost details"
+msgctxt ""
+"The post type archive label used in nav menus. Default “Post Archives”. "
+"Added in 4.4"
+msgid "Photopost archives"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:73
+msgctxt ""
+"Overrides the “Insert into post”/”Insert into page” phrase (used when "
+"inserting media into a post). Added in 4.4"
+msgid "Insert into photopost"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:74
+msgctxt ""
+"Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
+"when viewing media attached to a post). Added in 4.4"
+msgid "Uploaded to this photopost"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:75
+msgctxt ""
+"Screen reader text for the filter links heading on the post type listing "
+"screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
+msgid "Filter photoposts list"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:76
+#, fuzzy
+#| msgid "Photopost details"
+msgctxt ""
+"Screen reader text for the pagination heading on the post type listing "
+"screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
+msgid "Photoposts list navigation"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:77
+#, fuzzy
+#| msgid "Photopost details"
+msgctxt ""
+"Screen reader text for the items list heading on the post type listing "
+"screen. Default “Posts list”/”Pages list”. Added in 4.4"
+msgid "Photoposts list"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:228 public/js/lensmark-map-overview.js:61
 msgid "Location"
 msgstr "Standort"
 
-#: admin/class-lensmark-photopost.php:231
-#: public/js/lensmark-map-overview.js:62
+#: admin/class-lensmark-photopost.php:231 public/js/lensmark-map-overview.js:62
 msgid "Position"
 msgstr "Position"
 
-#: admin/class-lensmark-photopost.php:235
-#: public/js/lensmark-map-overview.js:59
+#: admin/class-lensmark-photopost.php:235 public/js/lensmark-map-overview.js:59
 msgid "Active since"
 msgstr "Aktiv seit"
 
 #: admin/partials/help/lensmark-help-section-display.php:14
-msgid "This plugin is in early development and should not be used in production. Please visit "
-msgstr "Dieses Plugin befindet sich in einer frühen Entwicklungsphase und sollte nicht in der Produktion eingesetzt werden. Bitte besuchen Sie "
+msgid ""
+"This plugin is in early development and should not be used in production. "
+"Please visit "
+msgstr ""
+"Dieses Plugin befindet sich in einer frühen Entwicklungsphase und sollte "
+"nicht in der Produktion eingesetzt werden. Bitte besuchen Sie "
 
 #: admin/partials/lensmark-admin-display.php:30
 msgid "Map settings"
@@ -111,8 +267,12 @@ msgid "Save"
 msgstr "Speichern"
 
 #: admin/partials/lensmark-admin-display.php:58
-msgid "Lensmark is a project between Bern University of Applied Sciences & Förderverein Region Gantrisch"
-msgstr "Lensmark ist ein Projekt der Berner Fachhochschule und des Fördervereins Region Gantrisch"
+msgid ""
+"Lensmark is a project between Bern University of Applied Sciences & "
+"Förderverein Region Gantrisch"
+msgstr ""
+"Lensmark ist ein Projekt der Berner Fachhochschule und des Fördervereins "
+"Region Gantrisch"
 
 #: admin/partials/map/lensmark-map-latitude-setting-display.php:19
 msgid "min. -90, max. 90"
@@ -123,8 +283,12 @@ msgid "min. -180, max. 180"
 msgstr ""
 
 #: admin/partials/map/lensmark-map-section-display.php:14
-msgid "Enter the desired position of the map overview element displaying all photoposts"
-msgstr "Geben Sie die gewünschte Position der Übersichtskarte ein, das alle Fotoposten anzeigt"
+msgid ""
+"Enter the desired position of the map overview element displaying all "
+"photoposts"
+msgstr ""
+"Geben Sie die gewünschte Position der Übersichtskarte ein, das alle "
+"Fotoposten anzeigt"
 
 #: admin/partials/map/lensmark-map-zoom-setting-display.php:19
 msgid "Default: 12"
@@ -144,8 +308,11 @@ msgid "Thank you!"
 msgstr "Vielen Dank!"
 
 #: public/class-lensmark-submission_form.php:206
-msgid "The image was uploaded successfully and will be reviewed by the organization."
-msgstr "Das Foto wurde erfolgreich hochgeladen und wird von der Organisation überprüft."
+msgid ""
+"The image was uploaded successfully and will be reviewed by the organization."
+msgstr ""
+"Das Foto wurde erfolgreich hochgeladen und wird von der Organisation "
+"überprüft."
 
 #: public/class-lensmark-submission_form.php:207
 msgid "You may close this tab now."
@@ -153,7 +320,8 @@ msgstr "Sie können diese Registerkarte jetzt schliessen."
 
 #: public/class-lensmark-submission_form.php:215
 msgid "Security check has failed, please try again."
-msgstr "Die Sicherheitsüberprüfung ist fehlgeschlagen, bitte versuchen Sie es erneut."
+msgstr ""
+"Die Sicherheitsüberprüfung ist fehlgeschlagen, bitte versuchen Sie es erneut."
 
 #: public/js/lensmark-map-overview.js:60
 msgid "Photopost"
