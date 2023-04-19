@@ -105,7 +105,7 @@ class Lensmark_Submission_Form {
 	 * @since    1.0.0
 	 */
 	public function lensmark_add_submission_form_shortcode() {
-		add_shortcode( 'lensmark_submission_form', array( $this, 'lensmark_submission_form_callback' ) );
+		add_shortcode( 'lensmark-submission-form', array( $this, 'lensmark_submission_form_callback' ) );
 	}
 
 	/**

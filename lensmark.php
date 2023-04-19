@@ -14,10 +14,10 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Lensmark
- * Plugin URI:        http://wbth.m-clement.ch/
+ * Plugin URI:        https://lensmark.org/
  * Description:       Photomonitoring Plugin for WordPress
  * Version:           1.0.0
- * Author:            Martin Clément <martin.clement@outlook.com> Berner Fachhochschule
+ * Author:            Martin Clément <martin.clement@outlook.com> Bern University of Applied Sciences
  * Author URI:        http://m-clement.ch/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
