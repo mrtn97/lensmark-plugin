@@ -5,8 +5,8 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       http://wbth.m-clement.ch/
- * @since      0.1.0
+ * @link       https://lensmark.org/article/plugin-settings/
+ * @since      1.0.0
  *
  * @package    Lensmark
  * @subpackage Lensmark/admin/partials

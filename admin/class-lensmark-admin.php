@@ -72,11 +72,13 @@ class Lensmark_Admin {
 	public function lensmark_settings_init() {
 		/**
 		 * Add 'Settings' submenu page
+		 * @author Christina Blust (https://profiles.wordpress.org/christinablust/)
+		 * Adapted by: Martin Clément <martin.clement@outlook.com>
 		 */
 		add_submenu_page(
 			'edit.php?post_type=photopost',
 			'Settings',
-			__('Settings', 'lensmark'),
+			__( 'Settings', 'lensmark' ),
 			'edit_posts',
 			'lensmark-settings',
 			array( $this, 'lensmark_admin_interface_callback' )
@@ -89,7 +91,7 @@ class Lensmark_Admin {
 		// Add map settings section
 		add_settings_section(
 			'lensmark_map_section', // Section ID
-			__('Map Overview', 'lensmark'), // Section 
+			__( 'Map Overview', 'lensmark' ), // Section 
 			array( $this, 'lensmark_map_section_callback' ), // Callback function to display the section description
 			'lensmark-map-settings' // page settings
 		);
@@ -108,7 +110,7 @@ class Lensmark_Admin {
 		// Add map overview position LATITUDE
 		add_settings_field(
 			'lensmark_map_latitude', // Field ID
-			__('Latitude', 'lensmark'), // Field label
+			__( 'Latitude', 'lensmark' ), // Field label
 			array( $this, 'lensmark_map_latitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
@@ -117,7 +119,7 @@ class Lensmark_Admin {
 		// Add map overview position LONGITUDE
 		add_settings_field(
 			'lensmark_map_longitude', // Field ID
-			__('Longitude', 'lensmark'), // Field label
+			__( 'Longitude', 'lensmark' ), // Field label
 			array( $this, 'lensmark_map_longitude_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
@@ -126,7 +128,7 @@ class Lensmark_Admin {
 		// Add map overview ZOOM LEVEL
 		add_settings_field(
 			'lensmark_map_zoom', // Field ID
-			__('Zoom Level', 'lensmark'), // Field label
+			__( 'Zoom Level', 'lensmark' ), // Field label
 			array( $this, 'lensmark_map_zoom_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
@@ -134,7 +136,7 @@ class Lensmark_Admin {
 	}
 
 	/**
-	 * Plugin Settings interface callback
+	 * Plugin Settings display callback
 	 * 
 	 * @since	1.0.0
 	 */
