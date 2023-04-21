@@ -5,8 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       http://wbth.m-clement.ch/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Lensmark
  * @subpackage Lensmark/public/partials

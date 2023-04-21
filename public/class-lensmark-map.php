@@ -5,7 +5,7 @@
  * 
  * [lensmark-map-overview] is a leaflet.js map which displays all photoposts.
  *
- * @link       https://wbth.m-clement.ch
+ * @link       https://lensmark.org/article/map/
  * @since      1.0.0
  *
  * @package    Lensmark
@@ -62,7 +62,7 @@ class Lensmark_Map {
 	}
 
 	/**
-	 * Register the JavaScript
+	 * Register JavaScript
 	 * 
 	 * @since	1.0.0
 	 */
@@ -90,6 +90,8 @@ class Lensmark_Map {
 	 * Map overview shortcode content
 	 * 
 	 * @since	1.0.0
+	 * @author  Codex (codex.wordpress.org)
+	 * @source	https://codex.wordpress.org/Shortcode_API
 	 * @param 	array 		$atts 		User defined attributes	
 	 */
 	public function lensmark_map_overview_callback( $atts ) {
@@ -105,10 +107,14 @@ class Lensmark_Map {
 	}
 
 	/**
-	 * Get photopost including meta-data for javascript usage. Is used to add a pin on the [lensmark-map-overview] map
-	 * for each photopost.
+	 * Retrieve photopost metadata for JavaScript usage.
 	 * 
-	 * @since    1.0.0
+	 * Sends attributes of photoposts via wp_send_json() to lensmark-map-overview.js
+	 * 
+	 * @since	1.0.0
+	 * @author  ChatGPT (https://chat.openai.com/)
+	 * 
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_get_photoposts() {
 		// get plugin settings

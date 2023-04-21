@@ -1,3 +1,11 @@
+/**
+ * Javascript file displaying the timelapse module for the [lensmark-timelapse] shortcode.
+ *
+ * @since   1.0.0
+ * @author  ChatGPT (https://chat.openai.com/)
+ * Adapted by: Martin Clément <martin.clement@outlook.com>
+ */
+
 document.addEventListener("DOMContentLoaded", function() {
 	const images = document.querySelectorAll('.timelapse-image');
 	const dateText = document.getElementById('date-text');

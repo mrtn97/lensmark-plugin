@@ -1,6 +1,6 @@
 === Lensmark ===
 Contributors: martinclement
-Tags: citizen science, photomonitoring
+Tags: citizen science, photo-monitoring
 Requires at least: 6.1.1
 Tested up to: 6.1.1
 Requires PHP: 7.4.33
@@ -12,7 +12,9 @@ A citizen-science photo-monitoring solution for WordPress CMS.
 == Description ==
 This plugin was developed as part of a bachelor thesis. The Förderverein Region Gantrisch commissioned the Bern University of Applied Sciences to develop a prototype of a photo-monitoring platform. The aim is to use the prototype to attract new interested parties and participants to the project.
 
-For more information about the project, please visit https://lensmark.org or contact info@gantrisch.ch.
+This plugin was built with the WordPress Plugin Boilerplate (https://github.com/DevinVinson/WordPress-Plugin-Boilerplate For more information about the project, please visit https://lensmark.org or contact martin.clement@outlook.com.
+
+The logo was made by Lara Baeriswyl (http://larabaeri.ch/)
 
 == Installation ==
 1. Install and activate the plugin.

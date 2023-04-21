@@ -3,12 +3,13 @@
 /**
  * Contains the photopost functionalities.
  * 
+ * A photo post is a plugin-specific custom post-type that can be supplemented with additional information. Latitude, longitude, location, activation date (as of 1.0.0). In addition, submitted photos are always attached to a photopost.
+ * 
+ * @link		https://lensmark.org/article/photoposts/
+ * @since		1.0.0
  *
- * @link       http://wbth.m-clement.ch/
- * @since      1.0.0
- *
- * @package    Lensmark
- * @subpackage Lensmark/includes
+ * @package		Lensmark
+ * @subpackage	Lensmark/includes
  */
 class Lensmark_Photopost {
 
@@ -45,9 +46,13 @@ class Lensmark_Photopost {
 	}
 
 	/**
-	 * Add the photopost post type including all settings
+	 * Registers the plugin-specific post type " photopost".
 	 *
-	 * @since    1.0.0
+	 * @since	1.0.0
+	 * @author	Codex (https://profiles.wordpress.org/codex/)
+	 * @source	https://developer.wordpress.org/reference/functions/add_meta_box/
+	 * 
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_photopost_post_type() {
 		$labels = array(
@@ -90,7 +95,7 @@ class Lensmark_Photopost {
 			'menu_position' => 20,
 			'menu_icon' => 'dashicons-location',
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
-			'taxonomies' => array( 'category', 'post_tag' ),
+			'taxonomies' => array( 'category', 'post_tag' ), // optional
 			'show_in_rest' => true
 		);
 		register_post_type( 'Photopost', $args );
@@ -99,12 +104,12 @@ class Lensmark_Photopost {
 	}
 
 	/**
-	 * Add meta box for photoposts
+	 * Adds photo post details to Metabox
 	 * 
 	 * @since	1.0.0
 	 */
 	public function lensmark_photopost_add_details_meta_box() {
-		add_meta_box( 'lensmark_photopost_details', __('Photopost details', 'lensmark'), [ $this, 'lensmark_photopost_details_meta_box_callback' ], 'photopost', 'side', 'low' );
+		add_meta_box( 'lensmark_photopost_details', __( 'Photopost details', 'lensmark' ), [ $this, 'lensmark_photopost_details_meta_box_callback' ], 'photopost', 'side', 'low' );
 	}
 
 	/**
@@ -112,6 +117,9 @@ class Lensmark_Photopost {
 	 *
 	 * @since 	1.0.0
 	 * @param 	WP_Post $post The post object.
+	 * @author	Codex (https://profiles.wordpress.org/codex/)
+	 * @source	https://developer.wordpress.org/reference/functions/add_meta_box/
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_photopost_details_meta_box_callback( $post ) {
 		// Add an nonce field so we can check for it later.
@@ -126,19 +134,27 @@ class Lensmark_Photopost {
 		// Display the form, using the current value.
 		?>
 		<div class="block-editor-block-inspector components-base-control">
-			<label for="latitude">Latitude:</label>
+			<label for="latitude">
+				<?php _e( 'Latitude', 'lensmark' ) ?>:
+			</label>
 			<input type="number" id="latitude" name="latitude" min="-90" max="90"
 				value="<?php echo esc_attr( $latitude ); ?>" />
-			<label for="longitude">Longitude:</label>
+			<label for="longitude">
+				<?php _e( 'Longitude', 'lensmark' ) ?>:
+			</label>
 			<input type="number" id="longitude" name="longitude" min="-180" max="180"
 				value="<?php echo esc_attr( $longitude ); ?>" />
 		</div>
 		<div class="block-editor-block-inspector components-base-control">
-			<label for="location">Location:</label>
+			<label for="location">
+				<?php _e( 'Location', 'lensmark' ) ?>:
+			</label>
 			<input type="text" id="location" name="location" value="<?php echo esc_attr( $location ); ?>" />
 		</div>
 		<div class="block-editor-block-inspector components-base-control">
-			<label for="activation-date">Active since:</label>
+			<label for="activation-date">
+				<?php _e( 'Activation date', 'lensmark' ) ?>:
+			</label>
 			<input type="date" id="activation-date" name="activation_date"
 				value="<?php echo esc_attr( $activation_date ); ?>" />
 		</div>
@@ -149,7 +165,11 @@ class Lensmark_Photopost {
 	 * Save the meta when the post is saved.
 	 *
 	 * @since	1.0.0
-	 * @param 	int	$post_id	The ID of the post being saved.
+	 * @param 	int		$post_id	The ID of the post being saved.
+	 * 
+	 * @author	Codex (https://profiles.wordpress.org/codex/)
+	 * @source	https://developer.wordpress.org/reference/functions/add_meta_box/
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_photopost_save_meta_box_data( $post_id ) {
 		// Check if our nonce is set (-> security measure).
@@ -207,12 +227,13 @@ class Lensmark_Photopost {
 		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
 	}
 
-	public function lensmark_photopost_details_callback( $atts ) {
-		extract( shortcode_atts( array(
-			'coordinates' => 'hidden', // show coordinates
-			'location' => 'hidden', // show location
-			'active_since' => 'hidden', // show active since
-		), $atts ) );
+
+	/**
+	 * [lensmark-photopost-details] displayed content
+	 * 
+	 * @since	1.0.0
+	 */
+	public function lensmark_photopost_details_callback() {
 		global $post;
 		// Get post meta data
 		$latitude = get_post_meta( $post->ID, 'latitude', true );
@@ -225,14 +246,20 @@ class Lensmark_Photopost {
 		ob_start();
 		?>
 		<div>
-			<p class="has-small-font-size"><strong><?php _e('Location', 'lensmark');?>: </strong>
+			<p class="has-small-font-size"><strong>
+					<?php _e( 'Location', 'lensmark' ); ?>:
+				</strong>
 				<?php echo $location ?>
 			</p>
-			<p class="has-small-font-size"><strong><?php _e('Position', 'lensmark');?>: </strong>
+			<p class="has-small-font-size"><strong>
+					<?php _e( 'Position', 'lensmark' ); ?>:
+				</strong>
 				<?php echo $latitude ?>,
 				<?php echo $longitude ?>
 			</p>
-			<p class="has-small-font-size"><strong><?php _e('Active since', 'lensmark');?>: </strong>
+			<p class="has-small-font-size"><strong>
+					<?php _e( 'Active since', 'lensmark' ); ?>:
+				</strong>
 				<?php echo $activation_date ?>
 			</p>
 		</div>
@@ -240,6 +267,6 @@ class Lensmark_Photopost {
 		return ob_get_clean();
 	}
 
-	
+
 
 }

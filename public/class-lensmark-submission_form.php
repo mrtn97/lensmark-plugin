@@ -3,7 +3,7 @@
 /**
  * Contains all submission form functionalities.
  *
- * @link       https://wbth.m-clement.ch
+ * @link       https://lensmark.org/article/photoposts/
  * @since      1.0.0
  *
  * @package    Lensmark
@@ -50,13 +50,15 @@ class Lensmark_Submission_Form {
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( 'lensmark-submission_form', plugin_dir_url( __FILE__ ) . 'css/lensmark-submission_form.css', array(), $this->version, 'all' );
-		// enqueue dependencies when the shortcode is on the current page
 	}
 
 	/**
 	 * Add a photo submission page if it not already exists.
 	 * 
-	 * @since    1.0.0
+	 * @since	1.0.0
+	 * @author  ChatGPT (https://chat.openai.com/)
+	 * 
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_add_submission_form_page() {
 		$post_slug = 'photo_submit';
@@ -112,9 +114,8 @@ class Lensmark_Submission_Form {
 	 * Submission form shortcode content
 	 * 
 	 * @since    1.0.0
-	 * @param 	array 		$atts 		User defined attributes	
 	 */
-	public function lensmark_submission_form_callback( $atts ) {
+	public function lensmark_submission_form_callback() {
 		/**
 		 * The photopostId must be specified in the url (also for the QR-Code).
 		 * The photopostId is used to assign the submitted photo to the correct photopost
@@ -172,9 +173,12 @@ class Lensmark_Submission_Form {
 	/**
 	 * Handle photo submission upload and attaching it to the photopost.
 	 * 
-	 * @since    1.0.0
+	 * @since	1.0.0
+	 * @author	ChatGPT (https://chat.openai.com)
+	 * 
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
-	function lensmark_submit_entry() {
+	public function lensmark_submit_entry() {
 		// Check that the nonce is valid.
 		if (
 			isset( $_POST['photo_entry_nonce'], $_POST['photopost_id'] )

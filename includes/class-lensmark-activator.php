@@ -3,7 +3,6 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://wbth.m-clement.ch
  * @since      1.0.0
  *
  * @package    Lensmark
@@ -26,7 +25,7 @@ class Lensmark_Activator {
 	/**
 	 * Load all plugin functionalities that occur when activating the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */	public static function activate() {
 		
 	}

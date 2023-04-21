@@ -4,7 +4,7 @@
  * Set the zoom value of the overview map of [lensmark-map-overview]
  *
  *
- * @link       http://wbth.m-clement.ch/
+ * @link       https://lensmark.org/article/map/
  * @since      1.0.0
  *
  * @package    Lensmark

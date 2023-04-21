@@ -1,8 +1,9 @@
 /**
  * Javascript file handling the photoposts-map-overview displaying all photoposts.
  *
- * @since      1.0.0
- *
+ * @since   1.0.0
+ * @author  ChatGPT (https://chat.openai.com/)
+ * Adapted by: Martin Clément <martin.clement@outlook.com>
  */
 
 (function ($) {
@@ -46,7 +47,7 @@
 
         // Loop through the response and add markers to the map
         jQuery.each(response, function (index, post) {
-		// i18n of the JavaScript output
+          // i18n of the JavaScript output
           const { __, _x, _n, _nx } = wp.i18n;
           var lat = post.latitude;
           var lng = post.longitude;
@@ -62,33 +63,35 @@
                 post.title +
                 "</h3>" +
                 "<p><strong>" +
-                __('Active since', 'lensmark') +
+                __("Active since", "lensmark") +
                 ": </strong>" +
                 post.activation_date +
                 "</p>" +
                 "<p><strong>" +
-                __('Photopost', 'lensmark') +
+                __("Photopost", "lensmark") +
                 ": </strong>" +
                 post.id +
                 "</p>" +
                 "<p><strong>" +
-                __('Location', 'lensmark') +
+                __("Location", "lensmark") +
                 ": </strong>" +
                 post.location +
                 "</p>" +
                 "<p><strong>" +
-                __('Position', 'lensmark') +
+                __("Position", "lensmark") +
                 ": </strong>" +
                 post.latitude +
                 " | " +
-                post.longitude+
+                post.longitude +
                 "</p>" +
                 "<p>" +
                 post.excerpt +
                 "</p>" +
                 '<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" ><a href="' +
                 post.link +
-                '" class="wp-block-button__link wp-element-button">' + __('Open', 'lensmark') + '</a></div>' +
+                '" class="wp-block-button__link wp-element-button">' +
+                __("Open", "lensmark") +
+                "</a></div>" +
                 "</div>"
             );
           }

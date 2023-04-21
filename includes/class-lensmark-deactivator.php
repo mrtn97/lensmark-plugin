@@ -3,7 +3,6 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://wbth.m-clement.ch/
  * @since      1.0.0
  *
  * @package    Lensmark

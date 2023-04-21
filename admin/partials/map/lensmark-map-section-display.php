@@ -4,7 +4,7 @@
  * Displays the overview map settings section
  *
  *
- * @link       http://wbth.m-clement.ch/
+ * @link       https://lensmark.org/article/map/
  * @since      1.0.0
  *
  * @package    Lensmark

@@ -5,7 +5,7 @@
  * 
  * Contains admin and public facing functionalities --> includes
  *
- * @link       http://wbth.m-clement.ch/
+ * @link       https://lensmark.org/article/photodata/
  * @since      1.0.0
  *
  * @package    Lensmark
@@ -49,6 +49,8 @@ class Lensmark_Photodata {
 	 * Add verification checkbox to photopost attachments.
 	 * 
 	 * @since	1.0.0
+	 * @author	ChatGPT (https://chat.openai.com/)
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_add_photodata_verification_field( $form_fields, $post ) {
 		$parent_post_id = get_post_field( 'post_parent', $post->ID );
@@ -57,11 +59,11 @@ class Lensmark_Photodata {
 			if ( $parent_post && 'photopost' == $parent_post->post_type ) {
 				$verification_field = (bool) get_post_meta( $post->ID, 'verification_field', true );
 				$form_fields['verification_field'] = array(
-					'label' => __('Verify', 'lensmark'),
+					'label' => __( 'Verify', 'lensmark' ),
 					'input' => 'html',
 					'html' => '<input type="checkbox" id="attachments-' . $post->ID . '-verification_field" name="attachments[' . $post->ID . '][verification_field]" value="1"' . ( $verification_field ? ' checked="checked"' : '' ) . ' /> ',
 					'value' => $verification_field,
-					'helps' => _e('Only verified photos are displayed in time lapse.','lensmark')
+					'helps' => _e( 'Only verified photos are displayed in time lapse.', 'lensmark' )
 				);
 			}
 		}
@@ -70,9 +72,10 @@ class Lensmark_Photodata {
 
 
 	/**
-	 * Save verification checkbox of photopost attachments.
+	 * Save verification checkbox status of photopost attachments.
 	 * 
 	 * @since	1.0.0
+	 * @author	ChatGPT (https://chat.openai.com/)
 	 */
 	public function lensmark_save_photodata_verification_field( $post, $attachment ) {
 		if ( isset( $attachment['verification_field'] ) ) {
@@ -89,7 +92,7 @@ class Lensmark_Photodata {
 	 * @since	1.0.0
 	 */
 	public function lensmark_photodata_add_meta_box() {
-		add_meta_box( 'lensmark_photodata_list', __('Photopost details', 'lensmark'), [ $this, 'lensmark_photodata_list_callback' ], 'photopost', 'advanced', 'low' );
+		add_meta_box( 'lensmark_photodata_list', __( 'Photopost details', 'lensmark' ), [ $this, 'lensmark_photodata_list_callback' ], 'photopost', 'advanced', 'low' );
 	}
 
 	/**
@@ -97,14 +100,16 @@ class Lensmark_Photodata {
 	 * 
 	 * @since 	1.0.0
 	 * @param	array	$post			Attachement parent ID
+	 * @author	ChatGPT (https://chat.openai.com/)
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_photodata_list_callback( $post ) {
 		if ( is_object( $post ) ) {
 			$attachments = get_posts( array(
-				'post_type'      => 'attachment',
+				'post_type' => 'attachment',
 				'posts_per_page' => -1,
-				'post_status'    => null,
-				'post_parent'    => $post->ID,
+				'post_status' => null,
+				'post_parent' => $post->ID,
 			) );
 		}
 
@@ -121,7 +126,7 @@ class Lensmark_Photodata {
 				echo '<div class="attachment-info">';
 				echo '<h4>' . $attachment->post_title . '</h4>';
 				$verification_field = get_post_meta( $attachment->ID, 'verification_field', true );
-				echo '<label><input type="checkbox" name="attachment_verification[' . $attachment->ID . ']" value="1" ' . checked( $verification_field, true, false ) . ' disabled>' . __('Verified', 'lensmark') . '</label>';
+				echo '<label><input type="checkbox" name="attachment_verification[' . $attachment->ID . ']" value="1" ' . checked( $verification_field, true, false ) . ' disabled>' . __( 'Verified', 'lensmark' ) . '</label>';
 				echo '<a href="' . $edit_link . '" class="button button-small" target="_blank">' . __( 'Edit Entry', 'lensmark' ) . '</a>';
 				echo '</div>';
 				echo '</div>';

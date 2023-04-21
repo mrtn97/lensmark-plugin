@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Contains all submission-form functionalities.
+ * Contains all timelapse functionalities.
  *
- * @link       https://wbth.m-clement.ch
+ * @link       https://lensmark.org/article/timelapse/
  * @since      1.0.0
  *
  * @package    Lensmark
@@ -80,12 +80,13 @@ class Lensmark_Timelapse {
 	}
 
 	/**
-	 * timelapse shortcode content
+	 * [lensmark-timelapse] shortcode content
 	 * 
-	 * @since    1.0.0
-	 * @param 	array 		$atts 		User defined attributes	
+	 * @since	1.0.0
+	 * @author	ChatGPT (https://chat.openai.com/)
+	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
-	public function lensmark_timelapse_callback( $atts ) {
+	public function lensmark_timelapse_callback() {
 			// Get post ID
 			global $post;
 			$post_id = $post->ID;
