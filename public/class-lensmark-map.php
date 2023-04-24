@@ -165,6 +165,5 @@ class Lensmark_Map {
 			}
 		}
 		wp_send_json( $result );
-		wp_die();
 	}
 }
