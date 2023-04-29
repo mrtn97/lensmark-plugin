@@ -133,7 +133,7 @@ class Lensmark_Photopost {
 
 		// Display the form, using the current value.
 		?>
-		<div class="block-editor-block-inspector components-base-control">
+		<div class="lensmark-option_container">
 			<label for="latitude">
 				<?php _e( 'Latitude', 'lensmark' ) ?>:
 			</label>
@@ -145,13 +145,13 @@ class Lensmark_Photopost {
 			<input type="number" id="longitude" name="longitude" min="-180" max="180"
 				value="<?php echo esc_attr( $longitude ); ?>" />
 		</div>
-		<div class="block-editor-block-inspector components-base-control">
+		<div class="lensmark-option_container">
 			<label for="location">
 				<?php _e( 'Location', 'lensmark' ) ?>:
 			</label>
 			<input type="text" id="location" name="location" value="<?php echo esc_attr( $location ); ?>" />
 		</div>
-		<div class="block-editor-block-inspector components-base-control">
+		<div class="lensmark-option_container">
 			<label for="activation-date">
 				<?php _e( 'Activation date', 'lensmark' ) ?>:
 			</label>
