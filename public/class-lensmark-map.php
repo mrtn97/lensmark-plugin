@@ -72,7 +72,7 @@ class Lensmark_Map {
 			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
 			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
 			wp_localize_script( 'lensmark-map', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
-			wp_set_script_translations( 'lensmark-map', 'lensmark', plugin_dir_path( __FILE__ ) . '../languages/' );
+			wp_set_script_translations( 'lensmark-map', 'lensmark', plugin_dir_path(__FILE__) . 'languages/' );
 			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'leaflet-js' ), $this->version, false );
 		}
 	}
@@ -112,8 +112,7 @@ class Lensmark_Map {
 	 * Sends attributes of photoposts via wp_send_json() to lensmark-map-overview.js
 	 * 
 	 * @since	1.0.0
-	 * @author  ChatGPT (https://chat.openai.com/)
-	 * 
+	 * @source  ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_get_photoposts() {

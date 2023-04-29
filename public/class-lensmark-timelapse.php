@@ -83,7 +83,7 @@ class Lensmark_Timelapse {
 	 * [lensmark-timelapse] shortcode content
 	 * 
 	 * @since	1.0.0
-	 * @author	ChatGPT (https://chat.openai.com/)
+	 * @source	ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_timelapse_callback() {

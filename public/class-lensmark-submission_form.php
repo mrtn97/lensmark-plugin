@@ -174,8 +174,7 @@ class Lensmark_Submission_Form {
 	 * Handle photo submission upload and attaching it to the photopost.
 	 * 
 	 * @since	1.0.0
-	 * @author	ChatGPT (https://chat.openai.com)
-	 * 
+	 * @source	ChatGPT (https://chat.openai.com)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_submit_entry() {
