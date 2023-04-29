@@ -49,7 +49,7 @@ class Lensmark_Photodata {
 	 * Add verification checkbox to photopost attachments.
 	 * 
 	 * @since	1.0.0
-	 * @author	ChatGPT (https://chat.openai.com/)
+	 * @source	ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_add_photodata_verification_field( $form_fields, $post ) {
@@ -75,7 +75,7 @@ class Lensmark_Photodata {
 	 * Save verification checkbox status of photopost attachments.
 	 * 
 	 * @since	1.0.0
-	 * @author	ChatGPT (https://chat.openai.com/)
+	 * @source	ChatGPT (https://chat.openai.com/)
 	 */
 	public function lensmark_save_photodata_verification_field( $post, $attachment ) {
 		if ( isset( $attachment['verification_field'] ) ) {
@@ -100,7 +100,7 @@ class Lensmark_Photodata {
 	 * 
 	 * @since 	1.0.0
 	 * @param	array	$post			Attachement parent ID
-	 * @author	ChatGPT (https://chat.openai.com/)
+	 * @source	ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_photodata_list_callback( $post ) {
