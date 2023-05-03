@@ -70,9 +70,8 @@ class Lensmark_Map {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_script( 'leaflet-js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), '1.9.3', true, array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
-			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js', 'wp-i18n' ), $this->version, false );
+			wp_enqueue_script( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'js/lensmark-map-overview.js', array( 'jquery', 'leaflet-js' ), $this->version, false );
 			wp_localize_script( 'lensmark-map', 'lensmark_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), ) );
-			wp_set_script_translations( 'lensmark-map', 'lensmark', plugin_dir_path(__FILE__) . 'languages/' );
 			wp_enqueue_script( 'leaflet-sleep', plugin_dir_url( __FILE__ ) . 'js/Leaflet.Sleep.js', array( 'leaflet-js' ), $this->version, false );
 		}
 	}
@@ -116,11 +115,16 @@ class Lensmark_Map {
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
 	public function lensmark_get_photoposts() {
-		// get plugin settings
+		// get map settings
 		$map_pos_latitude = get_option( 'lensmark_map_latitude', );
 		$map_pos_longitude = get_option( 'lensmark_map_longitude', );
 		$map_zoom = get_option( 'lensmark_map_zoom' );
-
+		// set map pin content
+		$activation_date_label = __('Active since', 'lensmark');
+		$id_label = __('Photopost', 'lensmark');
+		$location_label = __('Location', 'lensmark');
+		$position_label = __('Position', 'lensmark');
+		$open_button_label = __('Open', 'lensmark');
 		// get photopost specific data
 		$args = array(
 			'post_type' => 'photopost',
@@ -146,7 +150,17 @@ class Lensmark_Map {
 
 			if ( $latitude && $longitude ) {
 				$result[] = array(
-					// post specific data
+					// map settings
+					'map_pos_latitude' => $map_pos_latitude,
+					'map_pos_longitude' => $map_pos_longitude,
+					'map_zoom' => $map_zoom,
+					// photopost data labels
+					'activation_date_label' => $activation_date_label,
+					'id_label' => $id_label,
+					'location_label' => $location_label,
+					'position_label' => $position_label,
+					'open_button_label' => $open_button_label,
+					// photopost data
 					'id' => $id,
 					'title' => $title,
 					'excerpt' => $excerpt,
@@ -156,10 +170,6 @@ class Lensmark_Map {
 					'activation_date' => $activation_date,
 					'link' => $link,
 					'thumbnail_url' => $thumbnail_url,
-					// plugin settings
-					'map_pos_latitude' => $map_pos_latitude,
-					'map_pos_longitude' => $map_pos_longitude,
-					'map_zoom' => $map_zoom,
 				);
 			}
 		}
