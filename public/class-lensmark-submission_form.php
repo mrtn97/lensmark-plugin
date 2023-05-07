@@ -53,55 +53,6 @@ class Lensmark_Submission_Form {
 	}
 
 	/**
-	 * Add a photo submission page if it not already exists.
-	 * 
-	 * @since	1.0.0
-	 * @author  ChatGPT (https://chat.openai.com/)
-	 * 
-	 * Adapted by: Martin Clément <martin.clement@outlook.com>
-	 */
-	public function lensmark_add_submission_form_page() {
-		$post_slug = 'photo_submit';
-		$page_exists = get_page_by_path( $post_slug );
-		if ( $page_exists ) {
-			// Page already exists, don't do anything
-		} else {
-			// Page does not exist
-			$args = array(
-				'post_name' => 'photo_submit',
-				'post_type' => 'page',
-				'page_template' => 'blank', // If exists, select blank template
-				'post_title' => 'Photo submission',
-				'post_status' => 'draft',
-				'post_content' => '[lensmark_submission_form]', // Call shortcode rendering the photo submission form
-			);
-			$post_id = wp_insert_post( $args );
-			if ( ! is_wp_error( $post_id ) ) {
-				//the post is valid
-			} else {
-				//there was an error in the post insertion, 
-				echo $post_id->get_error_message();
-			}
-		}
-	}
-
-	/**
-	 * Remove photo submission page if it already exists.
-	 * 
-	 * @since    1.0.0
-	 */
-	public function lensmark_trash_submission_form_page() {
-		$post_slug = 'photo_submit';
-		$page_exists = get_page_by_path( $post_slug );
-		if ( $page_exists ) {
-			$post_id = $page_exists->ID;
-			wp_trash_post( $post_id );
-		} else {
-			// Page does not exist, don't do anything
-		}
-	}
-
-	/**
 	 * Add new shortcode that displays the submission form.
 	 * 
 	 * @since    1.0.0
@@ -123,14 +74,11 @@ class Lensmark_Submission_Form {
 		 * https://some.site.com/somePage.html?photopost_id=[postId]
 		 * */
 		echo '<div id="message"></div>';
-		if ( isset( $_GET['photopost_id'] ) ) {
+		if ( isset( $_GET['photopost_id'] )) {
 			$photopost_id = $_GET['photopost_id'];
 			ob_start();
 			?>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
-				<h2>
-					<?php _e( 'Submit your photo', 'lensmark' ); ?>
-				</h2>
 				<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost_id; ?>">
 				<label for="file">
 					<?php _e( 'Photo', 'lensmark' ) ?>:

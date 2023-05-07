@@ -205,8 +205,6 @@ class Lensmark {
 		$this->loader->add_action( 'wp_enqueue_scripts', $submission_form, 'enqueue_styles' );
 		$this->loader->add_action( 'init', $submission_form, 'lensmark_add_submission_form_shortcode');
 		$this->loader->add_action( 'init', $submission_form, 'lensmark_submit_entry');
-		$this->loader->add_action( 'activated_plugin', $submission_form, 'lensmark_add_submission_form_page');
-		$this->loader->add_action( 'deactivated_plugin', $submission_form, 'lensmark_trash_submission_form_page');
 		// Load timelapse content
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_scripts' );
