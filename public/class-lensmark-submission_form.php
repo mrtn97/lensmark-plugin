@@ -127,22 +127,6 @@ class Lensmark_Submission_Form {
 			$photopost_id = $_GET['photopost_id'];
 			ob_start();
 			?>
-			<h2>Procedure</h2>
-			<ol>
-				<li>Give this website access to your camera app.</li>
-				<li>Place smartphone on bracket.</li>
-				<li>Take photo.</li>
-				<li>Fill out and submit form for approval.</li>
-				<li>Once the photo is approved by the website manager, you will receive a confirmation email.</li>
-			</ol>
-			<h2>Notice</h2>
-			<ul>
-				<li>Take photo with default settings.</li>
-				<li>No flash</li>
-				<li>No wide angle or zoom</li>
-				<li>No filters</li>
-				<li>Do not photograph people</li>
-			</ul>
 			<form id="photo_entry_submission" method="post" action="#" enctype="multipart/form-data">
 				<h2>Submit your photo</h2>
 				<input type="hidden" id="photopost_id" name="photopost_id" value="<?php echo $photopost_id; ?>">
@@ -155,7 +139,7 @@ class Lensmark_Submission_Form {
 				<label for="email">Email:</label>
 				<input type="email" id="email" name="email" required>
 				<span><input type="checkbox" id="terms" name="terms" value="checked" required>
-					<label for="terms">I have read and accept the <a href="" target="_blank">privacy policy</a>.</label>
+					<label for="terms">I have read and accept the <a href="<?php echo get_privacy_policy_url()?>" target="_blank">privacy policy</a>.</label>
 				</span>
 				<?php wp_nonce_field( 'photo_entry', 'photo_entry_nonce' ); ?>
 				<input type="submit" id="submit_photo_entry" class="wp-block-button" name="submit_photo_entry" value="Submit">
