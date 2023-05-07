@@ -68,10 +68,10 @@ class Lensmark_Submission_Form {
 	 */
 	public function lensmark_submission_form_callback() {
 		/**
-		 * The photopostId must be specified in the url (also for the QR-Code).
-		 * The photopostId is used to assign the submitted photo to the correct photopost
+		 * The photopost_id must be specified in the url (also for the QR-Code).
+		 * The photopost_id is used to assign the submitted photo to the correct photopost
 		 * 
-		 * https://some.site.com/somePage.html?photopost_id=[postId]
+		 * https://some.site.com/somePage.html?photopost_id=[post-id]
 		 * */
 		echo '<div id="message"></div>';
 		if ( isset( $_GET['photopost_id'] )) {
@@ -115,6 +115,7 @@ class Lensmark_Submission_Form {
 			$message_element = '<div id="message">' . $message . '</div>';
 			echo sprintf( $message_element );
 		}
+		return ob_get_clean();
 	}
 
 	/**
