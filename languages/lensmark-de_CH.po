@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lensmark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lensmark\n"
-"POT-Creation-Date: 2023-05-03T15:40:31+00:00\n"
-"PO-Revision-Date: 2023-05-03 17:41+0200\n"
+"POT-Creation-Date: 2023-05-07T10:32:26+00:00\n"
+"PO-Revision-Date: 2023-05-07 12:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -23,8 +23,6 @@ msgid "https://lensmark.org/"
 msgstr ""
 
 #. Description of the plugin
-#, fuzzy
-#| msgid "Photomonitoring Plugin for WordPress"
 msgid "Photo-monitoring Plugin for WordPress"
 msgstr "Fotomonitoring-Plugin für WordPress"
 
@@ -136,11 +134,11 @@ msgstr "Fotoposten:"
 
 #: admin/class-lensmark-photopost.php:71
 msgid "No photoposts found."
-msgstr "Keine Datenerhebungen gefunden."
+msgstr "Keine Fotoposten gefunden."
 
 #: admin/class-lensmark-photopost.php:72
 msgid "No photoposts found in Trash."
-msgstr ""
+msgstr "Keine Fotoposten im Papierkorb gefunden."
 
 #: admin/class-lensmark-photopost.php:73
 msgctxt ""
@@ -281,31 +279,82 @@ msgstr "Fotoposten"
 msgid "Open"
 msgstr "Öffnen"
 
+#: public/class-lensmark-submission_form.php:132
+msgid "Submit your photo"
+msgstr "Fotoerhebung vornehmen"
+
+#: public/class-lensmark-submission_form.php:136
+msgid "Photo"
+msgstr "Foto"
+
+#: public/class-lensmark-submission_form.php:138
+msgid "Take a photo"
+msgstr "Foto aufnehmen"
+
+#: public/class-lensmark-submission_form.php:140
+msgid "First name"
+msgstr "Vorname"
+
+#: public/class-lensmark-submission_form.php:144
+msgid "Last name"
+msgstr "Name"
+
+#: public/class-lensmark-submission_form.php:148
+msgid "Email"
+msgstr "E-Mail"
+
+#: public/class-lensmark-submission_form.php:152
+msgid "I have read and accept the privacy policy page"
+msgstr "Ich habe die Seite zum Datenschutz gelesen und akzeptiere sie"
+
+#: public/class-lensmark-submission_form.php:156
+msgid "Submit"
+msgstr "Senden"
+
+#: public/class-lensmark-submission_form.php:163
 #: public/class-lensmark-submission_form.php:198
-#: public/class-lensmark-submission_form.php:217
+#: public/class-lensmark-submission_form.php:218
 msgid "Error"
 msgstr "Fehler"
+
+#: public/class-lensmark-submission_form.php:164
+msgid ""
+"Photopost ID does not exist. Please scan the QR code again or type in the "
+"url manually."
+msgstr ""
+"Die Fotoposten-Nummer existiert nicht. Bitte scannen Sie den QR-Code erneut "
+"oder geben Sie die Url manuell ein."
 
 #: public/class-lensmark-submission_form.php:199
 msgid "Something went wrong, please try again."
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut."
 
-#: public/class-lensmark-submission_form.php:208
+#: public/class-lensmark-submission_form.php:207
+msgid "Open Photopost page"
+msgstr "Fotoposten Seite ansehen"
+
+#: public/class-lensmark-submission_form.php:209
 msgid "Thank you!"
 msgstr "Vielen Dank!"
 
-#: public/class-lensmark-submission_form.php:209
+#: public/class-lensmark-submission_form.php:210
 msgid ""
 "The image was uploaded successfully and will be reviewed by the organization."
 msgstr ""
 "Das Foto wurde erfolgreich hochgeladen und wird von der Organisation "
 "überprüft."
 
-#: public/class-lensmark-submission_form.php:210
-msgid "You may close this tab now."
-msgstr "Sie können diese Registerkarte jetzt schliessen."
+#: public/class-lensmark-submission_form.php:211
+msgid ""
+"You may close this tab now or check out submitted photos from this photopost."
+msgstr ""
+"Sie können diese Registerkarte jetzt schliessen oder sich die eingereichten "
+"Fotos von diesem Fotoposten ansehen."
 
-#: public/class-lensmark-submission_form.php:218
+#: public/class-lensmark-submission_form.php:219
 msgid "Security check has failed, please try again."
 msgstr ""
 "Die Sicherheitsüberprüfung ist fehlgeschlagen, bitte versuchen Sie es erneut."
+
+#~ msgid "You may close this tab now."
+#~ msgstr "Sie können diese Registerkarte jetzt schliessen."

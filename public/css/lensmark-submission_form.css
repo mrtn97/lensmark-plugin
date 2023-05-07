@@ -23,7 +23,7 @@
 
  #photo_entry_submission input[type="file"]::before {
    font-family: inherit;
-   content: "Take a photo";
+   content: attr(data-content);
    display: inline-block;
    padding: calc(0.667em + 2px) calc(1.333em + 2px);
    color: var(--wp--preset--color--contrast);
@@ -101,3 +101,14 @@
    color: #155724;
  }
  
+ .alert > div.wp-block-button.is-style-outline>.wp-block-button__link {
+  background-color: transparent;
+  border: 2px solid;
+  padding: .667em 1.333em;
+ }
+
+ .alert > div.wp-block-button.is-style-outline>.wp-block-button__link:hover {
+  background-color: transparent;
+  border: 2px solid var(--wp--preset--color--contrast);
+  color: var(--wp--preset--color--contrast);
+ }
