@@ -63,3 +63,7 @@
   .timelapse-controls #date-text {
     color: var(--wp--preset--color--contrast);
   }
+
+  p .dashicons {
+    margin-right: 0.5rem;
+  }
