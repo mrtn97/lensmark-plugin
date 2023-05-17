@@ -215,21 +215,11 @@ class Lensmark_Photopost {
 	}
 
 	/**
-	 * Add the shortcode: [lensmark-photopost-details] which displays details from the photopost
-	 * 
-	 * @since	1.0.0
-	 */
-	public function lensmark_add_photopost_details_shortcode() {
-		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
-	}
-
-
-	/**
 	 * [lensmark-photopost-details] displayed content
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_photopost_details_callback() {
+	public function lensmark_photopost_details_shortcode() {
 		global $post;
 		// Get post meta data
 		$latitude = get_post_meta( $post->ID, 'latitude', true );

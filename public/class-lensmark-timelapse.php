@@ -71,22 +71,13 @@ class Lensmark_Timelapse {
 	}
 
 	/**
-	 * Add new shortcode that displays the timelapse
-	 * 
-	 * @since    1.0.0
-	 */
-	public function lensmark_add_timelapse_shortcode() {
-		add_shortcode( 'lensmark-timelapse', array($this, 'lensmark_timelapse_callback' ) );
-	}
-
-	/**
 	 * [lensmark-timelapse] shortcode content
 	 * 
 	 * @since	1.0.0
 	 * @source	ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
-	public function lensmark_timelapse_callback() {
+	public function lensmark_timelapse_shortcode() {
 			// Get post ID
 			global $post;
 			$post_id = $post->ID;

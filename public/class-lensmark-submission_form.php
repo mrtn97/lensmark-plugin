@@ -53,20 +53,11 @@ class Lensmark_Submission_Form {
 	}
 
 	/**
-	 * Add new shortcode that displays the submission form.
-	 * 
-	 * @since    1.0.0
-	 */
-	public function lensmark_add_submission_form_shortcode() {
-		add_shortcode( 'lensmark-submission-form', array( $this, 'lensmark_submission_form_callback' ) );
-	}
-
-	/**
 	 * Submission form shortcode content
 	 * 
 	 * @since    1.0.0
 	 */
-	public function lensmark_submission_form_callback() {
+	public function lensmark_submission_form_shortcode() {
 		/**
 		 * The photopost_id must be specified in the url (also for the QR-Code).
 		 * The photopost_id is used to assign the submitted photo to the correct photopost

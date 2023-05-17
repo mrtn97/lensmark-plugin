@@ -170,18 +170,12 @@ class Lensmark {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-
 		$plugin_admin = new Lensmark_Admin( $this->get_lensmark(), $this->get_version() );
-		$photopost = new Lensmark_Photopost( $this->get_lensmark(), $this->get_version() );
 		$photodata = new Lensmark_Photodata( $this->get_lensmark(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// Load settings content
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'lensmark_settings_init' );
-		// Load post-type content
-		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type' );
-		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_add_details_meta_box' );
-		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data' );
 		// Load photodata content
 		$this->loader->add_filter( 'attachment_fields_to_edit', $photodata, 'lensmark_add_photodata_verification_field', 0, 2 );
 		$this->loader->add_filter( 'attachment_fields_to_save', $photodata, 'lensmark_save_photodata_verification_field', 0, 2 );
@@ -203,18 +197,21 @@ class Lensmark {
 
 		// Load submission form content
 		$this->loader->add_action( 'wp_enqueue_scripts', $submission_form, 'enqueue_styles' );
-		$this->loader->add_action( 'init', $submission_form, 'lensmark_add_submission_form_shortcode' );
+		$this->loader->add_shortcode( 'lensmark-submission-form', $submission_form, 'lensmark_submission_form_shortcode' );
 		$this->loader->add_action( 'init', $submission_form, 'lensmark_submit_entry' );
+		// Load photopost content
+		$this->loader->add_action( 'init', $photopost, 'lensmark_photopost_post_type' );
+		$this->loader->add_action( 'add_meta_boxes', $photopost, 'lensmark_photopost_add_details_meta_box' );
+		$this->loader->add_action( 'save_post', $photopost, 'lensmark_photopost_save_meta_box_data' );
+		$this->loader->add_shortcode( 'lensmark-photopost-details', $photopost, 'lensmark_photopost_details_shortcode' );
 		// Load timelapse content
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $timelapse, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $timelapse, 'lensmark_add_timelapse_shortcode' );
-		// Load photopost content
-		$this->loader->add_action( 'init', $photopost, 'lensmark_add_photopost_details_shortcode' );
+		$this->loader->add_shortcode( 'lensmark-timelapse', $timelapse, 'lensmark_timelapse_shortcode' );
 		// Load map content
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $map, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $map, 'lensmark_add_map_overview_shortcode' );
+		$this->loader->add_shortcode( 'lensmark-map-overview', $map, 'lensmark_map_overview_shortcode' );
 		$this->loader->add_action( 'wp_ajax_lensmark_get_photoposts', $map, 'lensmark_get_photoposts' );
 		$this->loader->add_action( 'wp_ajax_nopriv_lensmark_get_photoposts', $map, 'lensmark_get_photoposts' );
 	}
