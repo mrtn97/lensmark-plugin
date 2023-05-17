@@ -243,20 +243,17 @@ class Lensmark_Photopost {
 		?>
 		<div>
 			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-post-status"></span>
 					<?php _e( 'Location', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $location ?>
 			</p>
 			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-location-alt"></span>
 					<?php _e( 'Position', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $latitude ?>,
 				<?php echo $longitude ?>
 			</p>
 			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-calendar-alt"></span>
 					<?php _e( 'Active since', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $activation_date ?>
