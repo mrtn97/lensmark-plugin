@@ -79,7 +79,7 @@ class Lensmark_Admin {
 			'edit.php?post_type=photopost',
 			'Settings',
 			__( 'Settings', 'lensmark' ),
-			'edit_posts',
+			'manage_options',
 			'lensmark-settings',
 			array( $this, 'lensmark_admin_interface_callback' )
 		);
