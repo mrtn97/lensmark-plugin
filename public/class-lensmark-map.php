@@ -54,8 +54,6 @@ class Lensmark_Map {
 		// enqueue dependencies when the shortcode is on the current page
 		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_style( 'lensmark-map', plugin_dir_url( __FILE__ ) . 'css/lensmark-map.css', array(), $this->version, 'all' );
-		}
-		if ( has_shortcode( get_post()->post_content, 'lensmark-map-overview' ) ) {
 			wp_enqueue_style( 'leaflet-css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', array(), '1.9.3', 'all', array( 'integrity' => 'sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=', 'crossorigin' => '' ) );
 		}
 
@@ -77,15 +75,6 @@ class Lensmark_Map {
 	}
 
 	/**
-	 * Add the shortcode: [lensmark-map-overview]
-	 * 
-	 * @since	1.0.0
-	 */
-	public function lensmark_add_map_overview_shortcode() {
-		add_shortcode( 'lensmark-map-overview', array( $this, 'lensmark_map_overview_callback' ) );
-	}
-
-	/**
 	 * Map overview shortcode content
 	 * 
 	 * @since	1.0.0
@@ -93,7 +82,7 @@ class Lensmark_Map {
 	 * @source	https://codex.wordpress.org/Shortcode_API
 	 * @param 	array 		$atts 		User defined attributes	
 	 */
-	public function lensmark_map_overview_callback( $atts ) {
+	public function lensmark_map_overview_shortcode( $atts ) {
 		extract( shortcode_atts( array(
 			'width' => '100%', // default width
 			'height' => '800px', // default height

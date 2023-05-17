@@ -71,22 +71,13 @@ class Lensmark_Timelapse {
 	}
 
 	/**
-	 * Add new shortcode that displays the timelapse
-	 * 
-	 * @since    1.0.0
-	 */
-	public function lensmark_add_timelapse_shortcode() {
-		add_shortcode( 'lensmark-timelapse', array($this, 'lensmark_timelapse_callback' ) );
-	}
-
-	/**
 	 * [lensmark-timelapse] shortcode content
 	 * 
 	 * @since	1.0.0
 	 * @source	ChatGPT (https://chat.openai.com/)
 	 * Adapted by: Martin Clément <martin.clement@outlook.com>
 	 */
-	public function lensmark_timelapse_callback() {
+	public function lensmark_timelapse_shortcode() {
 			// Get post ID
 			global $post;
 			$post_id = $post->ID;
@@ -112,12 +103,14 @@ class Lensmark_Timelapse {
 			?>
 			<div class="timelapse-container">
 				<?php
+				$sum_photodata = 0;
 				foreach ( $attachments as $attachment ) {
 					$image = wp_get_attachment_image_src( $attachment->ID, 'full' )[0];
 					$date_format = get_option('date_format');
 					// Format date to use the WordPress general settings
    					$date_data = get_the_date( 'd-m-Y H:i:s', $attachment->ID );
    					$submission_date = date( $date_format . ' H:i:s', strtotime( $date_data ) );
+					$sum_photodata++;
 					?>
 					<div class="timelapse-image-container">
 						<img class="timelapse-image" data-date="<?php echo $submission_date ?>" src="<?php echo $image ?>" />
@@ -133,7 +126,8 @@ class Lensmark_Timelapse {
 					<button id="prev-btn"><span class="dashicons dashicons-controls-skipback"></span></button>
 					<button id="next-btn"><span class="dashicons dashicons-controls-skipforward"></span></button>
 				</div>
-				<p id="date-text" class="has-small-font-size"></p>
+				<p id="sum-photodata" class="has-small-font-size"><span class="dashicons dashicons-camera"></span><span><?php echo $sum_photodata . ' ' . __('photos', 'lensmark');?></span></p>
+				<p class="has-small-font-size"><span class="dashicons dashicons-calendar-alt"></span><span id="date-text"></span></p>
 			</div>
 			<?php
 			return ob_get_clean();

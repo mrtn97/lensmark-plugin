@@ -23,6 +23,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-top: 1rem;
     gap: 1rem;
   }
  
@@ -39,7 +40,6 @@
     padding: var(--wp--preset--font-size--medium);
     line-height: 1;
     cursor: pointer;
-    border: none;
   }
  
   .timelapse-controls button:active {
@@ -59,7 +59,7 @@
     color: var(--wp--preset--color--base);
     border: var(--wp--preset--color--contrast) 1px dotted;
   }
- 
-  .timelapse-controls #date-text {
-    color: var(--wp--preset--color--contrast);
+
+  p .dashicons {
+    margin-right: 0.5rem;
   }

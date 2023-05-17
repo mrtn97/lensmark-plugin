@@ -9,7 +9,7 @@
  * @since		1.0.0
  *
  * @package		Lensmark
- * @subpackage	Lensmark/includes
+ * @subpackage	Lensmark/public
  */
 class Lensmark_Photopost {
 
@@ -215,21 +215,11 @@ class Lensmark_Photopost {
 	}
 
 	/**
-	 * Add the shortcode: [lensmark-photopost-details] which displays details from the photopost
-	 * 
-	 * @since	1.0.0
-	 */
-	public function lensmark_add_photopost_details_shortcode() {
-		add_shortcode( 'lensmark-photopost-details', array( $this, 'lensmark_photopost_details_callback' ) );
-	}
-
-
-	/**
 	 * [lensmark-photopost-details] displayed content
 	 * 
 	 * @since	1.0.0
 	 */
-	public function lensmark_photopost_details_callback() {
+	public function lensmark_photopost_details_shortcode() {
 		global $post;
 		// Get post meta data
 		$latitude = get_post_meta( $post->ID, 'latitude', true );
@@ -243,17 +233,20 @@ class Lensmark_Photopost {
 		?>
 		<div>
 			<p class="has-small-font-size"><strong>
+					<span class="dashicons dashicons-post-status"></span>
 					<?php _e( 'Location', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $location ?>
 			</p>
 			<p class="has-small-font-size"><strong>
+					<span class="dashicons dashicons-location-alt"></span>
 					<?php _e( 'Position', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $latitude ?>,
 				<?php echo $longitude ?>
 			</p>
 			<p class="has-small-font-size"><strong>
+					<span class="dashicons dashicons-calendar-alt"></span>
 					<?php _e( 'Active since', 'lensmark' ); ?>:
 				</strong>
 				<?php echo $activation_date ?>
