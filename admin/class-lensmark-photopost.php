@@ -9,7 +9,7 @@
  * @since		1.0.0
  *
  * @package		Lensmark
- * @subpackage	Lensmark/public
+ * @subpackage	Lensmark/includes
  */
 class Lensmark_Photopost {
 
