@@ -99,16 +99,15 @@ class Lensmark_Admin {
 		/**
 		 * Register map settings
 		 */
-		register_setting( 'lensmark-map-settings', 'lensmark_map_latitude' ); // Latitude
-		register_setting( 'lensmark-map-settings', 'lensmark_map_longitude' ); // Longitude
-		register_setting( 'lensmark-map-settings', 'lensmark_map_zoom' ); // Zoom Level
-		register_setting( 'lensmark-map-settings', 'lensmark_map_decimal_points' ); // Num of decimal points for coordinates
+		register_setting( 'lensmark-map-settings', 'lensmark_map_latitude' ); // LATITUDE
+		register_setting( 'lensmark-map-settings', 'lensmark_map_longitude' ); // LONGITUDE
+		register_setting( 'lensmark-map-settings', 'lensmark_map_zoom' ); // ZOOM LEVEL
 
 
 		/**
 		 * Add map settings
 		 */
-		// Add map overview position Latitude
+		// Add map overview position LATITUDE
 		add_settings_field(
 			'lensmark_map_latitude', // Field ID
 			__( 'Latitude', 'lensmark' ), // Field label
@@ -117,7 +116,7 @@ class Lensmark_Admin {
 			'lensmark_map_section', // Section ID
 		);
 
-		// Add map overview position Longitude
+		// Add map overview position LONGITUDE
 		add_settings_field(
 			'lensmark_map_longitude', // Field ID
 			__( 'Longitude', 'lensmark' ), // Field label
@@ -126,20 +125,11 @@ class Lensmark_Admin {
 			'lensmark_map_section', // Section ID
 		);
 
-		// Add map overview Zoom Level
+		// Add map overview ZOOM LEVEL
 		add_settings_field(
 			'lensmark_map_zoom', // Field ID
 			__( 'Zoom Level', 'lensmark' ), // Field label
 			array( $this, 'lensmark_map_zoom_setting_callback' ), // Callback function to display the field
-			'lensmark-map-settings', // Page slug
-			'lensmark_map_section', // Section ID
-		);
-
-		// Add map coordinates decimal points
-		add_settings_field(
-			'lensmark_map_decimal_points', // Field ID
-			__( 'Decimal points of coordinates', 'lensmark' ), // Field label
-			array( $this, 'lensmark_decimal_points_setting_callback' ), // Callback function to display the field
 			'lensmark-map-settings', // Page slug
 			'lensmark_map_section', // Section ID
 		);
@@ -198,15 +188,6 @@ class Lensmark_Admin {
 	 */
 	public function lensmark_map_zoom_setting_callback() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-map-zoom-setting-display.php';
-	}
-
-	/**
-	 * Decimal points of coordinates callback function
-	 *
-	 * @since	1.0.0
-	 */
-	public function lensmark_decimal_points_setting_callback() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/map/lensmark-decimal-points-setting-display.php';
 	}
 
 

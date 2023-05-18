@@ -77,9 +77,9 @@
                 "<p><strong>" +
                 post.position_label +
                 ": </strong>" +
-                post.latitude_formatted +
+                post.latitude +
                 " | " +
-                post.longitude_formatted +
+                post.longitude +
                 "</p>" +
                 "<p>" +
                 post.excerpt +

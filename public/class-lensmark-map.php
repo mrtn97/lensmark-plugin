@@ -126,11 +126,8 @@ class Lensmark_Map {
 			$id = $post->ID;
 			$title = $post->post_title;
 			$excerpt = $post->post_excerpt;
-			$decimal_points = get_option('lensmark_map_decimal_points',);
-			$latitude = get_post_meta( $post->ID, 'latitude', true );
-			$latitude_formatted = number_format($latitude, $decimal_points);
-			$longitude = get_post_meta( $post->ID, 'longitude', true );
-			$longitude_formatted = number_format($longitude, $decimal_points);
+			$latitude = get_post_meta( $id, 'latitude', true );
+			$longitude = get_post_meta( $id, 'longitude', true );
 			$location = get_post_meta( $id, 'location', true );
 			$date_format = get_option( 'date_format' );
 			// Format date to use the WordPress general settings
@@ -157,9 +154,7 @@ class Lensmark_Map {
 					'title' => $title,
 					'excerpt' => $excerpt,
 					'latitude' => $latitude,
-					'latitude_formatted' => $latitude_formatted,
 					'longitude' => $longitude,
-					'longitude_formatted' => $longitude_formatted,
 					'location' => $location,
 					'activation_date' => $activation_date,
 					'link' => $link,

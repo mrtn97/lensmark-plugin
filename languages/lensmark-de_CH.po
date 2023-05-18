@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lensmark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lensmark\n"
-"POT-Creation-Date: 2023-05-17T18:18:53+00:00\n"
-"PO-Revision-Date: 2023-05-17 20:20+0200\n"
+"POT-Creation-Date: 2023-05-07T10:32:26+00:00\n"
+"PO-Revision-Date: 2023-05-07 12:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -44,21 +44,17 @@ msgstr "Einstellungen"
 msgid "Map Overview"
 msgstr "Übersichtskarte"
 
-#: admin/class-lensmark-admin.php:114 public/class-lensmark-photopost.php:138
+#: admin/class-lensmark-admin.php:113 admin/class-lensmark-photopost.php:138
 msgid "Latitude"
 msgstr ""
 
-#: admin/class-lensmark-admin.php:123 public/class-lensmark-photopost.php:143
+#: admin/class-lensmark-admin.php:122 admin/class-lensmark-photopost.php:143
 msgid "Longitude"
 msgstr ""
 
-#: admin/class-lensmark-admin.php:132
+#: admin/class-lensmark-admin.php:131
 msgid "Zoom Level"
 msgstr "Zoom-Stufe"
-
-#: admin/class-lensmark-admin.php:141
-msgid "Decimal points of coordinates"
-msgstr "Dezimalstellen bei Koordinaten"
 
 #: admin/class-lensmark-photodata.php:62
 msgid "Verify"
@@ -68,8 +64,7 @@ msgstr "Validieren"
 msgid "Only verified photos are displayed in time lapse."
 msgstr "Nur verifizierte Fotos werden im Zeitraffer angezeigt."
 
-#: admin/class-lensmark-photodata.php:95
-#: public/class-lensmark-photopost.php:112
+#: admin/class-lensmark-photodata.php:95 admin/class-lensmark-photopost.php:112
 msgid "Photopost details"
 msgstr "Fotoposten Angaben"
 
@@ -84,6 +79,149 @@ msgstr "Fotoerhebung bearbeiten"
 #: admin/class-lensmark-photodata.php:136
 msgid "No attachments found."
 msgstr "Keine Datenerhebungen gefunden."
+
+#: admin/class-lensmark-photopost.php:59
+msgctxt "Post type general name"
+msgid "Photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:60
+msgctxt "Post type singular name"
+msgid "Photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:61
+msgctxt "Admin Menu text"
+msgid "Photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:62
+msgctxt "Add New on Toolbar"
+msgid "Photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:63
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: admin/class-lensmark-photopost.php:64
+msgid "Add New photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:65
+msgid "New photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:66
+msgid "Edit photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:67
+msgid "View photopost"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:68
+msgid "All photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:69
+msgid "Search photoposts"
+msgstr "Fotoposten"
+
+#: admin/class-lensmark-photopost.php:70
+msgid "Parent photoposts:"
+msgstr "Fotoposten:"
+
+#: admin/class-lensmark-photopost.php:71
+msgid "No photoposts found."
+msgstr "Keine Fotoposten gefunden."
+
+#: admin/class-lensmark-photopost.php:72
+msgid "No photoposts found in Trash."
+msgstr "Keine Fotoposten im Papierkorb gefunden."
+
+#: admin/class-lensmark-photopost.php:73
+msgctxt ""
+"Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Photopost Cover Image"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:74
+msgctxt ""
+"Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Set cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:75
+msgctxt ""
+"Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
+msgid "Remove cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:76
+msgctxt ""
+"Overrides the “Use as featured image” phrase for this post type. Added in 4.3"
+msgid "Use as cover image"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:77
+msgctxt ""
+"The post type archive label used in nav menus. Default “Post Archives”. "
+"Added in 4.4"
+msgid "Photopost archives"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:78
+msgctxt ""
+"Overrides the “Insert into post”/”Insert into page” phrase (used when "
+"inserting media into a post). Added in 4.4"
+msgid "Insert into photopost"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:79
+msgctxt ""
+"Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
+"when viewing media attached to a post). Added in 4.4"
+msgid "Uploaded to this photopost"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:80
+msgctxt ""
+"Screen reader text for the filter links heading on the post type listing "
+"screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
+msgid "Filter photoposts list"
+msgstr ""
+
+#: admin/class-lensmark-photopost.php:81
+msgctxt ""
+"Screen reader text for the pagination heading on the post type listing "
+"screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
+msgid "Photoposts list navigation"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:82
+msgctxt ""
+"Screen reader text for the items list heading on the post type listing "
+"screen. Default “Posts list”/”Pages list”. Added in 4.4"
+msgid "Photoposts list"
+msgstr "Fotoposten Angaben"
+
+#: admin/class-lensmark-photopost.php:148
+#: admin/class-lensmark-photopost.php:246 public/class-lensmark-map.php:125
+msgid "Location"
+msgstr "Standort"
+
+#: admin/class-lensmark-photopost.php:152
+msgid "Activation date"
+msgstr "Aktivierungsdatum"
+
+#: admin/class-lensmark-photopost.php:251 public/class-lensmark-map.php:126
+msgid "Position"
+msgstr "Position"
+
+#: admin/class-lensmark-photopost.php:257 public/class-lensmark-map.php:123
+msgid "Active since"
+msgstr "Aktiv seit"
 
 #: admin/partials/help/lensmark-help-section-display.php:12
 msgid ""
@@ -113,10 +251,6 @@ msgstr ""
 "Lensmark ist ein Projekt der Berner Fachhochschule und des Fördervereins "
 "Region Gantrisch"
 
-#: admin/partials/map/lensmark-decimal-points-setting-display.php:19
-msgid "Default: 4"
-msgstr "Standardwert: 4"
-
 #: admin/partials/map/lensmark-map-latitude-setting-display.php:19
 msgid "min. -90, max. 90"
 msgstr ""
@@ -137,192 +271,53 @@ msgstr ""
 msgid "Default: 12"
 msgstr "Standardwert: 12"
 
-#: public/class-lensmark-map.php:112 public/class-lensmark-photopost.php:252
-msgid "Active since"
-msgstr "Aktiv seit"
-
-#: public/class-lensmark-map.php:113
+#: public/class-lensmark-map.php:124
 msgid "Photopost"
 msgstr "Fotoposten"
 
-#: public/class-lensmark-map.php:114 public/class-lensmark-photopost.php:148
-#: public/class-lensmark-photopost.php:240
-msgid "Location"
-msgstr "Standort"
-
-#: public/class-lensmark-map.php:115 public/class-lensmark-photopost.php:246
-msgid "Position"
-msgstr "Position"
-
-#: public/class-lensmark-map.php:116
+#: public/class-lensmark-map.php:127
 msgid "Open"
 msgstr "Öffnen"
 
-#: public/class-lensmark-photopost.php:59
-msgctxt "Post type general name"
-msgid "Photoposts"
-msgstr "Fotoposten"
+#: public/class-lensmark-submission_form.php:132
+msgid "Submit your photo"
+msgstr "Fotoerhebung vornehmen"
 
-#: public/class-lensmark-photopost.php:60
-msgctxt "Post type singular name"
-msgid "Photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:61
-msgctxt "Admin Menu text"
-msgid "Photoposts"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:62
-msgctxt "Add New on Toolbar"
-msgid "Photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:63
-msgid "Add New"
-msgstr "Hinzufügen"
-
-#: public/class-lensmark-photopost.php:64
-msgid "Add New photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:65
-msgid "New photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:66
-msgid "Edit photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:67
-msgid "View photopost"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:68
-msgid "All photoposts"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:69
-msgid "Search photoposts"
-msgstr "Fotoposten"
-
-#: public/class-lensmark-photopost.php:70
-msgid "Parent photoposts:"
-msgstr "Fotoposten:"
-
-#: public/class-lensmark-photopost.php:71
-msgid "No photoposts found."
-msgstr "Keine Fotoposten gefunden."
-
-#: public/class-lensmark-photopost.php:72
-msgid "No photoposts found in Trash."
-msgstr "Keine Fotoposten im Papierkorb gefunden."
-
-#: public/class-lensmark-photopost.php:73
-msgctxt ""
-"Overrides the “Featured Image” phrase for this post type. Added in 4.3"
-msgid "Photopost Cover Image"
-msgstr "Fotoposten Angaben"
-
-#: public/class-lensmark-photopost.php:74
-msgctxt ""
-"Overrides the “Set featured image” phrase for this post type. Added in 4.3"
-msgid "Set cover image"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:75
-msgctxt ""
-"Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
-msgid "Remove cover image"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:76
-msgctxt ""
-"Overrides the “Use as featured image” phrase for this post type. Added in 4.3"
-msgid "Use as cover image"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:77
-msgctxt ""
-"The post type archive label used in nav menus. Default “Post Archives”. "
-"Added in 4.4"
-msgid "Photopost archives"
-msgstr "Fotoposten Angaben"
-
-#: public/class-lensmark-photopost.php:78
-msgctxt ""
-"Overrides the “Insert into post”/”Insert into page” phrase (used when "
-"inserting media into a post). Added in 4.4"
-msgid "Insert into photopost"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:79
-msgctxt ""
-"Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
-"when viewing media attached to a post). Added in 4.4"
-msgid "Uploaded to this photopost"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:80
-msgctxt ""
-"Screen reader text for the filter links heading on the post type listing "
-"screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
-msgid "Filter photoposts list"
-msgstr ""
-
-#: public/class-lensmark-photopost.php:81
-msgctxt ""
-"Screen reader text for the pagination heading on the post type listing "
-"screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
-msgid "Photoposts list navigation"
-msgstr "Fotoposten Angaben"
-
-#: public/class-lensmark-photopost.php:82
-msgctxt ""
-"Screen reader text for the items list heading on the post type listing "
-"screen. Default “Posts list”/”Pages list”. Added in 4.4"
-msgid "Photoposts list"
-msgstr "Fotoposten Angaben"
-
-#: public/class-lensmark-photopost.php:152
-msgid "Activation date"
-msgstr "Aktivierungsdatum"
-
-#: public/class-lensmark-submission_form.php:75
+#: public/class-lensmark-submission_form.php:136
 msgid "Photo"
 msgstr "Foto"
 
-#: public/class-lensmark-submission_form.php:77
+#: public/class-lensmark-submission_form.php:138
 msgid "Take a photo"
 msgstr "Foto aufnehmen"
 
-#: public/class-lensmark-submission_form.php:79
+#: public/class-lensmark-submission_form.php:140
 msgid "First name"
 msgstr "Vorname"
 
-#: public/class-lensmark-submission_form.php:83
+#: public/class-lensmark-submission_form.php:144
 msgid "Last name"
 msgstr "Name"
 
-#: public/class-lensmark-submission_form.php:87
+#: public/class-lensmark-submission_form.php:148
 msgid "Email"
 msgstr "E-Mail"
 
-#: public/class-lensmark-submission_form.php:91
+#: public/class-lensmark-submission_form.php:152
 msgid "I have read and accept the privacy policy page"
 msgstr "Ich habe die Seite zum Datenschutz gelesen und akzeptiere sie"
 
-#: public/class-lensmark-submission_form.php:95
+#: public/class-lensmark-submission_form.php:156
 msgid "Submit"
 msgstr "Senden"
 
-#: public/class-lensmark-submission_form.php:102
-#: public/class-lensmark-submission_form.php:138
-#: public/class-lensmark-submission_form.php:159
+#: public/class-lensmark-submission_form.php:163
+#: public/class-lensmark-submission_form.php:198
+#: public/class-lensmark-submission_form.php:218
 msgid "Error"
 msgstr "Fehler"
 
-#: public/class-lensmark-submission_form.php:103
+#: public/class-lensmark-submission_form.php:164
 msgid ""
 "Photopost ID does not exist. Please scan the QR code again or type in the "
 "url manually."
@@ -330,43 +325,36 @@ msgstr ""
 "Die Fotoposten-Nummer existiert nicht. Bitte scannen Sie den QR-Code erneut "
 "oder geben Sie die Url manuell ein."
 
-#: public/class-lensmark-submission_form.php:139
+#: public/class-lensmark-submission_form.php:199
 msgid "Something went wrong, please try again."
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut."
 
-#: public/class-lensmark-submission_form.php:148
+#: public/class-lensmark-submission_form.php:207
 msgid "Open Photopost page"
 msgstr "Fotoposten Seite ansehen"
 
-#: public/class-lensmark-submission_form.php:150
+#: public/class-lensmark-submission_form.php:209
 msgid "Thank you!"
 msgstr "Vielen Dank!"
 
-#: public/class-lensmark-submission_form.php:151
+#: public/class-lensmark-submission_form.php:210
 msgid ""
 "The image was uploaded successfully and will be reviewed by the organization."
 msgstr ""
 "Das Foto wurde erfolgreich hochgeladen und wird von der Organisation "
 "überprüft."
 
-#: public/class-lensmark-submission_form.php:152
+#: public/class-lensmark-submission_form.php:211
 msgid ""
 "You may close this tab now or check out submitted photos from this photopost."
 msgstr ""
 "Sie können diese Registerkarte jetzt schliessen oder sich die eingereichten "
 "Fotos von diesem Fotoposten ansehen."
 
-#: public/class-lensmark-submission_form.php:160
+#: public/class-lensmark-submission_form.php:219
 msgid "Security check has failed, please try again."
 msgstr ""
 "Die Sicherheitsüberprüfung ist fehlgeschlagen, bitte versuchen Sie es erneut."
-
-#: public/class-lensmark-timelapse.php:129
-msgid "photos"
-msgstr "Fotos"
-
-#~ msgid "Submit your photo"
-#~ msgstr "Fotoerhebung vornehmen"
 
 #~ msgid "You may close this tab now."
 #~ msgstr "Sie können diese Registerkarte jetzt schliessen."
