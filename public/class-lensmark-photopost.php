@@ -222,8 +222,11 @@ class Lensmark_Photopost {
 	public function lensmark_photopost_details_shortcode() {
 		global $post;
 		// Get post meta data
+		$decimal_points = get_option('lensmark_map_decimal_points',);
 		$latitude = get_post_meta( $post->ID, 'latitude', true );
+		$latitude_formatted = number_format($latitude, $decimal_points);
 		$longitude = get_post_meta( $post->ID, 'longitude', true );
+		$longitude_formatted = number_format($longitude, $decimal_points);
 		$location = get_post_meta( $post->ID, 'location', true );
 		$date_format = get_option( 'date_format' );
 		// Format date to use the WordPress general settings
@@ -242,8 +245,7 @@ class Lensmark_Photopost {
 					<span class="dashicons dashicons-location-alt"></span>
 					<?php _e( 'Position', 'lensmark' ); ?>:
 				</strong>
-				<?php echo $latitude ?>,
-				<?php echo $longitude ?>
+				<?php echo $latitude_formatted . ', ' . $longitude_formatted; ?>
 			</p>
 			<p class="has-small-font-size"><strong>
 					<span class="dashicons dashicons-calendar-alt"></span>
