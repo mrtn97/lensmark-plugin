@@ -222,11 +222,11 @@ class Lensmark_Photopost {
 	public function lensmark_photopost_details_shortcode() {
 		global $post;
 		// Get post meta data
-		$decimal_points = get_option('lensmark_map_decimal_points',);
+		$decimal_points = get_option( 'lensmark_map_decimal_points', );
 		$latitude = get_post_meta( $post->ID, 'latitude', true );
-		$latitude_formatted = number_format($latitude, $decimal_points);
+		$latitude_formatted = number_format( $latitude, $decimal_points );
 		$longitude = get_post_meta( $post->ID, 'longitude', true );
-		$longitude_formatted = number_format($longitude, $decimal_points);
+		$longitude_formatted = number_format( $longitude, $decimal_points );
 		$location = get_post_meta( $post->ID, 'location', true );
 		$date_format = get_option( 'date_format' );
 		// Format date to use the WordPress general settings
@@ -234,24 +234,15 @@ class Lensmark_Photopost {
 		$activation_date = date( $date_format, strtotime( $activation_date_data ) );
 		ob_start();
 		?>
-		<div>
-			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-post-status"></span>
-					<?php _e( 'Location', 'lensmark' ); ?>:
-				</strong>
-				<?php echo $location ?>
+		<div class="photopost-details has-small-font-size">
+			<p>
+				<span class="dashicons dashicons-post-status"></span><strong><?php _e( 'Location', 'lensmark' ); ?>:</strong> <?php echo $location ?>
 			</p>
-			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-location-alt"></span>
-					<?php _e( 'Position', 'lensmark' ); ?>:
-				</strong>
-				<?php echo $latitude_formatted . ', ' . $longitude_formatted; ?>
+			<p>
+				<span class="dashicons dashicons-location-alt"></span><strong><?php _e( 'Position', 'lensmark' ); ?>: </strong><?php echo $latitude_formatted . ', ' . $longitude_formatted; ?>
 			</p>
-			<p class="has-small-font-size"><strong>
-					<span class="dashicons dashicons-calendar-alt"></span>
-					<?php _e( 'Active since', 'lensmark' ); ?>:
-				</strong>
-				<?php echo $activation_date ?>
+			<p>
+				<span class="dashicons dashicons-calendar-alt"></span><strong><?php _e( 'Active since', 'lensmark' ); ?>: </strong><?php echo $activation_date ?>
 			</p>
 		</div>
 		<?php
